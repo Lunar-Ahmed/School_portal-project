@@ -1,0 +1,165 @@
+/* .container h1{
+    color: black;
+    padding: 30px 150px;
+}
+
+.container h1:hover{
+    color: blue;
+}
+
+.container{
+    margin-left: 30%;
+    background-color: #0dcaf0;
+    width: 60vw;
+    border-radius: 20px;
+}
+
+ .form-box{
+    padding-bottom: 50px;
+    margin-left: 100px;
+}
+.form-box input{
+    padding-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 5px;
+    /* height: 20px;
+    width: 70%;
+}
+
+.form-box label{
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.form-box input[type="submit"]{
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    border: 0;
+    font-weight: bolder;
+    align-items: center;
+    font-size: larger;
+    margin-left: 100px;
+}
+
+table, th, td{
+    border: 1px solid black;
+} 
+table{
+    box-sizing: border-box;
+    float: right;
+}  
+
+.menu{
+    background-color: dimgray;
+    height: 60px;
+} 
+
+.menu h1{
+    font-size: xx-large;
+    font-weight: bolder;
+    letter-spacing: 3em;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.nav{
+    background-color: dimgray;
+    width: 50px;
+    box-sizing: border-box;
+    float: left;
+} 
+
+.nav h1{
+    padding: 15px;
+    font-size: xx-large;
+    font-weight: bolder;
+} */
+
+body{
+    background-image: url('../images/9.png');
+}
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            width: 30%;
+            margin-left: 35%;
+            /* border: 2px solid #0dcaf0; */
+        }
+
+        /* Full-width input fields */
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        select {
+            width: 95%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="date"],
+        select:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #0dcaf0;
+            margin-bottom: 25px;
+            color: #0dcaf0;
+        }
+        h1{
+            min-width: 100%;
+            letter-spacing: 3px;
+            font-weight: bolder;
+            color: #000;
+        }
+
+        /* Set a style for the submit/register button */
+        input[type="submit"] {
+            background-color: #0dcaf0;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 40%;
+            opacity: 0.9;
+            margin-left: 30%;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+        .classchoose{
+           font-size: larger;
+           padding-left: 10%;
+           font-family: 'Courier New', Courier, monospace;
+
+        }
+
+        .classchoose:hover{
+            color: none;
+            background-color: none;
+        }
+
+        .msg h1{
+            font-weight: bolder;
+            font-style: italic;
+            color: white;
+        }
+
+        input[type="date"] ::placeholder{
+            font-size: larger;          
+        }
