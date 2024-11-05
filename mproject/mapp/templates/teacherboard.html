@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="/static/cs/style.css" type="text/css">
         <link rel="stylesheet" href="/static/cs/skins/pink.css" type="text/css">
 
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'cs/styles.css' %}">
+
                                   <!--Live Style Switcher - Demo Only-->
         <link rel="stylesheet" class="alternate-style" title="pink" href="/static/cs/skins/pink.css" type="text/css" disabled>
         <link rel="stylesheet" class="alternate-style" title="blue" href="/static/cs/skins/blue.css" type="text/css" disabled>
@@ -41,14 +44,8 @@
                    <span></span>
                </div>
                <!--Nav-->
-               <ul class="nav">
-                 {% comment %} <li class="dropdown"><button class="dropbtn"><a href="#" class="#"><i class="fa fa-user"></i>Test<i class="fa fa-caret-down"></i></a></button>
-                 <div class="dropdown-content">
-                    <a href="#">CA1</a>
-                    <a href="#">CA2</a>
-                    <a href="#">CA3</a>
-                </div>
-            </li> {% endcomment %}
+               <div class="scroll-container">
+                <ul class="nav">
                   <li><a href="attendance"><i class="fa fa-user"></i>Attendance</a></li>
                   <li><a href="#"><i class="fa fa-user"></i>Notification</a></li>
                   <li><a href="#portfolio"><i class="fa fa-user"></i>Memo</a></li>
@@ -59,9 +56,9 @@
                   <li><a href="#portfolio"><i class="fa fa-user"></i>Result</a></li>
                   <li><a href="#portfolio"><i class="fa fa-user"></i>Loan</a></li>
                   <li><button id="showTextButton"><a href="#"><i class="fa fa-upload"></i>File Upload</a></button></li>
-                  <li role="presentation"><a role="menuitem" class="fa fa-sign-out" href="logout">Logout</a></li>
-                  
-               </ul>
+                  <li role="presentation"><a role="menuitem" class="fa fa-sign-out" href="logout">Logout</a></li> 
+                 </ul>
+               </div>
                <!--Copyright-->
                <div class="copyright-text" style="color: #0dcaf0;">
                     &copy; @Jascube Technologies 
