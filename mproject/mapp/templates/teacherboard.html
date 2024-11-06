@@ -5,11 +5,11 @@
         <title>Dash Board</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/static/cs/style.css" type="text/css">
+        {% load static %}
+        {% comment %} <link rel="stylesheet" href="/static/cs/style.css" type="text/css"> {% endcomment %}
         <link rel="stylesheet" href="/static/cs/skins/pink.css" type="text/css">
 
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'cs/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'cs/style.css'%}" type="text/css">
 
                                   <!--Live Style Switcher - Demo Only-->
         <link rel="stylesheet" class="alternate-style" title="pink" href="/static/cs/skins/pink.css" type="text/css" disabled>
@@ -44,7 +44,7 @@
                    <span></span>
                </div>
                <!--Nav-->
-               <div class="scroll-container">
+               <div class="menu-bar">
                 <ul class="nav">
                   <li><a href="attendance"><i class="fa fa-user"></i>Attendance</a></li>
                   <li><a href="#"><i class="fa fa-user"></i>Notification</a></li>
@@ -59,6 +59,7 @@
                   <li role="presentation"><a role="menuitem" class="fa fa-sign-out" href="logout">Logout</a></li> 
                  </ul>
                </div>
+              </div>
                <!--Copyright-->
                <div class="copyright-text" style="color: #0dcaf0;">
                     &copy; @Jascube Technologies 

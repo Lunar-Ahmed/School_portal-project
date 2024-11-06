@@ -16,7 +16,7 @@ def admin(request):
     return HttpResponse(template.render())
 
 def teacher(request):
-    template = loader.get_template('mapp/teacherboard.html')
+    template = loader.get_template('teacherboard.html')
     return HttpResponse(template.render())
 
 def student(request):
