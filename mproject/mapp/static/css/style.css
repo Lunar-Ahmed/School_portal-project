@@ -445,9 +445,9 @@
     height: 300px; /* Set a fixed height */
     overflow-y: auto; /* Enable vertical scrolling */
     background-color: #f8f8f8; /* Background color */
+    overflow-y: brown;
     padding: 10px;
     border: 1px solid #ccc; /* Optional: Border styling */
-    background-color: brown;
 }
 
 .menu-bar ul {
@@ -462,5 +462,4 @@
     background-color: #fff; /* Optional: Background color for items */
     border: 1px solid #ddd; /* Optional: Border styling for items */
 }
-
 

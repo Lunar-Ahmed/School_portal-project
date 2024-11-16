@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,7 @@
 
 
     <!-- Favicon -->
-    <link href="/static/images/favicon.ico" rel="icon">
+    <link href="{%staic 'images/favicon.ico' %}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,17 +25,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{%staic 'lib/animate/animate.min.cs' %}" rel="stylesheet">
+
+    <link href="{%staic 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{%staic 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <link rel="stylesheet" href="/static/cs/style.css" type="text/css">
+    <link href="{%staic 'static/cs/style.css' %}" rel="stylesheet">
 
 
                               <!--Live Style Switcher - Demo Only-->
-    <link rel="stylesheet" class="alternate-style" title="pink" href="/static/cs/skins/pink.css" type="text/css" disabled>
+    <link rel="stylesheet" class="alternate-style" title="pink" href="{%staic 'static/cs/skins/pink.css' %}" type="text/css" disabled>
     <link rel="stylesheet" class="alternate-style" title="blue" href="/static/cs/skins/blue.css" type="text/css" disabled>
     <link rel="stylesheet" class="alternate-style" title="orange" href="/static/cs/skins/orange.css" type="text/css" disabled>
     <link rel="stylesheet" class="alternate-style" title="yellow" href="/static/cs/skins/yellow.css" type="text/css" disabled>

@@ -2,14 +2,11 @@
 <html lang="en">
 <html>
     <head> 
-        <title>Dash Board</title>
+        <title>Personal Profile Page</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% load static %}
-        {% comment %} <link rel="stylesheet" href="/static/cs/style.css" type="text/css"> {% endcomment %}
+        <link rel="stylesheet" href="/static/cs/style.css" type="text/css">
         <link rel="stylesheet" href="/static/cs/skins/pink.css" type="text/css">
-
-        <link rel="stylesheet" href="{% static 'cs/style.css'%}" type="text/css">
 
                                   <!--Live Style Switcher - Demo Only-->
         <link rel="stylesheet" class="alternate-style" title="pink" href="/static/cs/skins/pink.css" type="text/css" disabled>
@@ -23,12 +20,12 @@
 
     </head>
    <body>
-
      <div class="preloaded">
         <div class="loader">
 
         </div>
      </div>
+
 
        <!--main-container-->  
        <div class="main-container">
@@ -36,116 +33,398 @@
            <div class="aside">
                <!--logo-->
                <div class="logo">
-            <img src="/static/images/9.png" style="border-radius: 60px;" alt="School Logo" class="shadow-dark" width="120px" height="120px">
-               <a href="#" >{{ session.username }} Teacher Name</a> 
+                <img src="profile.png" alt="profile photo">
+                   <a href="#"> John ADEYEMI</a> 
                </div>
                <!--Nav Toggle btn-->
                <div class="nav-toggle">
                    <span></span>
                </div>
                <!--Nav-->
-              <div class="menu-bar">
-                <ul class="nav">
-                  <li><a href="attendance"><i class="fa fa-user"></i>Attendance</a></li>
-                  <li><a href="#"><i class="fa fa-user"></i>Notification</a></li>
-                  <li><a href="#portfolio"><i class="fa fa-user"></i>Memo</a></li>
-                  <li><a href="#portfolio"><i class="fa fa-user"></i></a>Assignment</li>
-                  <li><a href="#portfolio"><i class="fa fa-user"></i></a>Report</li>
-                  <li><a href="#portfolio"><i class="fa fa-user"></i></a>Test</li>
-                  <li><a href="#portfolio"><i class="fa fa-user"></i>Examination</a></li>
-                  <li><a href="#portfolio"><i class="fa fa-user"></i>Result</a></li>
-                  <li><a href="#portfolio"><i class="fa fa-user"></i>Loan</a></li>
-                  <li><button id="showTextButton"><a href="#"><i class="fa fa-upload"></i>File Upload</a></button></li>
-                  <li role="presentation"><a role="menuitem" class="fa fa-sign-out" href="logout">Logout</a></li> 
-                 </ul>
-                </div>
-              </div>
+               <ul class="nav">
+                <li><a href="#home" class="active"><i class="fa fa-home"></i>Attendance</a></li>
+                <li><a href="#about"><i class="fa fa-user"></i>Notification</a></li>
+                <li><a href="#services"><i class="fa fa-list"></i>Memo</a></li>
+                <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Assignment</a></li>
+                <li><a href="#blog"><i class="fa fa-envelope"></i>Report</a></li>
+                <li><a href="#contact"><i class="fa fa-user"></i>Test C A</a></li>
+                <li><a href="#seven"><i class="fa fa-user"></i>Examination</a></li>
+                <li><a href="#eight"><i class="fa fa-list"></i>Result</a></li>
+                <li><a href="#nine"><i class="fa fa-briefcase"></i>Loan</a></li>
+                <li><a href="#ten"><i class="fa fa-envelope"></i>Logout</a></li>
+               </ul>
                <!--Copyright-->
-               <div class="copyright-text" style="color: #0dcaf0;">
-                    &copy; @Jascube Technologies 
+               <div class="copyright-text">
+                    &copy; 2021 Jascube Technologies 
                </div>
+
+           </div>
            <!--Aside ends-->
 
            <!--Main content-->
-           <div class="main-content"> 
+           <div class="main-content">
                <!--Home Section-->
                <section class="home section active" id="home">
-                <div class="cardss">
-                <div class="card-one"><a href="#">
-                  <div class="contain">
-                  <h1>STUDENT</h1>
-                  <h2>{{ teacher_count }}</h2>
-                  </div>
-                  </a>   
-                 </div>
-            
-                <div class="card-two" id="cardData"><a href="#">
-                  <div class="contain">
-                  <h1>EXAM</h1>
-                  <h2><p>{{ student_count }}</p></h2>
-                  </div>
-                  </a>
+                <div class="container">
+                    <div class="intro">
+                      <div class="table-containers">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Student Name</th>
+                                    <!-- Generate headers for 12 weeks -->
+                                    <th>Week 1</th>
+                                    <th>Week 2</th>
+                                    <th>Week 3</th>
+                                    <th>Week 4</th>
+                                    <th>Week 5</th>
+                                    <th>Week 6</th>
+                                    <th>Week 7</th>
+                                    <th>Week 8</th>
+                                    <th>Week 9</th>
+                                    <th>Week 10</th>
+                                    <th>Week 11</th>
+                                    <th>Week 12</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Example row for a student -->
+                                <tr>
+                                    <td>001</td>
+                                    <td>Student 1</td>
+                                    <!-- Generate cells for 12 weeks with checkboxes for each day -->
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week1_mon"> Mon</label><br>
+                                        <label><input type="checkbox" name="student1_week1_tue"> Tue</label><br>
+                                        <label><input type="checkbox" name="student1_week1_wed"> Wed</label><br>
+                                        <label><input type="checkbox" name="student1_week1_thu"> Thu</label><br>
+                                        <label><input type="checkbox" name="student1_week1_fri"> Fri</label>
+                                    </td>
+                                    <!-- Repeat for each week -->
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"> Mon</label><br>
+                                        <label><input type="checkbox" name="student1_week2_tue"> Tue</label><br>
+                                        <label><input type="checkbox" name="student1_week2_wed"> Wed</label><br>
+                                        <label><input type="checkbox" name="student1_week2_thu"> Thu</label><br>
+                                        <label><input type="checkbox" name="student1_week2_fri"> Fri</label>
+                                    </td>
+                                    <!-- Continue for the remaining weeks -->
+                                    <!-- Add similar blocks for weeks 3 to 12 -->
+                                </tr>
+                                <!-- Repeat rows for additional students -->
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
                 </div>
-                
-                <div class="card-three"><a href="assignment">
-                  <div class="contain">
-                  <h1>ASSIGNMENT</h1>
-                  <h2><p>{{ admin_count }}</p></h2>
-                  </div>
-                  </a>
-                </div>
-
-                <div class="card-four"><a href="#">
-                  <div class="contain">
-                  <h1>PAYMENT</h1>
-                  <h2></h2>
-                  </div>
-                  </a>   
-                 </div>
-                </div>
-
-                <div class="search">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                </div>
-
-                <table id="myTable">
-                  <!-- <tr class="header">
-                    <th style="width:30%;"></th>
-                    <th style="width:25%;"></th>
-                    <th style="width:25%;"></th>
-                    <th style="width:20%;"></th>
-                  </tr> -->
-                  
-                  {% comment %} {% for row in data %}
-                    <td>{{ row[0] }}</td>
-                    <td>{{ row[1] }}</td>
-                    <td>{{ row[2] }}</a></td>
-                    <td style="font-size: medium;"><a  href="">View</a>   <a  href="">Modify</a></td>
-                  </tr>
-                  {% endfor %} {% endcomment %}
-                </table>
-
-                <div id="hiddenText" style="display: none;">
-                  <form action="/upload" method="post" enctype="multipart/form-data">
-                      <input type="file" name="file">
-                      <br>
-                      <button type="submit">Submit</button>
-                  </form>
-              </div>
                </section>
-              </div>
-           </div>
-           <script>
-            document.getElementById("showTextButton").onclick = function() {
-                const hiddenText = document.getElementById("hiddenText");
-                hiddenText.style.display = "block";
-            };
+               <!--Home Section End-->
 
-            document.getElementById("cardOne").onclick = function() {
-                const cardData = document.getElementById("cardData");
-                CardData.style.display = "block";
-            };
-        </script>
+               <!--About Section Begins-->
+               <section class="about section" id="about">
+                   <div class="container">
+                       <div class="row">
+                           <div class="section-title padd-15">
+                            <div class="container">
+                              <label for="perfect-textarea">Your Message:</label>
+                              <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+                          </div>
+      
+                            <div class="container">
+                              <input type="file" id="file-input" class="file-input" style="display: none;" />
+                              <button id="import-btn" class="btn">Import</button>
+                           </div>
+                       </div>
+                    </div>
+                   </div>
+               </section>
+               <!--About Section Ends-->
+
+               <!--Service Section Begins-->
+           <section class="service section" id="services">
+                <div class="container">
+                      <div class="row">
+                        <div class="container">
+                          <label for="perfect-textarea"></label>
+                          <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+                      </div>
+  
+                        <div class="container">
+                          <input type="file" id="file-input" class="file-input" style="display: none;" />
+                          <button id="import-btn" class="btn">Import</button>
+                              
+                        <!--Service Item Ends-->
+                      </div>
+                </div>
+            </section>
+               <!--Service Section Ends-->
+
+            <!--Portfolio Section Begins-->
+             <section class="portfolio section" id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="portfolio-filter padd-15">
+                          <div class="assign">
+                            <label for="perfect-textarea"></label>
+                            <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+
+                            <div class="checkbox-container"> 
+                              <label for="myCheckbox"> 
+                                <input type="checkbox" id="myCheckbox" name="myCheckbox"> Select all </label>
+                            </div>
+
+                            <div class="checkbox-container"> 
+                              <label for="myCheckbox"> 
+                                <input type="checkbox" id="myCheckbox" name="myCheckbox"> Some</label>
+                            </div>
+
+                        </div>
+  
+                    </div>
+
+                    <!-- portfolio Item Ends -->
+                  </div>
+                    
+                  </div>
+            </section>  
+            <!--Portfolio Section Ends-->  
+
+
+            <!--Blog section begins-->
+            <section class="blog section" id="blog">
+                <div class="container">
+                    <div class="row">
+                      
+                      <div class="container">
+                        <label for="perfect-textarea">Your Message:</label>
+                        <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+                    </div>
+
+                      <div class="container">
+                        <input type="file" id="file-input" class="file-input" style="display: none;" />
+                        <button id="import-btn" class="btn">Import</button>
+
+                          <!-- Blog content Ends -->
+                    </div>
+                </div>
+            </section>
+            <!--Blog Section Ends-->
+
+            <!--Contact Section Begins-->
+                       <!--Blog section begins-->
+                       <section class="contact section" id="contact">
+                        <div class="container">
+                            <div class="row">
+
+                              <div class="table-container">
+                                  <table>
+                                    <h3>CA 1</h3>
+                                      <thead>
+                                          <tr>
+                                              <th>Student Name</th>
+                                              <th>Class Activities</th>
+                                              <th>Punctuality</th>
+                                              <th>Test1</th>
+                                              <th>Test2</th>
+                                              <th>Test3</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <!-- Add rows here -->
+                                          <tr>
+                                              <td>Dominic</td>
+                                              <td>Activity 1</td>
+                                              <td>On Time</td>
+                                              <td>85</td>
+                                              <td>90</td>
+                                              <td>88</td>
+                                          </tr>
+                                          <tr>
+                                              <td>Lunar</td>
+                                              <td>Activity 2</td>
+                                              <td>Late</td>
+                                              <td>78</td>
+                                              <td>84</td>
+                                              <td>80</td>
+                                          </tr>
+                                          <!-- Add more rows as needed -->
+                                      </tbody>
+                                  </table>
+                              </div>
+
+                              <div class="table-container">
+                                  <table>
+                                    <h3>CA 2</h3>
+                                      <thead>
+                                          <tr>
+                                              <th>Student Name</th>
+                                              <th>Class Activities</th>
+                                              <th>Punctuality</th>
+                                              <th>Test1</th>
+                                              <th>Test2</th>
+                                              <th>Test3</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <!-- Add rows here -->
+                                          <tr>
+                                              <td>Dominic</td>
+                                              <td>Activity 1</td>
+                                              <td>On Time</td>
+                                              <td>85</td>
+                                              <td>90</td>
+                                              <td>88</td>
+                                          </tr>
+                                          <tr>
+                                              <td>Lunar</td>
+                                              <td>Activity 2</td>
+                                              <td>Late</td>
+                                              <td>78</td>
+                                              <td>84</td>
+                                              <td>80</td>
+                                          </tr>
+                                          <!-- Add more rows as needed -->
+                                      </tbody>
+                                  </table>
+                              </div>
+
+                              <div class="table-container">
+                                  <table>
+                                    <h3>CA 3</h3>
+                                      <thead>
+                                          <tr>
+                                              <th>Student Name</th>
+                                              <th>Class Activities</th>
+                                              <th>Punctuality</th>
+                                              <th>Test1</th>
+                                              <th>Test2</th>
+                                              <th>Test3</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <!-- Add rows here -->
+                                          <tr>
+                                              <td>Dominic</td>
+                                              <td>Activity 1</td>
+                                              <td>On Time</td>
+                                              <td>85</td>
+                                              <td>90</td>
+                                              <td>88</td>
+                                          </tr>
+                                          <tr>
+                                              <td>Lunar</td>
+                                              <td>Activity 2</td>
+                                              <td>Late</td>
+                                              <td>78</td>
+                                              <td>84</td>
+                                              <td>80</td>
+                                          </tr>
+                                          <!-- Add more rows as needed -->
+                                      </tbody>
+                                  </table>
+                              </div>
+
+
+        
+                                  <!-- Blog content Ends -->
+                            </div>
+                        </div>
+                    </section>
+                    <!--Blog Section Ends-->
+        
+            <!--Contact Section ends-->
+
+
+                        <!--Blog section begins-->
+                        <section class="blog section" id="seven">
+                          <div class="container">
+                              <div class="row">
+                                
+                                <div class="exam">
+                                  <label for="perfect-textarea"></label>
+                                  <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+                              
+                                  <input type="file" id="file-input" class="file-input" style="display: none;" />
+                                  <button id="import-btn" class="btn">Import</button>
+
+                                  <button id="submit">Submit</button>
+                                </div>
+          
+                                    <!-- Blog content Ends -->
+                              </div>
+                          </div>
+                      </section>
+                      <!--Blog Section Ends-->
+
+                                  <!--Blog section begins-->
+            <section class="blog section" id="eight">
+              <div class="container">
+                  <div class="row">
+                    
+                    <div class="container">
+                      <label for="perfect-textarea">Your Message:</label>
+                      <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+                  </div>
+
+                    <div class="container">
+                      <input type="file" id="file-input" class="file-input" style="display: none;" />
+                      <button id="import-btn" class="btn">Import</button>
+
+                        <!-- Blog content Ends -->
+                  </div>
+              </div>
+          </section>
+          <!--Blog Section Ends-->
+
+          
+                      <!--Blog section begins-->
+                      <section class="blog section" id="nine">
+                        <div class="container">
+                            <div class="row">
+                              
+                              <div class="container">
+                                <label for="perfect-textarea">Your Message:</label>
+                                <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+                            </div>
+        
+                              <div class="container">
+                                <input type="file" id="file-input" class="file-input" style="display: none;" />
+                                <button id="import-btn" class="btn">Import</button>
+        
+                                  <!-- Blog content Ends -->
+                            </div>
+                        </div>
+                    </section>
+                    <!--Blog Section Ends-->
+        
+
+                                <!--Blog section begins-->
+            <section class="blog section" id="ten">
+              <div class="container">
+                  <div class="row">
+                    
+                    <div class="container">
+                      <label for="perfect-textarea">Your Message:</label>
+                      <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+                  </div>
+
+                    <div class="container">
+                      <input type="file" id="file-input" class="file-input" style="display: none;" />
+                      <button id="import-btn" class="btn">Import</button>
+
+                        <!-- Blog content Ends -->
+                  </div>
+              </div>
+          </section>
+          <!--Blog Section Ends-->
+
+
+            
+           </div>
+           <!--Main content ends-->
+       </div>
+       <!--main-container ends-->
 
 <!-- Lightbox begins-->
 <div class="lightbox">
@@ -172,7 +451,7 @@
   <h5>Style Switcher</h5>
   <ul>
     <li><a href="Javascript:void(0);" title="pink" style="background-color: #ec1839" onclick="setActiveStyle('pink')"></a></li>
-    <li><a href="Javascript:void(0);" title="blue" style="background-color: #0dcaf0" onclick="setActiveStyle('blue')"></a></li>
+    <li><a href="Javascript:void(0);" title="blue" style="background-color: #2196f3" onclick="setActiveStyle('blue')"></a></li>
     <li><a href="Javascript:void(0);" title="orange" style="background-color: #fa5b0f" onclick="setActiveStyle('orange')"></a></li>
     <li><a href="Javascript:void(0);" title="yellow" style="background-color: #ffb400" onclick="setActiveStyle('yellow')"></a></li>
     <li><a href="Javascript:void(0);" title="green" style="background-color: #72b626" onclick="setActiveStyle('green')"></a></li>
@@ -189,9 +468,9 @@
 <!--Live Switcher end-->
 
 <!--Javascript Template-->
-<script src="/static/js/script.js"></script>
+<script src="/static/cs/js/script.js"></script>
 
 <!-- styleSwitcher Javascript -->
-<script src="/static/js/styleSwitcher.js"></script>
+<script src="/static/cs/js/styleSwitcher.js"></script>
 </body>
 </html>

@@ -20,6 +20,21 @@
         box-sizing: border-box;
     }
 
+    .aside{
+        width: 270px;
+        background-color:#fdf9ff ;
+        position: fixed;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        overflow-y: auto;
+        border-right:1px solid #e8dfec;
+        padding: 30px;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
     ::before,::after{
         box-sizing: border-box;
     }
@@ -1499,4 +1514,199 @@ li  .dropdown{
     input[type="checkbox"]{
         accent-color: green;
         border: brown;
+    }
+
+
+
+    /* ===============TEACHER BOARD CSS================ */
+
+    .exam > *{
+        display:block;
+        margin-bottom: 50px;
+        width: 50vw;
+        justify-content: center;
+    }
+    
+    .exam{
+        width: 100vw;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .exam #perfect-textarea{
+        height: 60%;
+        width: 80%;
+        justify-content: center;
+        display:flex;
+        text-align: center;
+    
+    }
+    
+    .exam #import-btn{
+        background-color: aqua;
+        width: 20%;
+    }
+    
+    .exam #submit{
+        background-color:cornflowerblue;
+        font-size: xx-large;
+        border-radius: 30px;
+        color: #e9e9e9;
+        border: none;
+        margin-left: 40%;
+        width: 35%;
+        height: 12%;
+        text-decoration: solid;
+    }
+    
+    .assign{
+        width: 100vw;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .assign > *{
+        display:block;
+        margin-bottom: 5px;
+        width: 50vw;
+        justify-content: center;
+    }
+    
+    
+    .assign #perfect-textarea{
+        height: 60vh;
+        width: 70%;
+        justify-content: center;
+        display:flex;
+        text-align: center;
+    
+    }
+    
+    
+    
+    .checkbox-container { 
+        /* background-color: #ffffff; */
+        padding: 10px 20px;
+        /* border: 1px solid #ddd;  */
+        border-radius: 4px; 
+        /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
+    } 
+    
+    /* label { 
+        display: flex; 
+        align-items: center; 
+        font-size: 16px; 
+        cursor: pointer; 
+    } */
+    
+    .exam input[type="checkbox"] { 
+        margin-right: 10px; 
+        width: 20px; 
+        height: 20px; 
+        cursor: pointer; }
+    
+    
+    
+    /* styles.css */
+    .table-container {
+        width: 100%;
+        max-width: 100%;
+        background-color: #ffffff;
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        margin-left: 10px;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        border: 1px solid #dee2e6;
+        padding: 12px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #343a40;
+        color: white;
+    }
+    
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    tbody tr:hover {
+        background-color: #e9ecef;
+    }
+    
+    
+    .logo img{
+        width: 12vw;
+        height: 25vh;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-left: 35px;
+    }
+    
+    
+    /* =============Attendance================= */
+    /* styles.css */
+    
+    
+    .table-containers {
+        width: 100%;
+        max-width: 1200px;
+        background-color: #ffffff;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow-x: auto; /* Ensure table is responsive */
+    }
+    
+    .table-containers table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .table-containers table th, .table-containers table td {
+        border: 1px solid #dee2e6;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top; /* Align checkboxes at the top */
+    }
+    
+    .table-containers table th {
+        background-color: #343a40;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+    
+    .table-containers table  td label {
+        display: block;
+        margin: 5px 0;
+    }
+    
+    .table-containers button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .table-containers button:hover {
+        background-color: #0056b3;
     }
