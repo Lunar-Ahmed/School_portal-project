@@ -8,7 +8,7 @@ from .models import Admin
 # from django.contrib.auth import authenticate, login
 
 def index(request):
-    template = loader.get_template('testing.html')
+    template = loader.get_template('index.html')
     return HttpResponse(template.render())
 
 def admin(request):

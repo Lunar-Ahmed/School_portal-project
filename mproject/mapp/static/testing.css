@@ -1,11 +1,6 @@
-h1{
-    background-color: aqua;
-    color: aliceblue;
-    border: 1px solid black;
+#joinnow{
+    color: aqua;
 }
-
-h1:hover{
-   background-color: aliceblue;
-   color: aqua;
-   border: 2px solid black; 
+#joinnow:hover{
+    color: black;
 }
