@@ -1,4 +1,4 @@
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,15 +9,20 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-
-
-    {% comment %} <link rel="stylesheet" href="{%static 'cs/styleSwitcher.css' %}" type="text/css"> {% endcomment %}
+    <!-- Static files should be loaded using the correct Django syntax -->
+    <link rel="stylesheet" href="{% static 'testing.css' %}" type="text/css">
     
-    <link href="static/testing.css" type="text/css">
+    {% comment %} 
+    <link rel="stylesheet" href="{% static 'cs/styleSwitcher.css' %}" type="text/css"> 
+    {% endcomment %}
+    
 </head>
+
 <body>
 
-    <h1>JUSTING TESTING MA DJANGO PROJECT</h1>
+    <h1>JUSTING TESTING MY DJANGO PROJECT</h1>
+
+    
 
 </body>
 </html>
