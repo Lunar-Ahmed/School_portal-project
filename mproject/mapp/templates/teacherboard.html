@@ -35,7 +35,7 @@
            <div class="aside">
                <!--logo-->
                <div class="logo">
-                <img src="profile.png" alt="profile photo">
+                <img src="{% static 'profile.png' %}" alt="profile photo">
                    <a href="#"> John ADEYEMI</a> 
                </div>
                <!--Nav Toggle btn-->
@@ -69,13 +69,12 @@
                <section class="home section active" id="home">
                 <div class="container">
                     <div class="intro">
-                      <div class="table-containers">
+                      <div class="table-container">
                         <table>
                             <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Student Name</th>
-                                    <!-- Generate headers for 12 weeks -->
                                     <th>Wk 1</th>
                                     <th>Wk 2</th>
                                     <th>Wk 3</th>
@@ -95,18 +94,18 @@
                             </thead>
                             <tbody>
                                 <!-- Example row for a student -->
-                                <tr>
+                                <tr class="td">
                                     <td>001</td>
                                     <td>Student 1</td>
                                     <!-- Generate cells for 12 weeks with checkboxes for each day -->
-                                    <td style="display: flex; padding-left: 10px;">
-                                        <label><input type="checkbox" name="student1_week1_mon"></label>
-                                        <label><input type="checkbox" name="student1_week1_tue"></label>
-                                        <label><input type="checkbox" name="student1_week1_wed"></label>
-                                        <label><input type="checkbox" name="student1_week1_thu"></label>
-                                        <label><input type="checkbox" name="student1_week1_fri"></label>
+                                    <td id="td">
+                                          <label><input type="checkbox" name="student1_week1_mon"></label>
+                                          <label><input type="checkbox" name="student1_week1_tue"></label>
+                                          <label><input type="checkbox" name="student1_week1_wed"></label>
+                                          <label><input type="checkbox" name="student1_week1_thu"></label>
+                                          <label><input type="checkbox" name="student1_week1_fri"></label>
+                                      
                                     </td>
-                                    <!-- Repeat for each week -->
                                     <td>
                                         <label><input type="checkbox" name="student1_week2_mon"></label>
                                         <label><input type="checkbox" name="student1_week2_tue"></label>
@@ -114,16 +113,100 @@
                                         <label><input type="checkbox" name="student1_week2_thu"></label>
                                         <label><input type="checkbox" name="student1_week2_fri"></label>
                                     </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
+                                    </td>
+                                </tr>  
                                     <!-- Continue for the remaining weeks -->
                                     <!-- Add similar blocks for weeks 3 to 12 -->
-                                </tr>
                                 <!-- Repeat rows for additional students -->
                             </tbody>
                         </table>
                     </div>
                     </div>
                 </div>
-               </section>
+              </section>
                <!--Home Section End-->
 
                <!--About Section Begins-->

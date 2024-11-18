@@ -1583,7 +1583,7 @@ li  .dropdown{
     }
     
     
-    
+
     .checkbox-container { 
         /* background-color: #ffffff; */
         padding: 10px 20px;
@@ -1603,7 +1603,8 @@ li  .dropdown{
         margin-right: 10px; 
         width: 20px; 
         height: 20px; 
-        cursor: pointer; }
+        cursor: pointer; 
+    }
     
     
     
@@ -1655,6 +1656,7 @@ li  .dropdown{
     }
     
     
+
     /* =============Attendance================= */
     /* styles.css */
     
@@ -1673,6 +1675,7 @@ li  .dropdown{
     .table-containers table {
         width: 100%;
         border-collapse: collapse;
+        background-color: red;
     }
     
     .table-containers table th, .table-containers table td {
@@ -1715,4 +1718,9 @@ li  .dropdown{
     display: flex;
     background-color: #0dcaf0;
     padding-left: 50px;
+}
+
+.td td #td{
+    display: flex;
+    background-color: red;
 }
