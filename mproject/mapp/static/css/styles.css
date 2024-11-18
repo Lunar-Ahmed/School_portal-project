@@ -1710,3 +1710,9 @@ li  .dropdown{
     .table-containers button:hover {
         background-color: #0056b3;
     }
+
+#checkb{
+    display: flex;
+    background-color: #0dcaf0;
+    padding-left: 50px;
+}

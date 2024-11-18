@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/styles.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'css/skins/pink.css' %}" type="text/css">
 
                                   <!--Live Style Switcher - Demo Only-->
@@ -75,18 +76,21 @@
                                     <th>Id</th>
                                     <th>Student Name</th>
                                     <!-- Generate headers for 12 weeks -->
-                                    <th>Week 1</th>
-                                    <th>Week 2</th>
-                                    <th>Week 3</th>
-                                    <th>Week 4</th>
-                                    <th>Week 5</th>
-                                    <th>Week 6</th>
-                                    <th>Week 7</th>
-                                    <th>Week 8</th>
-                                    <th>Week 9</th>
-                                    <th>Week 10</th>
-                                    <th>Week 11</th>
-                                    <th>Week 12</th>
+                                    <th>Wk 1</th>
+                                    <th>Wk 2</th>
+                                    <th>Wk 3</th>
+                                    <th>Wk 4</th>
+                                    <th>Wk 5</th>
+                                    <th>Wk 6</th>
+                                    <th>Wk 7</th>
+                                    <th>Wk 8</th>
+                                    <th>Wk 9</th>
+                                    <th>Wk 10</th>
+                                    <th>Wk 11</th>
+                                    <th>Wk 12</th>
+                                    <th>Wk 13</th>
+                                    <th>Wk 14</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,20 +99,20 @@
                                     <td>001</td>
                                     <td>Student 1</td>
                                     <!-- Generate cells for 12 weeks with checkboxes for each day -->
-                                    <td>
-                                        <label><input type="checkbox" name="student1_week1_mon"> Mon</label><br>
-                                        <label><input type="checkbox" name="student1_week1_tue"> Tue</label><br>
-                                        <label><input type="checkbox" name="student1_week1_wed"> Wed</label><br>
-                                        <label><input type="checkbox" name="student1_week1_thu"> Thu</label><br>
-                                        <label><input type="checkbox" name="student1_week1_fri"> Fri</label>
+                                    <td style="display: flex; padding-left: 10px;">
+                                        <label><input type="checkbox" name="student1_week1_mon"></label>
+                                        <label><input type="checkbox" name="student1_week1_tue"></label>
+                                        <label><input type="checkbox" name="student1_week1_wed"></label>
+                                        <label><input type="checkbox" name="student1_week1_thu"></label>
+                                        <label><input type="checkbox" name="student1_week1_fri"></label>
                                     </td>
                                     <!-- Repeat for each week -->
                                     <td>
-                                        <label><input type="checkbox" name="student1_week2_mon"> Mon</label><br>
-                                        <label><input type="checkbox" name="student1_week2_tue"> Tue</label><br>
-                                        <label><input type="checkbox" name="student1_week2_wed"> Wed</label><br>
-                                        <label><input type="checkbox" name="student1_week2_thu"> Thu</label><br>
-                                        <label><input type="checkbox" name="student1_week2_fri"> Fri</label>
+                                        <label><input type="checkbox" name="student1_week2_mon"></label>
+                                        <label><input type="checkbox" name="student1_week2_tue"></label>
+                                        <label><input type="checkbox" name="student1_week2_wed"></label>
+                                        <label><input type="checkbox" name="student1_week2_thu"></label>
+                                        <label><input type="checkbox" name="student1_week2_fri"></label>
                                     </td>
                                     <!-- Continue for the remaining weeks -->
                                     <!-- Add similar blocks for weeks 3 to 12 -->
