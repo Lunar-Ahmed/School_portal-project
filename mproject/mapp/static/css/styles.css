@@ -1682,7 +1682,7 @@ li  .dropdown{
         border: 1px solid #dee2e6;
         padding: 12px;
         text-align: left;
-        vertical-align: top; /* Align checkboxes at the top */
+        vertical-align: top;
     }
     
     .table-containers table th {
@@ -1720,7 +1720,13 @@ li  .dropdown{
     padding-left: 50px;
 }
 
-.td td #td{
+.td td{
     display: flex;
+    justify-content: space-between;
+    gap: 10px;
     background-color: red;
+}
+
+.logo img{
+    border-radius: 50%;
 }
