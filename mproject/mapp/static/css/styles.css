@@ -1694,8 +1694,10 @@ li  .dropdown{
     }
     
     .table-containers table  td label {
-        display: block;
+        /* display: block; */
         margin: 5px 0;
+        display: flex;
+        gap: 5px;
     }
     
     .table-containers button {
@@ -1720,12 +1722,10 @@ li  .dropdown{
     padding-left: 50px;
 }
 
-.td td{
+/* .td #td{
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    background-color: red;
-}
+    gap: 5px;
+} */
 
 .logo img{
     border-radius: 50%;

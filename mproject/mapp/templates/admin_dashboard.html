@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <html>
@@ -5,17 +6,19 @@
         <title>Dash Board</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/static/cs/style.css" type="text/css">
-        <link rel="stylesheet" href="/static/cs/skins/blue.css" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/skins/blue.css' %}" type="text/css">
 
                                   <!--Live Style Switcher - Demo Only-->
-        <link rel="stylesheet" class="alternate-style" title="pink" href="/static/cs/skins/pink.css" type="text/css" disabled>
-        <link rel="stylesheet" class="alternate-style" title="blue" href="/static/cs/skins/blue.css" type="text/css" disabled>
-        <link rel="stylesheet" class="alternate-style" title="orange" href="/static/cs/skins/orange.css" type="text/css" disabled>
-        <link rel="stylesheet" class="alternate-style" title="yellow" href="/static/cs/skins/yellow.css" type="text/css" disabled>
-        <link rel="stylesheet" class="alternate-style" title="green" href="/static/cs/skins/green.css" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="pink" href="{% static 'css/skins/pink.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="blue" href="{% static 'css/skins/blue.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="orange" href="{% static 'css/skins/orange.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="yellow" href="{% static 'css/skins/yellow.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="green" href="{% static 'css/skins/green.css' %}" type="text/css" disabled>
 
-        <link rel="stylesheet" href="/static/cs/styleSwitcher.css" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/styleSwitcher.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}" types="text/css">
 
 
     </head>
@@ -171,9 +174,9 @@
 <!--Live Switcher end-->
 
 <!--Javascript Template-->
-<script src="/static/moon/js/script.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
 
 <!-- styleSwitcher Javascript -->
-<script src="/static/moon/js/styleSwitcher.js"></script>
+<script src="{% static 'js/styleSwitcher.js' %}"></script>
 </body>
 </html>
