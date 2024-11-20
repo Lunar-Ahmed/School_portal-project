@@ -5,7 +5,7 @@ from .models import Authority, Student, Enroll
 class TeacherReg(forms.ModelForm):
     class Meta:
         model = Authority
-        fields = ['','username','phone', 'department', 'email', 'password']
+        fields = ['Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Sex', 'Emergency', 'Class_teacher', 'Subject_teacher', 'email', 'password']
         
 class StudentRegForm(forms.ModelForm):
     class Meta:
