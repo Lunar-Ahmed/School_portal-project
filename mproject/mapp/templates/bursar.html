@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <html>
@@ -17,6 +18,27 @@
         <link rel="stylesheet" class="alternate-style" title="green" href="/static/cs/skins/green.css" type="text/css" disabled>
 
         <link rel="stylesheet" href="/static/cs/styleSwitcher.css" type="text/css">
+        <link rel="stylesheet" href="tab.css" type="text/css">
+
+
+
+
+
+
+        <link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/skins/blue.css' %}" type="text/css">
+
+                                  <!--Live Style Switcher - Demo Only-->
+        <link rel="stylesheet" class="alternate-style" title="pink" href="{% static 'css/skins/pink.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="blue" href="{% static 'css/skins/blue.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="orange" href="{% static 'css/skins/orange.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="yellow" href="{% static 'css/skins/yellow.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="green" href="{% static 'css/skins/green.css' %}" type="text/css" disabled>
+
+        <link rel="stylesheet" href="{% static 'css/styleSwitcher.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}" types="text/css">
+        <link rel="stylesheet" href="{% static 'css/tab.css' %}" types="text/css">
 
 
     </head>

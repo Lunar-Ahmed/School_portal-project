@@ -19,7 +19,34 @@
         <link rel="stylesheet" class="alternate-style" title="green" href="{% static 'css/skins/green.css' %}" type="text/css" disabled>
 
         <link rel="stylesheet" href="{%static 'css/styleSwitcher.css' %}" type="text/css">
-        <link rel="stylesheet" href="{%static 'tab.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'testing.css' %}" type="text/css">
+
+
+    
+
+
+
+        <link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/skins/blue.css' %}" type="text/css">
+
+                                  <!--Live Style Switcher - Demo Only-->
+        <link rel="stylesheet" class="alternate-style" title="pink" href="{% static 'css/skins/pink.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="blue" href="{% static 'css/skins/blue.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="orange" href="{% static 'css/skins/orange.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="yellow" href="{% static 'css/skins/yellow.css' %}" type="text/css" disabled>
+        <link rel="stylesheet" class="alternate-style" title="green" href="{% static 'css/skins/green.css' %}" type="text/css" disabled>
+
+        <link rel="stylesheet" href="{% static 'css/styleSwitcher.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}" types="text/css">
+        <link rel="stylesheet" href="{% static 'css/tab.css' %}" types="text/css">
+
+
+
+
+
+
+    
 
 
     </head>
@@ -86,43 +113,40 @@
             <div class="container">
               <div class="row">
                 <div class="portfolio-filter padd-15">
-                    <div class="search">
-                      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                    </div>
-                    <div class="table-container">
+                    <div class="table-container" style="width:75vw;">
+                      <div class="search">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                      </div>
                       <table>
-                        <h3>CA 1</h3>
                           <thead>
                               <tr>
-                                  <th>Student Name</th>
-                                  <th>Class Activities</th>
-                                  <th>Punctuality</th>
-                                  <th>Test1</th>
-                                  <th>Test2</th>
-                                  <th>Test3</th>
+                                  <th>Id</th>
+                                  <th>Name</th>
+                                  <th>Phone</th>
+                                  <th>Email</th>
+                                  <th></th>
                               </tr>
                           </thead>
                           <tbody>
                               <!-- Add rows here -->
                               <tr>
-                                  <td>Dominic</td>
-                                  <td>Activity 1</td>
-                                  <td>On Time</td>
-                                  <td>85</td>
-                                  <td>90</td>
-                                  <td>88</td>
+                                  <td>001</td>
+                                  <td>Dominic Stallone</td>
+                                  <td>05-876545</td>
+                                  <td>dom@gmail.com</td>
+                                  <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
                               </tr>
                               <tr>
-                                  <td>Lunar</td>
-                                  <td>Activity 2</td>
-                                  <td>Late</td>
-                                  <td>78</td>
-                                  <td>84</td>
-                                  <td>80</td>
+                                  <td>002</td>
+                                  <td>Torreto Sylvester</td>
+                                  <td>01-098765</td>
+                                  <td>retto@gmail.com</td>
+                                  <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
                               </tr>
                               <!-- Add more rows as needed -->
                           </tbody>
                       </table>
+                      <button id="add">Add</button>
                   </div>
                 </div>
                     <!-- portfolio Item Ends -->
@@ -134,7 +158,60 @@
             <section class="about section" id="about">
               <div class="container">
                     <div class="row">
-                      <h1>This is notifications Page</h1>                            
+                      <div class="cardss">
+                        <div class="jssone"><a href="#">
+                          <div class="contain">
+                          <h1>JSS</h1>
+                          <h2>1</h2>
+                          </div>
+                          </a>   
+                         </div>
+        
+                         <div class="jsstwo"><a href="#">
+                            <div class="contain">
+                            <h1>JSS</h1>
+                            <h2>2</h2>
+                            </div>
+                            </a>   
+                           </div>
+        
+                           <div class="jssthree"><a href="#">
+                            <div class="contain">
+                            <h1>JSS</h1>
+                            <h2>3</h2>
+                            </div>
+                            </a>   
+                           </div>     
+                           
+                           <div class="ssone"><a href="#">
+                            <div class="contain">
+                            <h1>SS</h1>
+                            <h2>1</h2>
+                            </div>
+                            </a>   
+                           </div>  
+        
+                           <div class="sstwo"><a href="#">
+                            <div class="contain">
+                            <h1>SS</h1>
+                            <h2>2</h2>
+                            </div>
+                            </a>   
+                           </div>  
+        
+                           <div class="ssthree"><a href="#">
+                            <div class="contain">
+                            <h1>SS</h1>
+                            <h2>3</h2>
+                            </div>
+                            </a>   
+                           </div>  
+                        </div>
+        
+                        <div class="search">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                        </div>
+                                  
                       <!--Service Item Ends-->
                     </div>
               </div>

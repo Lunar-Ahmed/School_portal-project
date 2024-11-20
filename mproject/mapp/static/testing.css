@@ -1,3 +1,33 @@
+#add{
+    font-size: larger;
+    background-color: #304e4d;
+    color: aliceblue;
+    border-radius: 20px;
+    width: 70px;
+    margin-top: 30px;
+    border: none;
+    font-weight: bold;
+    height: 30px;
+    float: inline-end;
+}
+
+
+#edd > *{
+    padding-left: 10px;
+}
+#edd > *:hover{
+    background-color: aliceblue;
+}
+
+#edd > :nth-child(3){
+    color: red;
+}
+#edd > :nth-child(2){
+    color: black;
+}
+#edd > :nth-child(1){
+    color: blue;
+}
 /* #joinnow{
     color: aqua;
 }
@@ -8,3 +38,4 @@
 body{
     background-color: blue;
 } */
+
