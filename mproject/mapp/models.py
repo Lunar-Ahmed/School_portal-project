@@ -23,8 +23,26 @@ class Teacher(models.Model):
     DOB= models.DateTimeField()
     Cv = models.FileField()
     Email = models.EmailField(max_length=100)
-    Password = models.CharField(max_length=150)    
+    Password = models.CharField(max_length=150) 
+       
+# class Student(models.Model):
+#     Profile = models.ImageField(upload_to='Profile/')
+#     Firstname = models.CharField(max_length=150, null=True)
+#     Middlename = models.CharField(max_length=150, null=True)
+#     Lastname = models.CharField(max_length=150, null=True)
+#     Mobile = models.IntegerField(max_length=150, null=True)
+#     Address = models.CharField(max_length=150, null=True)
+#     Sex = models.CharField(max_length=150, null=True)
+#     Emergency = models.IntegerField(max_length=150, null=True)
+#     Class =  models.CharField(max_length=150, null=True)
+#     Subject = models.CharField(max_length=150, null=True)
+#     DOB= models.DateTimeField()
+#     Cv = models.FileField()
+#     Email = models.EmailField(max_length=100)
+#     Password = models.CharField(max_length=150)    
 
+    
+    
     
 # class Admin(models.Model):
 #     fullname = models.CharField(max_length=150, null=True)
@@ -125,91 +143,6 @@ class Teacher(models.Model):
 #             )
 
 #===========================================================================
-
-class Jss1(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-
-class Jss2(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-
-class Jss3(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-
-class Ss1(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-
-class Ss2(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-
-class Ss3(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-
 
 class Jss1(models.Model):
     fullname = models.CharField(max_length=350)

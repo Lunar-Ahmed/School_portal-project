@@ -46,3 +46,17 @@ body{
 .t-c{
     margin-top: 10px;
 }
+
+.tsaprofile{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: aqua;
+
+}
+
+.tsaprofile img{
+    width: 100px;
+    height: 100px;
+}

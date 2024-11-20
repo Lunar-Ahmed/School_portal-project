@@ -45,6 +45,12 @@
 
     <div class="register">
         <h1>Teacher Registeration</h1>
+        {% if user_profile.Profile %} 
+            <img id="profile-picture-preview" src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" width="150" height="150">
+         {% else %} 
+            <img id="profile-picture-preview" src="#" alt="Profile Picture" width="150" height="150" style="display: none;"> 
+         {% endif %}
+
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
@@ -174,6 +180,9 @@
 
     <!-- Template Javascript -->
     <script src="/static/js/main.js"></script>
+
+    <script> document.getElementById('id_profile_picture').addEventListener('change', function(event) { const [file] = event.target.files; if (file) { const reader = new FileReader(); reader.onload = function(e) { const img = document.getElementById('profile-picture-preview'); img.src = e.target.result; img.style.display = 'block'; } reader.readAsDataURL(file); } }); </script>
+    
 </body>
 
 </html>
