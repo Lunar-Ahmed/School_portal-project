@@ -5,7 +5,7 @@ from .models import Student, Enroll, Teacher
 class TeacherReg(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ['Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Sex', 'Emergency', 'Class_Teacher', 'Subject_Teacher', 'email', 'password']
+        fields = ['Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Sex', 'Emergency', 'Class_Teacher', 'Subject_Teacher', 'Email', 'Password']
         
 class StudentRegForm(forms.ModelForm):
     class Meta:

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .forms import TeacherReg, StudentRegForm, EnrollForm,AdminLogin #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
-from .models import Admin
+# from .models import Admin
 
 # from django.contrib.auth import authenticate, login
 
@@ -58,7 +58,7 @@ def teacher_register(request):
             return redirect('teacher')
     # else:
     #     form = UserRegistrationForm()
-    return render(request, 'authority_register.html', {'form': form})
+    return render(request, 'teacher_register.html', {'form': form})
 
 
 def student_register(request):
@@ -133,23 +133,23 @@ def student_login(request):
 #         else:
 #             form = AdminLogin()
 #             return render(request, 'admin_log.html', {'form': form})
-def admin_login(request):
-    if request.method == 'POST':
-        form = AdminLogin(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            admin_log = Admin.objects.filter(username=username, password=password).first()
-            if admin_log:
-                request.session['role'] = 'Admin'
-                request.session['user_id'] = admin_log.id
-                return redirect('admin')
-        else:
-            form.add_error(None, 'Invalid username or password') 
-    else:
-        form = AdminLogin()
+# def admin_login(request):
+#     if request.method == 'POST':
+#         form = AdminLogin(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#             admin_log = Admin.objects.filter(username=username, password=password).first()
+#             if admin_log:
+#                 request.session['role'] = 'Admin'
+#                 request.session['user_id'] = admin_log.id
+#                 return redirect('admin')
+#         else:
+#             form.add_error(None, 'Invalid username or password') 
+#     else:
+#         form = AdminLogin()
     
-    return render(request, 'admin_log.html', {'form': form})
+#     return render(request, 'admin_log.html', {'form': form})
 
 
 

@@ -16,7 +16,7 @@ class Teacher(models.Model):
     Mobile = models.IntegerField(max_length=150, null=True)
     Address = models.CharField(max_length=150, null=True)
     Sex = models.CharField(max_length=150, null=True)
-    Emargency = models.IntegerField(max_length=150, null=True)
+    Emergency = models.IntegerField(max_length=150, null=True)
     Class_Teacher =  models.CharField(max_length=150, null=True)
     Subject_Teacher= models.CharField(max_length=150, null=True)
     DOB= models.BigIntegerField()
