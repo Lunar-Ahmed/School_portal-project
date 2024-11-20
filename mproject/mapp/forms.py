@@ -5,12 +5,12 @@ from .models import Student, Enroll, Teacher
 class TeacherReg(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ['Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Sex', 'Emergency', 'Class_Teacher', 'Subject_Teacher', 'Email', 'Password']
+        fields = ['Profile','Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Sex', 'Emergency', 'Class', 'Subject', 'DOB', 'Cv','Email', 'Password']
         
 class StudentRegForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = ['fullname','username','schoolNo', 'state', 'LGA', 'DOB', 'address', 'phone', 'parent_phone', 'classs', 'email', 'password']
+        fields = ['fullname','username','schoolNo', 'state',  'DOB', 'address', 'phone', 'parent_phone', 'classs',  'email', 'password']
         
 class EnrollForm(forms.ModelForm):
     class Meta:

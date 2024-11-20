@@ -11,6 +11,10 @@
     float: inline-end;
 }
 
+#add a{
+    color: aliceblue;
+}
+
 
 #edd > *{
     padding-left: 10px;

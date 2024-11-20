@@ -10,6 +10,7 @@ class Enroll(models.Model):
     
     
 class Teacher(models.Model):
+    Profile = models.ImageField(upload_to='Profile/')
     Firstname = models.CharField(max_length=150, null=True)
     Middlename = models.CharField(max_length=150, null=True)
     Lastname = models.CharField(max_length=150, null=True)
@@ -17,9 +18,10 @@ class Teacher(models.Model):
     Address = models.CharField(max_length=150, null=True)
     Sex = models.CharField(max_length=150, null=True)
     Emergency = models.IntegerField(max_length=150, null=True)
-    Class_Teacher =  models.CharField(max_length=150, null=True)
-    Subject_Teacher= models.CharField(max_length=150, null=True)
-    DOB= models.BigIntegerField()
+    Class =  models.CharField(max_length=150, null=True)
+    Subject = models.CharField(max_length=150, null=True)
+    DOB= models.DateTimeField()
+    Cv = models.FileField()
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=150)    
 
