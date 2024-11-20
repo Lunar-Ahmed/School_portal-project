@@ -3,11 +3,12 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('admins/', views.admin, name='admin'),
+    path('principal/', views.admin, name='admin'),
     path('bursar/', views.bursar, name='bursar'),
     path('teacher/', views.teacher, name='teacher'),
     path('student/', views.student, name='student'),
     path('assignment/', views.assignment, name='assignment'),
+    path('vice-principal', views.acad, name='acad'),
      
     path('authority_register/', views.authority_register, name='authority_register'),
     path('admin_login/', views.admin_login, name='admin_login'),

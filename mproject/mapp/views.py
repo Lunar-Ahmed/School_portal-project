@@ -8,7 +8,7 @@ from .models import Admin
 # from django.contrib.auth import authenticate, login
 
 def index(request):
-    template = loader.get_template('index.html')
+    template = loader.get_template('admin_dashboard.html')
     return HttpResponse(template.render())
 
 def admin(request):
@@ -31,9 +31,9 @@ def assignment(request):
     template = loader.get_template('attendance.html')
     return HttpResponse(template.render())
 
-def adcad(request):
+def acad(request):
     template = loader.get_template('acad_dashboard.html')
-    return HttpResponse(template,render())
+    return HttpResponse(template.render())
 
 #================REGISTERATION================
 
