@@ -16,13 +16,20 @@ class Admin(models.Model):
     password = models.CharField(max_length=150)
     department = models.CharField(max_length=50)
 
-class Teacher(models.Model):
-    fullname = models.CharField(max_length=150, null=True)
-    username = models.CharField(max_length=150, null=True)
-    phone = models.BigIntegerField()
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-    department = models.CharField(max_length=50)
+class TeacherReg(models.Model):
+    Firstname = models.CharField(max_length=150, null=True)
+    Middlename = models.CharField(max_length=150, null=True)
+    Lastname = models.CharField(max_length=150, null=True)
+    Mobile = models.CharField(max_length=150, null=True)
+    Address = models.CharField(max_length=150, null=True)
+    Sex = models.CharField(max_length=150, null=True)
+    Emargency = models.CharField(max_length=150, null=True)
+    Class_Teacher =  models.CharField(max_length=150, null=True)
+    Subject_Teacher= models.CharField(max_length=150, null=True)
+    DOB= models.BigIntegerField()
+    Email = models.EmailField(max_length=100)
+    Password = models.CharField(max_length=150)
+
 
 class Bursar(models.Model):
     fullname = models.CharField(max_length=150, null=True)

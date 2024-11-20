@@ -77,10 +77,10 @@
             <li><a href="#attendance" class="active"><i class="fa fa-home"></i>Teacher</a></li>
             <li><a href="#about"><i class="fa fa-user"></i>Student</a></li>
             <li><a href="#services"><i class="fa fa-list"></i>School Material</a></li>
+            <li><a href="#contact"><i class="fa fa-user"></i>None-Teaching</a></li>
             <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Other</a></li>
             <li><a href="#blog"><i class="fa fa-envelope"></i>Staff</a></li>
-            {% comment %} <li><a href="#contact"><i class="fa fa-user"></i>Teacher Diary</a></li>
-            <li><a href="#seven"><i class="fa fa-user"></i>Tests</a></li>
+                        {% comment %} <li><a href="#seven"><i class="fa fa-user"></i>Tests</a></li>
             <li><a href="#eight"><i class="fa fa-list"></i>Other Records</a></li>
             <li><a href="#"><i class="fa fa-briefcase"></i>Parent Report</a></li>
             <li><a href="#"><i class="fa fa-briefcase"></i>Student {% endcomment %}         
@@ -156,62 +156,95 @@
 
 
             <section class="about section" id="about">
-              <div class="container">
-                    <div class="row">
-                      <div class="cardss">
-                        <div class="jssone"><a href="#">
+              <div class="container" style="padding:0;">
+                    <div class="row" style="margin-top: 0; padding:0;">
+                      <div class="cardss" style="background-color: inherit; margin-top:0; padding:0;">
+                        <div class="jssone">
+                          <a href="#">
                           <div class="contain">
-                          <h1>JSS</h1>
-                          <h2>1</h2>
+                            <h1>JSS</h1>
+                            <h2>1</h2>
                           </div>
                           </a>   
-                         </div>
+                        </div>
         
                          <div class="jsstwo"><a href="#">
                             <div class="contain">
-                            <h1>JSS</h1>
-                            <h2>2</h2>
+                              <h1>JSS</h1>
+                              <h2>2</h2>
                             </div>
                             </a>   
-                           </div>
+                          </div>
         
-                           <div class="jssthree"><a href="#">
+                          <div class="jssthree"><a href="#">
                             <div class="contain">
-                            <h1>JSS</h1>
-                            <h2>3</h2>
+                              <h1>JSS</h1>
+                              <h2>3</h2>
                             </div>
                             </a>   
-                           </div>     
+                          </div>     
                            
-                           <div class="ssone"><a href="#">
+                          <div class="ssone"><a href="#">
                             <div class="contain">
-                            <h1>SS</h1>
-                            <h2>1</h2>
+                              <h1>SS</h1>
+                              <h2>1</h2>
                             </div>
                             </a>   
-                           </div>  
+                          </div>  
         
-                           <div class="sstwo"><a href="#">
+                          <div class="sstwo"><a href="#">
                             <div class="contain">
-                            <h1>SS</h1>
-                            <h2>2</h2>
+                              <h1>SS</h1>
+                              <h2>2</h2>
                             </div>
                             </a>   
-                           </div>  
+                          </div>  
         
-                           <div class="ssthree"><a href="#">
+                          <div class="ssthree"><a href="#">
                             <div class="contain">
-                            <h1>SS</h1>
-                            <h2>3</h2>
+                              <h1>SS</h1>
+                              <h2>3</h2>
                             </div>
                             </a>   
                            </div>  
+                          </div>
+                          
+                          
+                          <div class="table-container t-c" style="width:75vw; margin-top:20px; background-color:inherit">
+                            <div class="search">
+                              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Add rows here -->
+                                    <tr>
+                                        <td>001</td>
+                                        <td>Dominic Stallone</td>
+                                        <td>05-876545</td>
+                                        <td>dom@gmail.com</td>
+                                        <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>002</td>
+                                        <td>Torreto Sylvester</td>
+                                        <td>01-098765</td>
+                                        <td>retto@gmail.com</td>
+                                        <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
+                                    </tr>
+                                    <!-- Add more rows as needed -->
+                                </tbody>
+                            </table>
+                            <button id="add">Add</button>
                         </div>
-        
-                        <div class="search">
-                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                        </div>
-                                  
                       <!--Service Item Ends-->
                     </div>
               </div>
@@ -271,14 +304,41 @@
                 <div class="container">
                     <div class="row">
                       
-                      <div class="container">
-                        <label for="perfect-textarea">Your Message:</label>
-                        <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
+                      <div class="table-container t-c" style="width:75vw; margin-top:20px; background-color:inherit">
+                        <div class="search">
+                          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Add rows here -->
+                                <tr>
+                                    <td>001</td>
+                                    <td>Dominic Stallone</td>
+                                    <td>05-876545</td>
+                                    <td>dom@gmail.com</td>
+                                    <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
+                                </tr>
+                                <tr>
+                                    <td>002</td>
+                                    <td>Torreto Sylvester</td>
+                                    <td>01-098765</td>
+                                    <td>retto@gmail.com</td>
+                                    <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
+                                </tr>
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table>
+                        <button id="add">Add</button>
                     </div>
-
-                      <div class="container">
-                        <input type="file" id="file-input" class="file-input" style="display: none;" />
-                        <button id="import-btn" class="btn">Import</button>
 
                           <!-- Blog content Ends -->
                     </div>
@@ -289,115 +349,43 @@
             <!--Contact Section Begins-->
                         <!--Blog section begins-->
                         <section class="contact section" id="contact">
-                        <div class="container">
+                        <div class="container" style="padding:0;">
                             <div class="row">
-                              <div class="table-container">
-                                  <table>
-                                    <h3>CA 1</h3>
-                                      <thead>
-                                          <tr>
-                                              <th>Student Name</th>
-                                              <th>Class Activities</th>
-                                              <th>Punctuality</th>
-                                              <th>Test1</th>
-                                              <th>Test2</th>
-                                              <th>Test3</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          <!-- Add rows here -->
-                                          <tr>
-                                              <td>Dominic</td>
-                                              <td>Activity 1</td>
-                                              <td>On Time</td>
-                                              <td>85</td>
-                                              <td>90</td>
-                                              <td>88</td>
-                                          </tr>
-                                          <tr>
-                                              <td>Lunar</td>
-                                              <td>Activity 2</td>
-                                              <td>Late</td>
-                                              <td>78</td>
-                                              <td>84</td>
-                                              <td>80</td>
-                                          </tr>
-                                          <!-- Add more rows as needed -->
-                                      </tbody>
-                                  </table>
-                              </div>
-
-                              <div class="table-container">
-                                  <table>
-                                    <h3>CA 2</h3>
-                                      <thead>
-                                          <tr>
-                                              <th>Student Name</th>
-                                              <th>Class Activities</th>
-                                              <th>Punctuality</th>
-                                              <th>Test1</th>
-                                              <th>Test2</th>
-                                              <th>Test3</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          <!-- Add rows here -->
-                                          <tr>
-                                              <td>Dominic</td>
-                                              <td>Activity 1</td>
-                                              <td>On Time</td>
-                                              <td>85</td>
-                                              <td>90</td>
-                                              <td>88</td>
-                                          </tr>
-                                          <tr>
-                                              <td>Lunar</td>
-                                              <td>Activity 2</td>
-                                              <td>Late</td>
-                                              <td>78</td>
-                                              <td>84</td>
-                                              <td>80</td>
-                                          </tr>
-                                          <!-- Add more rows as needed -->
-                                      </tbody>
-                                  </table>
-                              </div>
-
-                              <div class="table-container">
-                                  <table>
-                                    <h3>CA 3</h3>
-                                      <thead>
-                                          <tr>
-                                              <th>Student Name</th>
-                                              <th>Class Activities</th>
-                                              <th>Punctuality</th>
-                                              <th>Test1</th>
-                                              <th>Test2</th>
-                                              <th>Test3</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          <!-- Add rows here -->
-                                          <tr>
-                                              <td>Dominic</td>
-                                              <td>Activity 1</td>
-                                              <td>On Time</td>
-                                              <td>85</td>
-                                              <td>90</td>
-                                              <td>88</td>
-                                          </tr>
-                                          <tr>
-                                              <td>Lunar</td>
-                                              <td>Activity 2</td>
-                                              <td>Late</td>
-                                              <td>78</td>
-                                              <td>84</td>
-                                              <td>80</td>
-                                          </tr>
-                                          <!-- Add more rows as needed -->
-                                      </tbody>
-                                  </table>
-                              </div>
+                              <div class="table-container t-c" style="width:75vw; background-color:inherit">
+                                <div class="search">
+                                  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Add rows here -->
+                                        <tr>
+                                            <td>001</td>
+                                            <td>Dominic Stallone</td>
+                                            <td>05-876545</td>
+                                            <td>dom@gmail.com</td>
+                                            <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>002</td>
+                                            <td>Torreto Sylvester</td>
+                                            <td>01-098765</td>
+                                            <td>retto@gmail.com</td>
+                                            <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+                                <button id="add">Add</button>
+                            </div>
 
 
         
@@ -415,15 +403,43 @@
                           <div class="container">
                               <div class="row">
                                 
-                                <div class="exam">
-                                  <label for="perfect-textarea"></label>
-                                  <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
-                              
-                                  <input type="file" id="file-input" class="file-input" style="display: none;" />
-                                  <button id="import-btn" class="btn">Import</button>
 
-                                  <button id="submit">Submit</button>
-                                </div>
+                                <div class="table-container t-c" style="width:75vw; margin-top:20px; background-color:inherit">
+                                  <h2>ALL STAFF</h2>
+                                  <div class="search">
+                                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                                  </div>
+                                  <table>
+                                      <thead>
+                                          <tr>
+                                              <th>Id</th>
+                                              <th>Name</th>
+                                              <th>Phone</th>
+                                              <th>Email</th>
+                                              <th></th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <!-- Add rows here -->
+                                          <tr>
+                                              <td>001</td>
+                                              <td>Dominic Stallone</td>
+                                              <td>05-876545</td>
+                                              <td>dom@gmail.com</td>
+                                              <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
+                                          </tr>
+                                          <tr>
+                                              <td>002</td>
+                                              <td>Torreto Sylvester</td>
+                                              <td>01-098765</td>
+                                              <td>retto@gmail.com</td>
+                                              <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
+                                          </tr>
+                                          <!-- Add more rows as needed -->
+                                      </tbody>
+                                  </table>
+                                  <button id="add">Add</button>
+                              </div>
           
                                     <!-- Blog content Ends -->
                               </div>

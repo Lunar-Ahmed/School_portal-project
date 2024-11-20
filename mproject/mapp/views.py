@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import AuthorityRegForm, StudentRegForm, AdminLogin, EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg, StudentRegForm, AdminLogin, EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from .models import Admin
 
 # from django.contrib.auth import authenticate, login
 
 def index(request):
-    template = loader.get_template('admin_dashboard.html')
+    template = loader.get_template('index.html')
     return HttpResponse(template.render())
 
 def admin(request):
@@ -49,10 +49,10 @@ def enroll_form(request):
     return render(request, 'enroll_register.html', {'form': form})
 
 
-def authority_register(request):
-    form = AuthorityRegForm()
+def teacher_register(request):
+    form = TeacherReg()
     if request.method == 'POST':
-        form = AuthorityRegForm(request.POST)
+        form = TeacherReg(request.POST)
         if form.is_valid():
             form.save()
             return redirect('teacher')

@@ -2,10 +2,10 @@ from django import forms
 from .models import Authority, Student, Enroll
 
 
-class AuthorityRegForm(forms.ModelForm):
+class TeacherReg(forms.ModelForm):
     class Meta:
         model = Authority
-        fields = ['fullname','username','phone', 'department', 'email', 'password']
+        fields = ['','username','phone', 'department', 'email', 'password']
         
 class StudentRegForm(forms.ModelForm):
     class Meta:
