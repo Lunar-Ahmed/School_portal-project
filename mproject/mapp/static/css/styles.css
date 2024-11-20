@@ -1350,31 +1350,32 @@ display: none;
     margin-top: 2%;
   }
   
-  #myTable {
+#myTable {
     border-collapse: collapse; 
     width: 100%; 
     border: 1px solid #ddd; 
     font-size: 18px; 
     background-color: whitesmoke;
-  }
+    background-color: #304e4d;
+}
   
-  #myTable th, #myTable td {
+#myTable th, #myTable td {
     text-align: left; 
     padding: 12px; 
-  }
+}
   
-  #myTable tr {
+#myTable tr {
     border-bottom: 1px solid #ddd;
-  }
+}
   
-  #myTable tr.header, #myTable tr:hover {
+#myTable tr.header, #myTable tr:hover {
 
     background-color: #f1f1f1;
-  }
+}
 
-  .section h1 h2{
+.section h1 h2{
     text-align: center;
-  }
+}
 
 .cardss{
     background-color: red;
