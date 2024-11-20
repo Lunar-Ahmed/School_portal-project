@@ -1612,7 +1612,7 @@ li  .dropdown{
     /* styles.css */
     .table-container {
         width: 100%;
-        max-width: 100%;
+        /* max-width: 100%; */
         background-color: #ffffff;
         padding: 10px;
         border: 1px solid #dee2e6;
@@ -1623,7 +1623,7 @@ li  .dropdown{
     }
     
     table {
-        width: 100%;
+        /* width: 100%; */
         border-collapse: collapse;
     }
     

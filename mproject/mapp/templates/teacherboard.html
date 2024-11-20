@@ -19,6 +19,7 @@
         <link rel="stylesheet" class="alternate-style" title="green" href="{% static 'css/skins/green.css' %}" type="text/css" disabled>
 
         <link rel="stylesheet" href="{%static 'css/styleSwitcher.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'testing.css' %}" type="text/css">
 
 
     </head>
@@ -36,8 +37,10 @@
            <div class="aside">
                <!--logo-->
                <div class="logo">
-                <img src="{% static 'images/profile.png' %}" alt="profile photo" style="border-radius:50%; border:5px solid white;">
-                  <a href="#">DOMINIC</a>
+                <div class="logo" id="logo">
+                  <img src="{% static 'images/profile.png' %}" alt="profile photo" style="border-radius:50%; border:5px solid white;">
+                    <a href="#home" class="active"><span style="color:mediumblue;">Dom</span>inic69</a>
+                  </div>
                </div>
                <!--Nav Toggle btn-->
                <div class="nav-toggle">
@@ -55,7 +58,7 @@
                 <li><a href="#seven"><i class="fa fa-user"></i>Examination</a></li>
                 <li><a href="#eight"><i class="fa fa-list"></i>Result</a></li>
                 <li><a href="#"><i class="fa fa-briefcase"></i>Loan</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i>Logout</a></li>
+                <li><a href="/"><i class="fa fa-envelope"></i>Logout</a></li>
                </ul>
                <!--Copyright-->
                <div class="copyright-text">
@@ -72,10 +75,13 @@
                <section class="home section active" id="home">
                 <div class="container">
                     <div class="intro">
-                      <div class="profile">
+                      <h1 id="wel">Welcome Dominic69</h1>
+                      <div class="tsaprofile">
                         <img src="{% static 'images/profile.png' %}">
-                        <p>DOMINIC TORRETO</P>
-                    </div>
+                        <p><span style="color:mediumblue;">DOM</span>INIC TORRETO</P>
+                        <p>dominic@gmail.com</P>
+                        <p>04-765498</P>
+                      </div>
                 </div>
               </section>
                <!--Home Section End-->

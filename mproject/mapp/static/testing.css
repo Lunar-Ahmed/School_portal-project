@@ -158,3 +158,11 @@ body{
     font-weight: normal;
     color: dimgrey;
 }
+
+
+tbody .td #td{
+    display: flex;
+    background-color: red;
+    color: chartreuse;
+    flex-direction: row;
+}
