@@ -10,7 +10,7 @@ urlpatterns = [
     path('assignment/', views.assignment, name='assignment'),
     path('vice-principal', views.acad, name='acad'),
      
-    path('authority_register/', views.authority_register, name='authority_register'),
+    path('teacher_register/', views.teacher_register, name='teacher_register'),
     path('admin_login/', views.admin_login, name='admin_login'),
     path('student_register/', views.student_register, name='student_register'),
     path('student_login/', views.student_login, name='student_login'),
