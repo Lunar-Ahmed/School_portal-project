@@ -28,7 +28,7 @@ def bursar(request):
     return HttpResponse(template.render())
 
 def assignment(request):
-    template = loader.get_template('assignment.html')
+    template = loader.get_template('attendance.html')
     return HttpResponse(template.render())
 
 #================REGISTERATION================
