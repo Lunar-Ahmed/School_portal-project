@@ -90,14 +90,12 @@ DATABASES = {
         'NAME': 'School-portal_db',
         'USER' : '',
         'PASSWORD': '',
-        'HOST' : 'localhost',
-        'PORT' : '1433',
-        'OPTIONS' : {
-            "driver" : "ODBC Driver 18 for SQL Server",
-            'extra_params': 'TrustServerCertificate=yes;',
-        },
-
-
+        'HOST': 'localhost', 
+        'PORT': '1433',
+        'OPTIONS': {
+            'driver':'ODBC Driver 17 for SQL Server',
+            'Trusted_connection':'yes',
+        }
     }
 }
 
