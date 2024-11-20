@@ -8,15 +8,8 @@ class Enroll(models.Model):
     address = models.EmailField(max_length=100)
     Message = models.TextField(max_length=150)
     
-class Admin(models.Model):
-    fullname = models.CharField(max_length=150, null=True)
-    username = models.CharField(max_length=150, null=True)
-    phone = models.BigIntegerField()
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-    department = models.CharField(max_length=50)
-
-class TeacherReg(models.Model):
+    
+class Teacher(models.Model):
     Firstname = models.CharField(max_length=150, null=True)
     Middlename = models.CharField(max_length=150, null=True)
     Lastname = models.CharField(max_length=150, null=True)
@@ -28,83 +21,106 @@ class TeacherReg(models.Model):
     Subject_Teacher= models.CharField(max_length=150, null=True)
     DOB= models.BigIntegerField()
     Email = models.EmailField(max_length=100)
-    Password = models.CharField(max_length=150)
+    Password = models.CharField(max_length=150)    
+
+    
+# class Admin(models.Model):
+#     fullname = models.CharField(max_length=150, null=True)
+#     username = models.CharField(max_length=150, null=True)
+#     phone = models.BigIntegerField()
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
+#     department = models.CharField(max_length=50)
+
+# class Teacher(models.Model):
+#     Firstname = models.CharField(max_length=150, null=True)
+#     Middlename = models.CharField(max_length=150, null=True)
+#     Lastname = models.CharField(max_length=150, null=True)
+#     Mobile = models.IntegerField(max_length=150, null=True)
+#     Address = models.CharField(max_length=150, null=True)
+#     Sex = models.CharField(max_length=150, null=True)
+#     Emargency = models.IntegerField(max_length=150, null=True)
+#     Class_Teacher =  models.CharField(max_length=150, null=True)
+#     Subject_Teacher= models.CharField(max_length=150, null=True)
+#     DOB= models.BigIntegerField()
+#     Email = models.EmailField(max_length=100)
+#     Password = models.CharField(max_length=150)
 
 
-class Bursar(models.Model):
-    fullname = models.CharField(max_length=150, null=True)
-    username = models.CharField(max_length=150, null=True)
-    phone = models.BigIntegerField()
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-    department = models.CharField(max_length=50)
+# class Bursar(models.Model):
+#     fullname = models.CharField(max_length=150, null=True)
+#     username = models.CharField(max_length=150, null=True)
+#     phone = models.BigIntegerField()
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
+#     department = models.CharField(max_length=50)
 
-class Admin(models.Model):
-    fullname = models.CharField(max_length=150, null=True)
-    username = models.CharField(max_length=150, null=True)
-    phone = models.BigIntegerField()
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-    department = models.CharField(max_length=50)
+# class Admin(models.Model):
+#     fullname = models.CharField(max_length=150, null=True)
+#     username = models.CharField(max_length=150, null=True)
+#     phone = models.BigIntegerField()
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
+#     department = models.CharField(max_length=50)
 
-class Teacher(models.Model):
-    fullname = models.CharField(max_length=150, null=True)
-    username = models.CharField(max_length=150, null=True)
-    phone = models.BigIntegerField()
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-    department = models.CharField(max_length=50)
+# class Teacher(models.Model):
+#     fullname = models.CharField(max_length=150, null=True)
+#     username = models.CharField(max_length=150, null=True)
+#     phone = models.BigIntegerField()
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
+#     department = models.CharField(max_length=50)
 
-class Bursar(models.Model):
-    fullname = models.CharField(max_length=150, null=True)
-    username = models.CharField(max_length=150, null=True)
-    phone = models.BigIntegerField()
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
-    department = models.CharField(max_length=50)
+# class Bursar(models.Model):
+#     fullname = models.CharField(max_length=150, null=True)
+#     username = models.CharField(max_length=150, null=True)
+#     phone = models.BigIntegerField()
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
+#     department = models.CharField(max_length=50)
 
-class Authority(models.Model):
-    DEPARTMENT_CHOICES = [
-        ('A', 'Admin'),
-        ('T', 'Teacher'),
-        ('B', 'Bursar'),
-    ]
-    fullname = models.CharField(max_length=150, null=True)
-    username = models.CharField(max_length=150, null=True)
-    phone = models.BigIntegerField()
-    email = models.EmailField(max_length=100)
-    department = models.CharField(max_length=1, choices=DEPARTMENT_CHOICES)
-    password = models.CharField(max_length=150)
+# class Authority(models.Model):
+#     DEPARTMENT_CHOICES = [
+#         ('A', 'Admin'),
+#         ('T', 'Teacher'),
+#         ('B', 'Bursar'),
+#     ]
+#     fullname = models.CharField(max_length=150, null=True)
+#     username = models.CharField(max_length=150, null=True)
+#     phone = models.BigIntegerField()
+#     email = models.EmailField(max_length=100)
+#     department = models.CharField(max_length=1, choices=DEPARTMENT_CHOICES)
+#     password = models.CharField(max_length=150)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if self.department == 'A':
-            Admin.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                phone=self.phone,
-                email=self.email,
-                password=self.password,
-                department='Admin'
-            )
-        elif self.department == 'T':
-            Teacher.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                phone=self.phone,
-                email=self.email,
-                password=self.password,
-                department='Teacher'
-            )
-        elif self.department == 'B':
-            Bursar.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                phone=self.phone,
-                email=self.email,
-                password=self.password,
-                department='Bursar'
-            )
+#     def save(self, *args, **kwargs):
+#         super().save(*args, **kwargs)
+#         if self.department == 'A':
+#             Admin.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 phone=self.phone,
+#                 email=self.email,
+#                 password=self.password,
+#                 department='Admin'
+#             )
+#         elif self.department == 'T':
+#             Teacher.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 phone=self.phone,
+#                 email=self.email,
+#                 password=self.password,
+#                 department='Teacher'
+#             )
+#         elif self.department == 'B':
+#             Bursar.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 phone=self.phone,
+#                 email=self.email,
+#                 password=self.password,
+#                 department='Bursar'
+#             )
 
 #===========================================================================
 

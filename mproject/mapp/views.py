@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg, StudentRegForm, AdminLogin, EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg, StudentRegForm, EnrollForm,AdminLogin #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from .models import Admin
 
