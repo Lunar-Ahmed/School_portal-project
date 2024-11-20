@@ -99,9 +99,9 @@ body{
     text-align: center;
 }
 
-/* .file-input {
-    display: none; /* Hide the file input */
-/* }  */
+.matx  {
+    font-size: xx-large;
+}
 
 .btn {
     background-color: #007bff;
@@ -124,4 +124,37 @@ body{
     border: 5px solid white;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.matx, .mats{
+    border: 1px solid black;
+    margin-bottom: 20px;
+    width: 70%;
+    height: 50px;
+    /* align-items: center;
+    display: flex;
+    justify-content: center; */
+    font-size: xx-large;
+    border-radius: 10px;
+}
+
+.material button{
+    font-size: large;
+    background-color: #0056b3;
+    color: aliceblue;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.matx label, .mats label{
+    font-size: x-large;
+    font-weight: normal;
+    color: dimgrey;
 }
