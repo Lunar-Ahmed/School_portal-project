@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg, StudentRegForm, EnrollForm,AdminLogin #AuthorityLogForm 
+from .forms import TeacherReg, StudentRegForm, EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 # from .models import Admin
 
@@ -58,7 +58,7 @@ def teacher_register(request):
             return redirect('teacher')
     # else:
     #     form = UserRegistrationForm()
-    return render(request, 'teacher_register.html', {'form': form})
+    return render(request, 'teacher_reg.html', {'form': form})
 
 
 def student_register(request):
