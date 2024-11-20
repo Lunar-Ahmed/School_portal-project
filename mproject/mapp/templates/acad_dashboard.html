@@ -20,35 +20,7 @@
 
         <link rel="stylesheet" href="{%static 'css/styleSwitcher.css' %}" type="text/css">
         <link rel="stylesheet" href="{%static 'testing.css' %}" type="text/css">
-
-
-    
-
-
-
-        <link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css">
-        <link rel="stylesheet" href="{%static 'css/skins/blue.css' %}" type="text/css">
-
-                                  <!--Live Style Switcher - Demo Only-->
-        <link rel="stylesheet" class="alternate-style" title="pink" href="{% static 'css/skins/pink.css' %}" type="text/css" disabled>
-        <link rel="stylesheet" class="alternate-style" title="blue" href="{% static 'css/skins/blue.css' %}" type="text/css" disabled>
-        <link rel="stylesheet" class="alternate-style" title="orange" href="{% static 'css/skins/orange.css' %}" type="text/css" disabled>
-        <link rel="stylesheet" class="alternate-style" title="yellow" href="{% static 'css/skins/yellow.css' %}" type="text/css" disabled>
-        <link rel="stylesheet" class="alternate-style" title="green" href="{% static 'css/skins/green.css' %}" type="text/css" disabled>
-
-        <link rel="stylesheet" href="{% static 'css/styleSwitcher.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/main.css' %}" types="text/css">
-        <link rel="stylesheet" href="{% static 'css/tab.css' %}" types="text/css">
-
-
-
-
-
-
-    
-
-
+        <link rel="stylesheet" href="{%static 'css/tab.css' %}" type="text/css">
     </head>
    <body>
      <div class="preloaded">
@@ -63,9 +35,9 @@
           <!--Aside begins-->
           <div class="aside">
             <!--logo-->
-            <div class="logo">
+            <div class="logo" id="logo">
             <img src="{% static 'images/profile.png' %}" alt="profile photo" style="border-radius:50%; border:5px solid white;">
-              <a href="#home" class="active">DOMINIC</a>
+              <a href="#home" class="active"><span style="color:mediumblue;">Dom</span>inic69</a>
             </div>
             <!--Nav Toggle btn-->
             <div class="nav-toggle">
@@ -100,6 +72,7 @@
           <section class="home section active" id="home">
             <div class="container" >
               <div class="intro">
+                <h1 id="wel">Welcome Dominic69</h1>
                   <div class="tsaprofile">
                     <img src="{% static 'images/profile.png' %}">
                     <p>DOMINIC TORRETO</P>
@@ -262,7 +235,25 @@
                 <div class="container">
                       <div class="row">
 
-                        <h1>THIS IS MEMO PAGE</H1>
+                        <div class="material">
+                          <div class="matx">
+                            <label>LEVEL</label>
+                            <input type="text" name="text" required> <button type="submit">Submit</button>
+                          </div>
+                          <div class="matx">
+                            <input type="file" name="file" required> <button type="submit">Import</button>
+                          </div>
+                          <div class="matx">
+                            <input type="text" name="text" required> <button type="submit">Submit</button>
+                          </div>
+                          <div class="matx">
+                            <input type="file" name="file" required> <button type="submit">Import</button>
+                          </div>
+                          <div class="matx">
+                            <input type="file" name="file" required> <button type="submit">Import</button>
+                          </div>
+                          
+                        </div>
                               
                         <!--Service Item Ends-->
                       </div>
@@ -564,6 +555,8 @@
 
 <!-- styleSwitcher Javascript -->
 <script src="{% static 'js/styleSwitcher.js' %}"></script>
+<script src="{% static 'script.js' %}"></script>
+
 
 </body>
 </html>
