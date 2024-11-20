@@ -31,6 +31,10 @@ def assignment(request):
     template = loader.get_template('attendance.html')
     return HttpResponse(template.render())
 
+def adcad(request):
+    template = loader.get_template('acad_dashboard.html')
+    return HttpResponse(template,render())
+
 #================REGISTERATION================
 
 def enroll_form(request):
