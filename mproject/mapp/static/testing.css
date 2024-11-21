@@ -162,7 +162,6 @@ body{
 
 tbody .td #td{
     display: flex;
-    background-color: red;
     color: chartreuse;
     flex-direction: row;
 }

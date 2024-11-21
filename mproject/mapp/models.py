@@ -10,7 +10,7 @@ class Enroll(models.Model):
     
     
 class Teacher(models.Model):
-    Profile = models.ImageField(upload_to='Profile/')
+    Passport = models.ImageField(upload_to='Profile/')
     Firstname = models.CharField(max_length=150, null=True)
     Middlename = models.CharField(max_length=150, null=True)
     Lastname = models.CharField(max_length=150, null=True)
