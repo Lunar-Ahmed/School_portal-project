@@ -43,20 +43,63 @@
     </nav>
     <!-- Navbar End -->
 
-    <div class="register">
+    {% comment %} <div class="register">
         <h1>Teacher Registeration</h1>
-        {% if user_profile.Profile %} 
-            <img id="profile-picture-preview" src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" width="150" height="150">
-         {% else %} 
-            <img id="profile-picture-preview" src="#" alt="Profile Picture" width="150" height="150" style="display: none;"> 
-         {% endif %}
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Passport Preview:</label>
+                <img id="passport-preview" src="#" alt="Passport Preview" style="display: none;" />
+            </div>
+            
             {% csrf_token %}
             {{ form.as_p }}
             <button id="demo" type="submit">Register</button>
         </form>
-    </div>
+    </div> {% endcomment %}
+
+
+    <!-- profile_update.html -->
+
+    <h1>Update Profile</h1>
+    
+    <!-- Display current profile picture if it exists -->
+    {% if user_profile.profile_picture %}
+        <img id="profile-picture-preview" src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" width="150" height="150">
+    {% else %}
+        <img id="profile-picture-preview" src="#" alt="Profile Picture" width="150" height="150" style="display: none;">
+    {% endif %}
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} *{% endif %}</label>
+            {{ field }}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- JavaScript to preview the profile picture -->
+    <script>
+        document.getElementById('id_profile_picture').addEventListener('change', function(event) {
+            const [file] = event.target.files;
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('profile-picture-preview');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 
 
     <!-- Register Start -->
