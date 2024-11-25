@@ -32,8 +32,63 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
-</head>
 
+    <style>
+        .register .file-input {
+            display: none;
+        }
+
+        .register .file-input {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .register .file:hover {
+            background-color: #0056b3;
+        }
+
+        #file-name {
+            margin-left: 10px;
+            font-style: italic;
+        }
+
+
+
+        /*  */
+        input[type="file"] {
+            display: none;
+        }
+
+        /*  file button */
+        label[for="file"] {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        label[for="file"]:hover {
+            background-color: #0056b3;
+        }
+
+        #file-name {
+            margin-left: 10px;
+            font-style: italic;
+        }
+        .register div img{
+            border-radius: 10px;
+            margin-left: 150px;
+        }
+    </style>
+</head>
 <body>
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
@@ -64,9 +119,7 @@
     <div class="register">
         <h1>Register</h1>
         <form method="post" enctype="multipart/form-data">
-            <label for="profile_picture" class="custom-file-button">Choose File</label>
-            <input type="file" id="profile_picture" name="profile_picture" class="file-input">
-            <span id="file-name"></span>
+            <div>
                 <img id="preview" src="" alt="Image Preview" style="max-width: 200px; max-height: 200px; display: none;"/>
             </div>
             {% csrf_token %}
@@ -86,12 +139,15 @@
             reader.readAsDataURL(e.target.files[0]);
         };
 
-
         document.querySelector('.custom-file-button').addEventListener('click', function () {
-            document.getElementById('profile_picture').click();
+            document.getElementById('id_profile_picture').click();
         });
 
-        document.getElementById('profile_picture').addEventListener('change', function () {
+        document.querySelector('.custom-file-button').addEventListener('click', function () {
+            document.getElementById('id_profile_picture').click();
+        });
+
+        document.getElementById('id_profile_picture').addEventListener('change', function () {
             var fileName = this.files[0].name;
             document.getElementById('file-name').textContent = fileName;
         });
