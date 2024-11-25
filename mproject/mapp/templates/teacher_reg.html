@@ -61,16 +61,20 @@
 
     <!-- profile_update.html -->
 
+    <div class="register">
+        <h1>Register</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="profile_picture" class="custom-file-button">Choose File</label>
+            <input type="file" id="profile_picture" name="profile_picture" class="file-input">
+            <span id="file-name"></span>
+                <img id="preview" src="" alt="Image Preview" style="max-width: 200px; max-height: 200px; display: none;"/>
+            </div>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
-    <h1>Register</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div>
-            <img id="preview" src="" alt="Image Preview" style="max-width: 200px; max-height: 200px; display: none;"/>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
     <script>
         document.getElementById('id_profile_picture').onchange = function (e) {
             var reader = new FileReader();
@@ -81,6 +85,16 @@
             }
             reader.readAsDataURL(e.target.files[0]);
         };
+
+
+        document.querySelector('.custom-file-button').addEventListener('click', function () {
+            document.getElementById('profile_picture').click();
+        });
+
+        document.getElementById('profile_picture').addEventListener('change', function () {
+            var fileName = this.files[0].name;
+            document.getElementById('file-name').textContent = fileName;
+        });
     </script>
 
 
