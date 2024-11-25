@@ -15,7 +15,7 @@ class TeacherReg(forms.ModelForm):
 class StudentRegForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = ['fullname','username','schoolNo', 'state',  'DOB', 'address', 'phone', 'parent_phone', 'class',  'email', 'password']
+        fields = ['fullname','username','schoolNo', 'state',  'DOB', 'address', 'phone', 'parent_phone', 'Class',  'email', 'password']
         
 class EnrollForm(forms.ModelForm):
     class Meta:

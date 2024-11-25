@@ -25,7 +25,6 @@ class Teacher(models.Model):
     DOB= models.DateTimeField()
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=150) 
-    # Cv = models.FileField()
     Cv = models.FileField(upload_to='documents/')
        
 class Student(models.Model):
