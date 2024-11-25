@@ -33,9 +33,9 @@ class Student(models.Model):
     Lastname = models.CharField(max_length=150, null=True)
     username = models.CharField(max_length=250)
     Mobile = models.IntegerField(max_length=150, null=True)
+    
     Address = models.CharField(max_length=150, null=True)
-    Sex = models.CharField(max_length=150, null=True)
-    Emergency = models.IntegerField(max_length=150, null=True)
+    Gender = models.CharField(max_length=150, null=True)
     Class =  models.CharField(max_length=150, null=True)
     Subject = models.CharField(max_length=150, null=True)
     DOB= models.DateTimeField()

@@ -496,6 +496,7 @@
     height: 30px;
     background-color:#0dcaf0;
     color: #ffffff;
+    margin-bottom: 10px;
 }
 .enrol form input[type="password"],
 .enrol form input[type="text"],
@@ -515,6 +516,7 @@
     border: 1px solid #dee0e4;
     margin-bottom: 20px;
     padding: 0 15px;
+
 }
 .enrol form button,
 .register form button,
