@@ -10,13 +10,14 @@ class Enroll(models.Model):
     
     
 class Teacher(models.Model):
+    GENDER_CHOICES = [ ('M', 'Male'), ('F', 'Female'), ('O', 'Other'), ]
     profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     Firstname = models.CharField(max_length=150, null=True)
     Middlename = models.CharField(max_length=150, null=True)
     Lastname = models.CharField(max_length=150, null=True)
     Mobile = models.IntegerField(max_length=150, null=True)
+    Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     Address = models.CharField(max_length=150, null=True)
-    Sex = models.CharField(max_length=150, null=True)
     Emergency = models.IntegerField(max_length=150, null=True)
     Class = models.CharField(max_length=150, null=True)
     Subject_Teacher = models.CharField(max_length=150, null=True)
@@ -28,6 +29,7 @@ class Teacher(models.Model):
     Cv = models.FileField(upload_to='documents/')
        
 class Student(models.Model):
+    GENDER_CHOICES = [ ('M', 'Male'), ('F', 'Female'), ('O', 'Other'), ]
     profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     Firstname = models.CharField(max_length=150, null=True)
     Middlename = models.CharField(max_length=150, null=True)
@@ -36,7 +38,7 @@ class Student(models.Model):
     Mobile = models.IntegerField(max_length=150, null=True)
     parent_Mobile = models.IntegerField()
     Address = models.CharField(max_length=150, null=True)
-    Gender = models.CharField(max_length=150, null=True)
+    Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     Class =  models.CharField(max_length=150, null=True)
     Subject = models.CharField(max_length=150, null=True)
     DOB= models.DateTimeField()

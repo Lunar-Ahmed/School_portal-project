@@ -5,13 +5,17 @@ from .models import Student, Enroll, Teacher
 class TeacherReg(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ['profile_picture','Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Sex', 'Emergency','Class', 'Subject_Teacher', 'Class_Teacher', 'DOB', 'Cv','Email', 'Password']
+        fields = ['profile_picture','Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Gender', 'Emergency','Class', 'Subject_Teacher', 'Class_Teacher', 'DOB', 'Cv','Email', 'Password']
         widgets = { 'DOB': forms.DateInput(attrs={'type': 'date'}) }
+        widgets = {
+            'Gender': forms.RadioSelect()
+        }
+
         
 class StudentRegForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = ['fullname','username','schoolNo', 'state',  'DOB', 'address', 'phone', 'parent_phone', 'classs',  'email', 'password']
+        fields = ['fullname','username','schoolNo', 'state',  'DOB', 'address', 'phone', 'parent_phone', 'class',  'email', 'password']
         
 class EnrollForm(forms.ModelForm):
     class Meta:
