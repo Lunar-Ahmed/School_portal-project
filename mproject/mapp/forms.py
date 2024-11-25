@@ -5,7 +5,8 @@ from .models import Student, Enroll, Teacher
 class TeacherReg(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ['profile_picture','Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Sex', 'Emergency', 'Class', 'Subject', 'DOB', 'Cv','Email', 'Password']
+        fields = ['profile_picture','Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Sex', 'Emergency','Class', 'Subject_Teacher' 'Class_Teacher', 'S', 'DOB', 'Cv','Email', 'Password']
+        widgets = { 'DOB': forms.DateInput(attrs={'type': 'date'}) }
         
 class StudentRegForm(forms.ModelForm):
     class Meta:
