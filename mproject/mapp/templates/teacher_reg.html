@@ -159,6 +159,12 @@
             var fileName = this.files[0].name;
             document.getElementById('file-name').textContent = fileName;
         });
+
+
+        document.getElementById('Cv').addEventListener('change', function () {
+            var filePath = this.value.split('\\').pop();
+            document.getElement('file-path').textContent = filePath;
+        });
     </script>
 
 

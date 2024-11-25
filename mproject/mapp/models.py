@@ -22,9 +22,10 @@ class Teacher(models.Model):
     Subject_Teacher = models.CharField(max_length=150, null=True)
     Class_Teacher =  models.CharField(max_length=150, null=True)
     DOB= models.DateTimeField()
-    Cv = models.FileField()
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=150) 
+    # Cv = models.FileField()
+    Cv = models.FileField(upload_to='documents/')
        
 class Student(models.Model):
     profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
@@ -33,7 +34,7 @@ class Student(models.Model):
     Lastname = models.CharField(max_length=150, null=True)
     username = models.CharField(max_length=250)
     Mobile = models.IntegerField(max_length=150, null=True)
-    
+    parent_Mobile = models.IntegerField()
     Address = models.CharField(max_length=150, null=True)
     Gender = models.CharField(max_length=150, null=True)
     Class =  models.CharField(max_length=150, null=True)
