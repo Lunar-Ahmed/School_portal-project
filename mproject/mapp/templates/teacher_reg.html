@@ -61,45 +61,28 @@
 
     <!-- profile_update.html -->
 
-    <h1>Update Profile</h1>
-    
-    <!-- Display current profile picture if it exists -->
-    {% if user_profile.profile_picture %}
-        <img id="profile-picture-preview" src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" width="150" height="150">
-    {% else %}
-        <img id="profile-picture-preview" src="#" alt="Profile Picture" width="150" height="150" style="display: none;">
-    {% endif %}
-    
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        
-        {% for field in form %}
-        <div class="form-group">
-            <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} *{% endif %}</label>
-            {{ field }}
-            {{ field.errors }}
-        </div>
-        {% endfor %}
 
+    <h1>Register</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <img id="preview" src="" alt="Image Preview" style="max-width: 200px; max-height: 200px; display: none;"/>
+        </div>
         <button type="submit">Submit</button>
     </form>
-
-    <!-- JavaScript to preview the profile picture -->
     <script>
-        document.getElementById('id_profile_picture').addEventListener('change', function(event) {
-            const [file] = event.target.files;
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.getElementById('profile-picture-preview');
-                    img.src = e.target.result;
-                    img.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
+        document.getElementById('id_profile_picture').onchange = function (e) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var img = document.getElementById('preview');
+                img.src = event.target.result;
+                img.style.display = 'block';
             }
-        });
+            reader.readAsDataURL(e.target.files[0]);
+        };
     </script>
+
 
 
     <!-- Register Start -->
