@@ -48,7 +48,7 @@
          <h1>Login</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ loginform.as_p }}
             {% comment %} <p style="text-align: center;">Didn't have an account?<a href="authority_register"> Register</a> </p> {% endcomment %}
             <button type="submit">Login</button>
         </form>

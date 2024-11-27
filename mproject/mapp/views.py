@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg #StudentRegForm, EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg, TeacherLog #StudentRegForm, EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 # from .models import Admin
 
@@ -72,7 +72,21 @@ def teacher_register(request):
     
     return render(request, 'teacher_reg.html', {'form': form})
 
-
+def teacher_login(request):
+    form = TeacherLog()
+    if request.method == 'POST':
+        form = TeacherLog(request.POST)
+        if form.is_valid():
+            Username = form.cleaned_data['Username']
+            Password = form.cleaned_data['Password']
+            user = authenticate(request, email=Username, password=Password)
+            if user is not None:
+                login(request, user)
+                return redirect('teacher')
+            else:
+                form.add_error(None,'Invalid email or password')
+    context = {'loginform': form}
+    return render(request, 'teacher_log.html', context=context)
 
 # def student_register(request):
 #     form = StudentRegForm()
