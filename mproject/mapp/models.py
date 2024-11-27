@@ -11,39 +11,61 @@ class Enroll(models.Model):
     
 class Teacher(models.Model):
     GENDER_CHOICES = [ ('M', 'Male'), ('F', 'Female'), ('O', 'Other'), ]
+    SUBJECT_CHOICES = [ ('M', 'Mathematics(general)'), ('E', 'English(general)'), ('C', 'Civic(general)'), ('B', 'Biology(general)'), ('CH', 'Chemistry(science)'), ('PY', 'Physics(civic)'), ('DP', 'Data-Processing(general)'), ('MK', 'Marketing(commercial)'), ('EC', 'Economic(general)'), ('COM', 'Computer-Studies(general)'), ('FM', 'Further-Math(science)'), ('GV', 'Government(art, commercial)'), ('LT', 'Literature(art)'), ('CM', 'Commerce(commercial)'), ('Ac', 'Accounting(commercial)'), ('HS', 'History(art)'), ('GG', 'Geography(science)'), ('C', 'Book-Keeping(science)'),  ('Is', 'Islamic-Studies(general)'), ('Chr', 'Christain-Studies(general)'), ('TD', 'Technical-Drawing(science)'),]
+    CLASS_CHOICES = [ ('J1', 'Jss1'), ('J2', 'Jss2'), ('J3', 'Js3'), ('S1', 'Ss1'), ('S2', 'Ss2'), ('S3', 'Ss3'), ]
+    DEPARTMENT_CHOICES = [('Sc', 'Science'), ('Ar', 'Art'), ('Cm', 'Commercial'), ]
     profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     Firstname = models.CharField(max_length=150, null=True)
     Middlename = models.CharField(max_length=150, null=True)
     Lastname = models.CharField(max_length=150, null=True)
-    Mobile = models.IntegerField(max_length=150, null=True)
+    Mobile = models.IntegerField(null=True)
     Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     Address = models.CharField(max_length=150, null=True)
-    Emergency = models.IntegerField(max_length=150, null=True)
-    Class = models.CharField(max_length=150, null=True)
-    Subject_Teacher = models.CharField(max_length=150, null=True)
-    Class_Teacher =  models.CharField(max_length=150, null=True)
+    Emergency = models.IntegerField(null=True)
+    Subject_Teacher = models.CharField(max_length=5, choices=SUBJECT_CHOICES)
+    Class_Teacher =  models.CharField(max_length=5, choices=CLASS_CHOICES)
     DOB= models.DateTimeField()
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=150) 
     Cv = models.FileField(upload_to='documents/')
-       
+    
+    def __str__(self):
+        return f"{self.firstname} {self.lastname}"
+    
 class Student(models.Model):
-    GENDER_CHOICES = [ ('M', 'Male'), ('F', 'Female'), ('O', 'Other'), ]
-    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    GENDER_CHOICES = [ 
+        ('M', 'Male'), 
+        ('F', 'Female'),
+        ('O', 'Other'), 
+        ]
+    DEPARTMENT_CHOICES = [ 
+        ('S', 'Science'), 
+        ('A', 'Art'),
+        ('C', 'Commercial'), 
+        ]
+    CLASS_CHOICES = [ 
+        ('J1', 'JsS1'), 
+        ('J2', 'Jss2'),
+        ('J3', 'Jss3'), 
+        ('S1', 'SS1'), 
+        ('S2', 'Ss2'),
+        ('S3', 'Ss3'), 
+        ]
+    Profile_Picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     Firstname = models.CharField(max_length=150, null=True)
     Middlename = models.CharField(max_length=150, null=True)
     Lastname = models.CharField(max_length=150, null=True)
     username = models.CharField(max_length=250)
-    Mobile = models.IntegerField(max_length=150, null=True)
-    parent_Mobile = models.IntegerField()
+    Mobile = models.IntegerField(null=True)
+    Department = models.CharField(max_length=5, choices=DEPARTMENT_CHOICES)
+    Parent_Mobile = models.IntegerField()
     Address = models.CharField(max_length=150, null=True)
     Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    Class =  models.CharField(max_length=150, null=True)
-    Subject = models.CharField(max_length=150, null=True)
+    Class =  models.CharField(max_length=5, choices=CLASS_CHOICES)
     DOB= models.DateTimeField()
-    Cv = models.FileField()
     Email = models.EmailField(max_length=100)
-    Password = models.CharField(max_length=150)    
+    Admission_Number = models.CharField(max_length=150)
+    Password = models.CharField(max_length=150)  
 
     
     
@@ -148,204 +170,204 @@ class Student(models.Model):
 
 #===========================================================================
 
-class Jss1(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
+# class Jss1(models.Model):
+#     fullname = models.CharField(max_length=350)
+#     username = models.CharField(max_length=100)
+#     schoolNo = models.CharField(max_length=50)
+#     state = models.CharField(max_length=50)
+#     LGA = models.CharField(max_length=100)
+#     DOB = models.CharField(max_length=50)
+#     address = models.CharField(max_length=200)
+#     phone = models.BigIntegerField()
+#     parent_phone = models.CharField(max_length=100)
+#     classs = models.CharField(max_length=40)
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
 
-class Jss2(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
+# class Jss2(models.Model):
+#     fullname = models.CharField(max_length=350)
+#     username = models.CharField(max_length=100)
+#     schoolNo = models.CharField(max_length=50)
+#     state = models.CharField(max_length=50)
+#     LGA = models.CharField(max_length=100)
+#     DOB = models.CharField(max_length=50)
+#     address = models.CharField(max_length=200)
+#     phone = models.BigIntegerField()
+#     parent_phone = models.CharField(max_length=100)
+#     classs = models.CharField(max_length=40)
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
 
-class Jss3(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
+# class Jss3(models.Model):
+#     fullname = models.CharField(max_length=350)
+#     username = models.CharField(max_length=100)
+#     schoolNo = models.CharField(max_length=50)
+#     state = models.CharField(max_length=50)
+#     LGA = models.CharField(max_length=100)
+#     DOB = models.CharField(max_length=50)
+#     address = models.CharField(max_length=200)
+#     phone = models.BigIntegerField()
+#     parent_phone = models.CharField(max_length=100)
+#     classs = models.CharField(max_length=40)
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
 
-class Ss1(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
+# class Ss1(models.Model):
+#     fullname = models.CharField(max_length=350)
+#     username = models.CharField(max_length=100)
+#     schoolNo = models.CharField(max_length=50)
+#     state = models.CharField(max_length=50)
+#     LGA = models.CharField(max_length=100)
+#     DOB = models.CharField(max_length=50)
+#     address = models.CharField(max_length=200)
+#     phone = models.BigIntegerField()
+#     parent_phone = models.CharField(max_length=100)
+#     classs = models.CharField(max_length=40)
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
 
-class Ss2(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
+# class Ss2(models.Model):
+#     fullname = models.CharField(max_length=350)
+#     username = models.CharField(max_length=100)
+#     schoolNo = models.CharField(max_length=50)
+#     state = models.CharField(max_length=50)
+#     LGA = models.CharField(max_length=100)
+#     DOB = models.CharField(max_length=50)
+#     address = models.CharField(max_length=200)
+#     phone = models.BigIntegerField()
+#     parent_phone = models.CharField(max_length=100)
+#     classs = models.CharField(max_length=40)
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
 
-class Ss3(models.Model):
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=40)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
+# class Ss3(models.Model):
+#     fullname = models.CharField(max_length=350)
+#     username = models.CharField(max_length=100)
+#     schoolNo = models.CharField(max_length=50)
+#     state = models.CharField(max_length=50)
+#     LGA = models.CharField(max_length=100)
+#     DOB = models.CharField(max_length=50)
+#     address = models.CharField(max_length=200)
+#     phone = models.BigIntegerField()
+#     parent_phone = models.CharField(max_length=100)
+#     classs = models.CharField(max_length=40)
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
 
-class Student(models.Model):
-    CLASS_CHOICES = [
-        ('j1', 'Jss1'),  
-        ('j2', 'Jss2'),
-        ('j3', 'Jss3'),
-        ('s1', 'Ss1'),
-        ('s2', 'Ss2'),
-        ('s3', 'Ss3'),
-    ]
-    fullname = models.CharField(max_length=350)
-    username = models.CharField(max_length=100)
-    schoolNo = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    LGA = models.CharField(max_length=100)
-    DOB = models.CharField(max_length=50)
-    address = models.CharField(max_length=200)
-    phone = models.BigIntegerField()
-    parent_phone = models.CharField(max_length=100)
-    classs = models.CharField(max_length=2, choices=CLASS_CHOICES)
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=150)
+# class Student(models.Model):
+#     CLASS_CHOICES = [
+#         ('j1', 'Jss1'),  
+#         ('j2', 'Jss2'),
+#         ('j3', 'Jss3'),
+#         ('s1', 'Ss1'),
+#         ('s2', 'Ss2'),
+#         ('s3', 'Ss3'),
+#     ]
+#     fullname = models.CharField(max_length=350)
+#     username = models.CharField(max_length=100)
+#     schoolNo = models.CharField(max_length=50)
+#     state = models.CharField(max_length=50)
+#     LGA = models.CharField(max_length=100)
+#     DOB = models.CharField(max_length=50)
+#     address = models.CharField(max_length=200)
+#     phone = models.BigIntegerField()
+#     parent_phone = models.CharField(max_length=100)
+#     classs = models.CharField(max_length=2, choices=CLASS_CHOICES)
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=150)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if self.classs == 'j1':
-            Jss1.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                schoolNo=self.schoolNo,
-                state=self.state,
-                LGA=self.LGA,
-                DOB=self.DOB,
-                address=self.address,
-                phone=self.phone,
-                parent_phone=self.parent_phone,
-                classs='Jss1',
-                email=self.email,
-                password=self.password
-            )
-        elif self.classs == 'j2':
-            Jss2.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                schoolNo=self.schoolNo,
-                state=self.state,
-                LGA=self.LGA,
-                DOB=self.DOB,
-                address=self.address,
-                phone=self.phone,
-                parent_phone=self.parent_phone,
-                classs='Jss2',
-                email=self.email,
-                password=self.password
-            )
-        elif self.classs == 'j3':
-            Jss3.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                schoolNo=self.schoolNo,
-                state=self.state,
-                LGA=self.LGA,
-                DOB=self.DOB,
-                address=self.address,
-                phone=self.phone,
-                parent_phone=self.parent_phone,
-                classs='Jss3',
-                email=self.email,
-                password=self.password
-            )
-        elif self.classs == 's1':
-            Ss1.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                schoolNo=self.schoolNo,
-                state=self.state,
-                LGA=self.LGA,
-                DOB=self.DOB,
-                address=self.address,
-                phone=self.phone,
-                parent_phone=self.parent_phone,
-                classs='Ss1',
-                email=self.email,
-                password=self.password
-            )
-        elif self.classs == 's2':
-            Ss2.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                schoolNo=self.schoolNo,
-                state=self.state,
-                LGA=self.LGA,
-                DOB=self.DOB,
-                address=self.address,
-                phone=self.phone,
-                parent_phone=self.parent_phone,
-                classs='Ss2',
-                email=self.email,
-                password=self.password
-            )
-        elif self.classs == 's3':
-            Ss3.objects.create(
-                fullname=self.fullname,
-                username=self.username,
-                schoolNo=self.schoolNo,
-                state=self.state,
-                LGA=self.LGA,
-                DOB=self.DOB,
-                address=self.address,
-                phone=self.phone,
-                parent_phone=self.parent_phone,
-                classs='Ss3',
-                email=self.email,
-                password=self.password
-            )
+#     def save(self, *args, **kwargs):
+#         super().save(*args, **kwargs)
+#         if self.classs == 'j1':
+#             Jss1.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 schoolNo=self.schoolNo,
+#                 state=self.state,
+#                 LGA=self.LGA,
+#                 DOB=self.DOB,
+#                 address=self.address,
+#                 phone=self.phone,
+#                 parent_phone=self.parent_phone,
+#                 classs='Jss1',
+#                 email=self.email,
+#                 password=self.password
+#             )
+#         elif self.classs == 'j2':
+#             Jss2.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 schoolNo=self.schoolNo,
+#                 state=self.state,
+#                 LGA=self.LGA,
+#                 DOB=self.DOB,
+#                 address=self.address,
+#                 phone=self.phone,
+#                 parent_phone=self.parent_phone,
+#                 classs='Jss2',
+#                 email=self.email,
+#                 password=self.password
+#             )
+#         elif self.classs == 'j3':
+#             Jss3.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 schoolNo=self.schoolNo,
+#                 state=self.state,
+#                 LGA=self.LGA,
+#                 DOB=self.DOB,
+#                 address=self.address,
+#                 phone=self.phone,
+#                 parent_phone=self.parent_phone,
+#                 classs='Jss3',
+#                 email=self.email,
+#                 password=self.password
+#             )
+#         elif self.classs == 's1':
+#             Ss1.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 schoolNo=self.schoolNo,
+#                 state=self.state,
+#                 LGA=self.LGA,
+#                 DOB=self.DOB,
+#                 address=self.address,
+#                 phone=self.phone,
+#                 parent_phone=self.parent_phone,
+#                 classs='Ss1',
+#                 email=self.email,
+#                 password=self.password
+#             )
+#         elif self.classs == 's2':
+#             Ss2.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 schoolNo=self.schoolNo,
+#                 state=self.state,
+#                 LGA=self.LGA,
+#                 DOB=self.DOB,
+#                 address=self.address,
+#                 phone=self.phone,
+#                 parent_phone=self.parent_phone,
+#                 classs='Ss2',
+#                 email=self.email,
+#                 password=self.password
+#             )
+#         elif self.classs == 's3':
+#             Ss3.objects.create(
+#                 fullname=self.fullname,
+#                 username=self.username,
+#                 schoolNo=self.schoolNo,
+#                 state=self.state,
+#                 LGA=self.LGA,
+#                 DOB=self.DOB,
+#                 address=self.address,
+#                 phone=self.phone,
+#                 parent_phone=self.parent_phone,
+#                 classs='Ss3',
+#                 email=self.email,
+#                 password=self.password
+#             )
 
     
 # class Enroll(models.Model):

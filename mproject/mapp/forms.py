@@ -5,17 +5,26 @@ from .models import Student, Enroll, Teacher
 class TeacherReg(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ['profile_picture','Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Gender', 'Emergency','Class', 'Subject_Teacher', 'Class_Teacher', 'DOB', 'Cv','Email', 'Password']
-        widgets = { 'DOB': forms.DateInput(attrs={'type': 'date'}) }
+        fields = ['profile_picture','Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Gender', 'Emergency', 'Subject_Teacher', 'Class_Teacher', 'DOB', 'Cv','Email', 'Password']
         widgets = {
-            'Gender': forms.RadioSelect()
+            'DOB': forms.DateInput(attrs={'type': 'date'}),
+            'Gender': forms.Select,
+            'Subject_Teacher': forms.Select(attrs={'placeholder': 'Choose Subject'}),
+            'Class_Teacher': forms.Select
         }
+        
 
         
 class StudentRegForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = ['fullname','username','schoolNo', 'state',  'DOB', 'address', 'phone', 'parent_phone', 'Class',  'email', 'password']
+        fields = ['Profile_Picture', 'Firstname', 'Middlename', 'Lastname', 'username', 'Mobile', 'Department', 'Parent_Mobile', 'Address', 'Gender', 'Class', 'DOB', 'Email', 'Admission_Number', 'Password']
+        widgets = {
+            'DOB': forms.DateInput(attrs={'type': 'date'}),
+            'Gender': forms.Select,
+            'Department': forms.Select,
+            'Class': forms.Select
+        }
         
 class EnrollForm(forms.ModelForm):
     class Meta:

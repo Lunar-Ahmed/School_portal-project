@@ -15,9 +15,38 @@ def admin(request):
     template = loader.get_template('base.html')
     return HttpResponse(template.render())
 
+# def teacher(request):
+#     template = loader.get_template('teacherboard.html')
+#     return HttpResponse(template.render())
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Teacher, Attendance  # Ensure Attendance model is imported
+
 def teacher(request):
-    template = loader.get_template('teacherboard.html')
-    return HttpResponse(template.render())
+    user_id = request.session.get('user_id')
+    
+    if not user_id:
+        return redirect('teacher_login')
+    
+    try:
+        teacher = Teacher.objects.get(id=user_id)
+    except Teacher.DoesNotExist:
+        messages.error(request, "Teacher not found.")
+        return redirect('teacher_login')
+
+    # Check if the teacher is a class teacher and get class attendance
+    if teacher.Class_Teacher:
+        attendance_records = Attendance.objects.filter(class_name=teacher.Class_Teacher)
+    else:
+        attendance_records = []
+
+    return render(request, 'anyi/teacher.html', 
+                  {'attendance_records': attendance_records,
+                   'firstname': teacher.Firstname,
+                   'surname': teacher.Lastname,
+                   'image_url': teacher.profile_picture.url if teacher.profile_picture else None})
+
+
 
 def student(request):
     template = loader.get_template('studentboard.html')

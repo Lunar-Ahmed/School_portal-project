@@ -508,8 +508,9 @@
 .register form input[type="password"],
 .register form input[type="text"],
 .register form input[type="number"],
-.register form input[type="email"] 
-.register form input[type="date"] {
+.register form input[type="email"],
+.register form input[type="date"], 
+.register form input[type="select"] {
     margin-left: 70px;
     width: 350px;
     height: 60px;

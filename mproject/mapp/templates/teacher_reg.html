@@ -63,7 +63,14 @@
         input[type="file"] {
             display: none;
         }
-        input[type="date"] {
+        input[type="radio"] {
+            display: flex;
+            background-color: none;
+            color:none;
+        }
+        input[type="date"],
+        input[type="email"], 
+        select{
         margin-left: 70px;
         width: 350px;
         height: 60px;
@@ -103,6 +110,9 @@
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i> Anyi's College</h2>
         </a>
+        <div id="back">
+            <a onclick="goBack()" href="#" class="nav-item nav-link active">BACK</a>
+        </div>  
     </nav>
     <!-- Navbar End -->
 
@@ -165,6 +175,7 @@
             var filePath = this.value.split('\\').pop();
             document.getElement('file-path').textContent = filePath;
         });
+        function goBack() { window.history.back(); }
     </script>
 
 

@@ -32,7 +32,6 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
-    <link href="{% static 'testing.css' %}" rel="stylesheet">
 
     <style>
         .register .file-input {
@@ -64,7 +63,14 @@
         input[type="file"] {
             display: none;
         }
-        input[type="date"] {
+        input[type="radio"] {
+            display: flex;
+            background-color: none;
+            color:none;
+        }
+        input[type="date"],
+        input[type="email"], 
+        select{
         margin-left: 70px;
         width: 350px;
         height: 60px;
@@ -104,6 +110,9 @@
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i> Anyi's College</h2>
         </a>
+        <div id="back">
+            <a onclick="goBack()" href="#" class="nav-item nav-link active">BACK</a>
+        </div>  
     </nav>
     <!-- Navbar End -->
 
@@ -138,7 +147,7 @@
     </div>
 
     <script>
-        document.getElementById('id_profile_picture').onchange = function (e) {
+        document.getElementById('id_Profile_Picture').onchange = function (e) {
             var reader = new FileReader();
             reader.onload = function (event) {
                 var img = document.getElementById('preview');
@@ -160,6 +169,13 @@
             var fileName = this.files[0].name;
             document.getElementById('file-name').textContent = fileName;
         });
+
+
+        document.getElementById('Cv').addEventListener('change', function () {
+            var filePath = this.value.split('\\').pop();
+            document.getElement('file-path').textContent = filePath;
+        });
+        function goBack() { window.history.back(); }
     </script>
 
 
