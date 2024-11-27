@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg, StudentRegForm, EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg #StudentRegForm, EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 # from .models import Admin
 
@@ -71,16 +71,16 @@ def acad(request):
 
 #================REGISTERATION================
 
-def enroll_form(request):
-    form = EnrollForm()
-    if request.method == 'POST':
-        form = EnrollForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('')
-    # else:
-    #     form = UserRegistrationForm()
-    return render(request, 'enroll_register.html', {'form': form})
+# def enroll_form(request):
+#     form = EnrollForm()
+#     if request.method == 'POST':
+#         form = EnrollForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('')
+#     # else:
+#     #     form = UserRegistrationForm()
+#     return render(request, 'enroll_register.html', {'form': form})
 
 
 def teacher_register(request):
@@ -95,16 +95,16 @@ def teacher_register(request):
     return render(request, 'teacher_reg.html', {'form': form})
 
 
-def student_register(request):
-    form = StudentRegForm()
-    if request.method == 'POST':
-        form = StudentRegForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('student_login')
-    # else:
-    #     form = UserRegistrationForm()
-    return render(request, 'student_register.html', {'form': form})
+# def student_register(request):
+#     form = StudentRegForm()
+#     if request.method == 'POST':
+#         form = StudentRegForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('student_login')
+#     # else:
+#     #     form = UserRegistrationForm()
+#     return render(request, 'student_register.html', {'form': form})
 
 
 # def authority_login(request):

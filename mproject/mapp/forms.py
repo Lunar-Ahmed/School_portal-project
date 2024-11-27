@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student, Enroll, Teacher
+from .models import Teacher#Student, Enroll
 
 
 class TeacherReg(forms.ModelForm):

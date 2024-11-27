@@ -1,18 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-class Enroll(models.Model):
-    student_name = models.CharField(max_length=50)
-    parent_phone = models.CharField(max_length=50)
-    email = models.IntegerField()
-    address = models.EmailField(max_length=100)
-    Message = models.TextField(max_length=150)
+# class Enroll(models.Model):
+#     student_name = models.CharField(max_length=50)
+#     parent_phone = models.CharField(max_length=50)
+#     email = models.IntegerField()
+#     address = models.EmailField(max_length=100)
+#     Message = models.TextField(max_length=150)
     
-class Teacher(AbstractUser):
-    CLASS_CHOICES =[
-        ('class_teacher', 'Class Teacher'),
-        ('teacher', 'Teacher'),
-    ]
+# class Teacher(AbstractUser):
+#     CLASS_CHOICES =[
+#         ('class_teacher', 'Class Teacher'),
+#         ('teacher', 'Teacher'),
+#     ]
    
 # class Attendance(models.Model):
 #     class_name = models.CharField(max_length=100, choices=Teacher.CLASS_CHOICES)
