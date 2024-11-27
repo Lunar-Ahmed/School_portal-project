@@ -86,149 +86,47 @@
               </section>
                <!--Home Section End-->
                
-               <section class="about section" id="attendance">
+              <section class="about section" id="attendance">
                 <div class="container">
                     <div class="row">
-                        <div class="portfolio-filter padd-15">
-                          <div class="table-container">
-                            <table>
+                      <div class="portfolio-filter padd-15">
+                        {% comment %} <h1>Welcome, {{ firstname }} {{ surname }}</h1> {% endcomment %}
+
+                        {% if attendance_records %}
+                            <h2>Attendance Records for Class {{ teacher.Class_Teacher }}</h2>
+                            <table border="1">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Student Name</th>
-                                        <th>Wk 1</th>
-                                        <th>Wk 2</th>
-                                        <th>Wk 3</th>
-                                        <th>Wk 4</th>
-                                        <th>Wk 5</th>
-                                        <th>Wk 6</th>
-                                        <th>Wk 7</th>
-                                        <th>Wk 8</th>
-                                        <th>Wk 9</th>
-                                        <th>Wk 10</th>
-                                        <th>Wk 11</th>
-                                        <th>Wk 12</th>
-                                        <th>Wk 13</th>
-                                        <th>Wk 14</th>
-    
+                                        <th>Student</th>
+                                        {% for week in range(1, 15) %}
+                                            <th>Week {{ week }}</th>
+                                        {% endfor %}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="td">
-                                        <td>001</td>
-                                        <td>Student 1</td>
-                                        <td id="td">
-                                              <label><input type="checkbox" name="student1_week1_mon"></label>
-                                              <label><input type="checkbox" name="student1_week1_tue"></label>
-                                              <label><input type="checkbox" name="student1_week1_wed"></label>
-                                              <label><input type="checkbox" name="student1_week1_thu"></label>
-                                              <label><input type="checkbox" name="student1_week1_fri"></label>
-                                          
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                    </tr>  
+                                    {% for record in attendance_records %}
+                                        <tr>
+                                            <td>{{ record.student_name }}</td>
+                                            {% for week in range(1, 15) %}
+                                                <td>
+                                                    {% for i in range(1, 6) %}
+                                                        <input type="checkbox" name="week_{{ week }}_{{ i }}" {% if record.week_{{ week }} %}checked{% endif %} disabled>
+                                                    {% endfor %}
+                                                </td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
-                        </div>
+                        {% else %}
+                            <p>No attendance records available or you are not assigned as a class teacher.</p>
+                        {% endif %}
+                      </div>
                     </div>
-  
-                    </div>
-
                     <!-- portfolio Item Ends -->
-                  </div>
-                    
-                  </div>
-            </section>  
+                  </div>   
+                </div>
+              </section>  
 
 
             <section class="about section" id="about">

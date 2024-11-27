@@ -1,5 +1,5 @@
 from django.db import models
-# from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser
 
 class Enroll(models.Model):
     student_name = models.CharField(max_length=50)
@@ -8,7 +8,34 @@ class Enroll(models.Model):
     address = models.EmailField(max_length=100)
     Message = models.TextField(max_length=150)
     
-    
+class Teacher(AbstractUser):
+    CLASS_CHOICES =[
+        ('class_teacher', 'Class Teacher'),
+        ('teacher', 'Teacher'),
+    ]
+   
+# class Attendance(models.Model):
+#     class_name = models.CharField(max_length=100, choices=Teacher.CLASS_CHOICES)
+#     student_name = models.CharField(max_length=150)
+#     week_1 = models.BooleanField(default=False)
+#     week_2 = models.BooleanField(default=False)
+#     week_3 = models.BooleanField(default=False)
+#     week_4 = models.BooleanField(default=False)
+#     week_5 = models.BooleanField(default=False)
+#     week_6 = models.BooleanField(default=False)
+#     week_7 = models.BooleanField(default=False)
+#     week_8 = models.BooleanField(default=False)
+#     week_9 = models.BooleanField(default=False)
+#     week_10 = models.BooleanField(default=False)
+#     week_11 = models.BooleanField(default=False)
+#     week_12 = models.BooleanField(default=False)
+#     week_13 = models.BooleanField(default=False)
+#     week_14 = models.BooleanField(default=False)
+
+#     def __str__(self):
+#         return f"{self.class_name} - {self.student_name}"
+   
+
 class Teacher(models.Model):
     GENDER_CHOICES = [ ('M', 'Male'), ('F', 'Female'), ('O', 'Other'), ]
     SUBJECT_CHOICES = [ ('M', 'Mathematics(general)'), ('E', 'English(general)'), ('C', 'Civic(general)'), ('B', 'Biology(general)'), ('CH', 'Chemistry(science)'), ('PY', 'Physics(civic)'), ('DP', 'Data-Processing(general)'), ('MK', 'Marketing(commercial)'), ('EC', 'Economic(general)'), ('COM', 'Computer-Studies(general)'), ('FM', 'Further-Math(science)'), ('GV', 'Government(art, commercial)'), ('LT', 'Literature(art)'), ('CM', 'Commerce(commercial)'), ('Ac', 'Accounting(commercial)'), ('HS', 'History(art)'), ('GG', 'Geography(science)'), ('C', 'Book-Keeping(science)'),  ('Is', 'Islamic-Studies(general)'), ('Chr', 'Christain-Studies(general)'), ('TD', 'Technical-Drawing(science)'),]
@@ -29,43 +56,40 @@ class Teacher(models.Model):
     Password = models.CharField(max_length=150) 
     Cv = models.FileField(upload_to='documents/')
     
-    def __str__(self):
-        return f"{self.firstname} {self.lastname}"
-    
-class Student(models.Model):
-    GENDER_CHOICES = [ 
-        ('M', 'Male'), 
-        ('F', 'Female'),
-        ('O', 'Other'), 
-        ]
-    DEPARTMENT_CHOICES = [ 
-        ('S', 'Science'), 
-        ('A', 'Art'),
-        ('C', 'Commercial'), 
-        ]
-    CLASS_CHOICES = [ 
-        ('J1', 'JsS1'), 
-        ('J2', 'Jss2'),
-        ('J3', 'Jss3'), 
-        ('S1', 'SS1'), 
-        ('S2', 'Ss2'),
-        ('S3', 'Ss3'), 
-        ]
-    Profile_Picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
-    Firstname = models.CharField(max_length=150, null=True)
-    Middlename = models.CharField(max_length=150, null=True)
-    Lastname = models.CharField(max_length=150, null=True)
-    username = models.CharField(max_length=250)
-    Mobile = models.IntegerField(null=True)
-    Department = models.CharField(max_length=5, choices=DEPARTMENT_CHOICES)
-    Parent_Mobile = models.IntegerField()
-    Address = models.CharField(max_length=150, null=True)
-    Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    Class =  models.CharField(max_length=5, choices=CLASS_CHOICES)
-    DOB= models.DateTimeField()
-    Email = models.EmailField(max_length=100)
-    Admission_Number = models.CharField(max_length=150)
-    Password = models.CharField(max_length=150)  
+# class Student(models.Model):
+#     GENDER_CHOICES = [ 
+#         ('M', 'Male'), 
+#         ('F', 'Female'),
+#         ('O', 'Other'), 
+#         ]
+#     DEPARTMENT_CHOICES = [ 
+#         ('S', 'Science'), 
+#         ('A', 'Art'),
+#         ('C', 'Commercial'), 
+#         ]
+#     CLASS_CHOICES = [ 
+#         ('J1', 'JsS1'), 
+#         ('J2', 'Jss2'),
+#         ('J3', 'Jss3'), 
+#         ('S1', 'SS1'), 
+#         ('S2', 'Ss2'),
+#         ('S3', 'Ss3'), 
+#         ]
+#     Profile_Picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+#     Firstname = models.CharField(max_length=150, null=True)
+#     Middlename = models.CharField(max_length=150, null=True)
+#     Lastname = models.CharField(max_length=150, null=True)
+#     username = models.CharField(max_length=250)
+#     Mobile = models.IntegerField(null=True)
+#     Department = models.CharField(max_length=5, choices=DEPARTMENT_CHOICES)
+#     Parent_Mobile = models.IntegerField()
+#     Address = models.CharField(max_length=150, null=True)
+#     Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+#     Class =  models.CharField(max_length=5, choices=CLASS_CHOICES)
+#     DOB= models.DateTimeField()
+#     Email = models.EmailField(max_length=100)
+#     Admission_Number = models.CharField(max_length=150)
+#     Password = models.CharField(max_length=150)  
 
     
     

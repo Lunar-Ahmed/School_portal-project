@@ -5,35 +5,37 @@ from .models import Student, Enroll, Teacher
 class TeacherReg(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ['profile_picture','Firstname', 'Middlename','Lastname', 'Mobile', 'Address', 'Gender', 'Emergency', 'Subject_Teacher', 'Class_Teacher', 'DOB', 'Cv','Email', 'Password']
+        fields = '__all__'
         widgets = {
             'DOB': forms.DateInput(attrs={'type': 'date'}),
             'Gender': forms.Select,
             'Subject_Teacher': forms.Select(attrs={'placeholder': 'Choose Subject'}),
             'Class_Teacher': forms.Select
         }
+
+
         
 
         
-class StudentRegForm(forms.ModelForm):
-    class Meta:
-        model = Student
-        fields = ['Profile_Picture', 'Firstname', 'Middlename', 'Lastname', 'username', 'Mobile', 'Department', 'Parent_Mobile', 'Address', 'Gender', 'Class', 'DOB', 'Email', 'Admission_Number', 'Password']
-        widgets = {
-            'DOB': forms.DateInput(attrs={'type': 'date'}),
-            'Gender': forms.Select,
-            'Department': forms.Select,
-            'Class': forms.Select
-        }
+# class StudentRegForm(forms.ModelForm):
+#     class Meta:
+#         model = Student
+#         fields = ['Profile_Picture', 'Firstname', 'Middlename', 'Lastname', 'username', 'Mobile', 'Department', 'Parent_Mobile', 'Address', 'Gender', 'Class', 'DOB', 'Email', 'Admission_Number', 'Password']
+#         widgets = {
+#             'DOB': forms.DateInput(attrs={'type': 'date'}),
+#             'Gender': forms.Select,
+#             'Department': forms.Select,
+#             'Class': forms.Select
+#         }
         
-class EnrollForm(forms.ModelForm):
-    class Meta:
-        model : Enroll
-        fields = ['student_name', 'parent-phone', 'email', 'address', 'message']
+# class EnrollForm(forms.ModelForm):
+#     class Meta:
+#         model : Enroll
+#         fields = ['student_name', 'parent-phone', 'email', 'address', 'message']
             
-class AdminLogin(forms.Form):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput)
+# class AdminLogin(forms.Form):
+#     username = forms.CharField(max_length=100)
+#     password = forms.CharField(widget=forms.PasswordInput)
     
 
         

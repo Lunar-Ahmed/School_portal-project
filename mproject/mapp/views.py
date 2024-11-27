@@ -22,6 +22,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Teacher, Attendance  # Ensure Attendance model is imported
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Teacher, Attendance
+
 def teacher(request):
     user_id = request.session.get('user_id')
     
@@ -45,6 +49,7 @@ def teacher(request):
                    'firstname': teacher.Firstname,
                    'surname': teacher.Lastname,
                    'image_url': teacher.profile_picture.url if teacher.profile_picture else None})
+
 
 
 
