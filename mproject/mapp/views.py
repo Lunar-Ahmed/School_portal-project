@@ -15,42 +15,9 @@ def admin(request):
     template = loader.get_template('base.html')
     return HttpResponse(template.render())
 
-# def teacher(request):
-#     template = loader.get_template('teacherboard.html')
-#     return HttpResponse(template.render())
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import Teacher, Attendance  # Ensure Attendance model is imported
-
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import Teacher, Attendance
-
 def teacher(request):
-    user_id = request.session.get('user_id')
-    
-    if not user_id:
-        return redirect('teacher_login')
-    
-    try:
-        teacher = Teacher.objects.get(id=user_id)
-    except Teacher.DoesNotExist:
-        messages.error(request, "Teacher not found.")
-        return redirect('teacher_login')
-
-    # Check if the teacher is a class teacher and get class attendance
-    if teacher.Class_Teacher:
-        attendance_records = Attendance.objects.filter(class_name=teacher.Class_Teacher)
-    else:
-        attendance_records = []
-
-    return render(request, 'anyi/teacher.html', 
-                  {'attendance_records': attendance_records,
-                   'firstname': teacher.Firstname,
-                   'surname': teacher.Lastname,
-                   'image_url': teacher.profile_picture.url if teacher.profile_picture else None})
-
-
+    template = loader.get_template('teacherboard.html')
+    return HttpResponse(template.render())
 
 
 def student(request):
@@ -83,16 +50,28 @@ def acad(request):
 #     return render(request, 'enroll_register.html', {'form': form})
 
 
+# def teacher_register(request):
+#     form = TeacherReg()
+#     if request.method == 'POST':
+#         form = TeacherReg(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('teacher')
+#     # else:
+#     #     form = UserRegistrationForm()
+#     return render(request, 'teacher_reg.html', {'form': form})
+
 def teacher_register(request):
-    form = TeacherReg()
     if request.method == 'POST':
-        form = TeacherReg(request.POST)
+        form = TeacherReg(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('teacher')
-    # else:
-    #     form = UserRegistrationForm()
+            form.save()  # This will save the form data to the database
+            return redirect('teacher')  # Redirect to a success page
+    else:
+        form = TeacherReg()
+    
     return render(request, 'teacher_reg.html', {'form': form})
+
 
 
 # def student_register(request):

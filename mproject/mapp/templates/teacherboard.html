@@ -92,7 +92,7 @@
                       <div class="portfolio-filter padd-15">
                         {% comment %} <h1>Welcome, {{ firstname }} {{ surname }}</h1> {% endcomment %}
 
-                        {% if attendance_records %}
+                        {% comment %} {% if attendance_records %}
                             <h2>Attendance Records for Class {{ teacher.Class_Teacher }}</h2>
                             <table border="1">
                                 <thead>
@@ -122,7 +122,7 @@
                             <p>No attendance records available or you are not assigned as a class teacher.</p>
                         {% endif %}
                       </div>
-                    </div>
+                    </div> {% endcomment %}
                     <!-- portfolio Item Ends -->
                   </div>   
                 </div>
