@@ -11,9 +11,4 @@ urlpatterns = [
     path('vice-principal', views.acad, name='acad'),
     path('vice-principal/teacher_register/', views.teacher_register, name='teacher_register'),
     path('teacher_login/', views.teacher_login, name='teacher_login'),
-    
-    # path('vice-principal/student_register/', views.student_register, name='student_register'),
-    # path('student_login/', views.student_login, name='student_login'),
-    # path('admin_login/admins', views.user_register, name='user_register'),
-    # path('enroll_form', views.enroll_form, name='enroll_form')
-]
+    ]
