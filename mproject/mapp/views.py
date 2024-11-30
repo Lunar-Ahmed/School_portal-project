@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.template import loader
 from .forms import TeacherReg, TeacherLog #StudentRegForm, EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from .models import Teacher 
 # from .models import Admin
 
 # from django.contrib.auth import authenticate, login
@@ -72,21 +74,44 @@ def teacher_register(request):
     
     return render(request, 'teacher_reg.html', {'form': form})
 
+
 def teacher_login(request):
-    form = TeacherLog()
     if request.method == 'POST':
-        form = TeacherLog(request.POST)
+        form = TeacherLog(request.POST)  # Use the LoginForm for authentication
         if form.is_valid():
-            Username = form.cleaned_data['Username']
-            Password = form.cleaned_data['Password']
-            user = authenticate(request, email=Username, password=Password)
-            if user is not None:
-                login(request, user)
-                return redirect('teacher')
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            
+            # Fetch the teacher by username and check the password
+            teacher_user = Teacher.objects.filter(username=username).first()
+            if teacher_user and teacher_user.password == password:  # Replace with hashed password check if necessary
+                # Store the teacher's role and ID in the session
+                request.session['role'] = 'Teacher'
+                request.session['user_id'] = teacher_user.id
+                messages.success(request, 'Login successful!')
+                return redirect('teacher_dashboard')  # Redirect to the teacher's dashboard
             else:
-                form.add_error(None,'Invalid email or password')
-    context = {'loginform': form}
-    return render(request, 'teacher_log.html', context=context)
+                messages.error(request, 'Invalid username or password')
+    else:
+        form = TeacherLog()  # Render an empty login form for GET requests
+        
+    return render(request, 'teacher_log.html', {'form': form})
+
+# def teacher_login(request):
+#     form = TeacherLog()
+#     if request.method == 'POST':
+#         form = TeacherLog(request.POST)
+#         if form.is_valid():
+#             Username = form.cleaned_data['Username']
+#             Password = form.cleaned_data['Password']
+#             user = authenticate(request, email=Username, password=Password)
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect('teacher')
+#             else:
+#                 form.add_error(None,'Invalid email or password')
+#     context = {'loginform': form}
+#     return render(request, 'teacher_log.html', context=context)
 
 # def student_register(request):
 #     form = StudentRegForm()
