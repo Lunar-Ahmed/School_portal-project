@@ -17,7 +17,7 @@ class TeacherReg(forms.ModelForm):
 class TeacherLog(forms.ModelForm):
     class Meta:
         model = Tlogin
-        fields = ['Username', 'Password']
+        fields = ['username', 'Password']
 
 
         

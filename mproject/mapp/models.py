@@ -61,7 +61,7 @@ class Teacher(models.Model):
         return f"{self.Firstname} {self.Lastname}"
     
 class Tlogin(models.Model):
-    Username = models.CharField(max_length=50)
+    username = models.CharField(max_length=50)
     Password = models.CharField(max_length=50)
     
 # class Student(models.Model):

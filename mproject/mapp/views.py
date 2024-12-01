@@ -17,9 +17,20 @@ def admin(request):
     template = loader.get_template('base.html')
     return HttpResponse(template.render())
 
+# def teacher(request):
+#     teachd = Teacher.objects.all().values()
+#     template = loader.get_template('teacherboard.html')
+#     context = {
+#         'teachd': teachd,
+#     }
+#     return HttpResponse(template.render(context, request)
 def teacher(request):
-    template = loader.get_template('teacherboard.html')
-    return HttpResponse(template.render())
+    teachd = Teacher.objects.all()
+    context = {
+        'teachd': teachd,
+    }
+    return render(request, 'teacherboard.html', context)
+
 
 
 def student(request):
@@ -80,16 +91,16 @@ def teacher_login(request):
         form = TeacherLog(request.POST)  # Use the LoginForm for authentication
         if form.is_valid():
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            Password = form.cleaned_data['Password']
             
             # Fetch the teacher by username and check the password
             teacher_user = Teacher.objects.filter(username=username).first()
-            if teacher_user and teacher_user.password == password:  # Replace with hashed password check if necessary
+            if teacher_user and teacher_user.Password == Password:  # Replace with hashed password check if necessary
                 # Store the teacher's role and ID in the session
                 request.session['role'] = 'Teacher'
                 request.session['user_id'] = teacher_user.id
                 messages.success(request, 'Login successful!')
-                return redirect('teacher_dashboard')  # Redirect to the teacher's dashboard
+                return redirect('teacher')  # Redirect to the teacher's dashboard
             else:
                 messages.error(request, 'Invalid username or password')
     else:
