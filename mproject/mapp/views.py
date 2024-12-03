@@ -26,10 +26,8 @@ def admin(request):
 #     return HttpResponse(template.render(context, request)
 def teacher(request):
     teachd = Teacher.objects.all()
-    context = {
-        'teachd': teachd,
-    }
-    return render(request, 'teacherboard.html', context)
+    return render(request, 'teacherboard.html', {'teachd':teachd})
+
 
 
 
