@@ -26,11 +26,13 @@ def admin(request):
 #     return HttpResponse(template.render(context, request)
 def teacher(request):
     teachd = Teacher.objects.all()
+    template = loader.get_template('teacherboard.html')
     context = {
         'teachd': teachd,
-        # Add other fields as needed
     }
-    return render(request, 'teacherboard.html', context)
+    return HttpResponse(template.render(context, request))
+
+
 
 
 
