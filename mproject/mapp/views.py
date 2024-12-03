@@ -5,7 +5,7 @@ from .forms import TeacherReg, TeacherLog #StudentRegForm, EnrollForm #Authority
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Teacher 
-# from django.contrib.auth.decorators import login_required
+
 # from .models import Admin
 
 # from django.contrib.auth import authenticate, login
@@ -40,17 +40,13 @@ def admin(request):
 
 
 
-def teacher(request):
-    teacher_id = request.session.get('user_id')
-    if not teacher_id:
-        return redirect('teacher_login')
-    
-    teacher = Teacher.objects.get(id=teacher_id)
-    context = {
-        'teacher': teacher
-    }
-    return render(request, 'anyi/teacher_dashboard.html', context)
 
+def teacher(request):
+    user = request.user  # This gets the logged-in user's info
+    context = {
+        'username': user.username,
+    }
+    return render(request, 'teacherboard.html', context)
 
 
 
