@@ -5,7 +5,7 @@ from .forms import TeacherReg, TeacherLog #StudentRegForm, EnrollForm #Authority
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Teacher 
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 # from .models import Admin
 
 # from django.contrib.auth import authenticate, login
@@ -34,18 +34,22 @@ def admin(request):
 #     return HttpResponse(template.render(context, request))
 
 
-def teacher(request, user_id):
-    user = Teacher.objects.get(id=user_id)
-    return render(request, 'teacherboard.html', {'user': user})
+# def teacher(request, user_id):
+#     user = Teacher.objects.get(id=user_id)
+#     return render(request, 'teacherboard.html', {'user': user})
 
 
-from django.shortcuts import render
 
-
-@login_required
 def teacher(request):
-    user = request.user
-    return render(request, 'teacherboard.html', {'user': user})
+    teacher_id = request.session.get('user_id')
+    if not teacher_id:
+        return redirect('teacher_login')
+    
+    teacher = Teacher.objects.get(id=teacher_id)
+    context = {
+        'teacher': teacher
+    }
+    return render(request, 'anyi/teacher_dashboard.html', context)
 
 
 
