@@ -26,7 +26,12 @@ def admin(request):
 #     return HttpResponse(template.render(context, request)
 def teacher(request):
     teachd = Teacher.objects.all()
-    return render(request, 'teacherboard.html', {'teachd':teachd})
+    context = {
+        'teachd': teachd,
+        # Add other fields as needed
+    }
+    return render(request, 'teacherboard.html', context)
+
 
 
 
