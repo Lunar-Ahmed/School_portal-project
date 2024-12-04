@@ -55,7 +55,7 @@ class Teacher(models.Model):
     DOB= models.DateTimeField()
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=150) 
-    Cv = models.FileField(upload_to='documents/')
+    Cv = models.FileField(upload_to='documents/', null=True)
     
     def __str__(self):
         return f"{self.Firstname} {self.Lastname}"

@@ -88,7 +88,7 @@ def teacher_register(request):
         form = TeacherReg(request.POST, request.FILES)
         if form.is_valid():
             form.save()  # This will save the form data to the database
-            return redirect('teacher')  # Redirect to a success page
+            return redirect('teacher_login')  # Redirect to a success page
     else:
         form = TeacherReg()
     
