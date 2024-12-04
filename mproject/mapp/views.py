@@ -42,14 +42,8 @@ def admin(request):
 
 
 def teacher(request):
-    user = request.user  # This gets the logged-in user's info
-    context = {
-        'username': user.username,
-    }
-    return render(request, 'teacherboard.html', context)
-
-
-
+    template = loader.get_template('teacherboard.html')
+    return HttpResponse(template.render())
 
 
 def student(request):
@@ -105,43 +99,31 @@ def teacher_register(request):
     return render(request, 'teacher_reg.html', {'form': form})
 
 
+
 def teacher_login(request):
     if request.method == 'POST':
-        form = TeacherLog(request.POST)  # Use the LoginForm for authentication
+        form = TeacherLog(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             Password = form.cleaned_data['Password']
             
-            # Fetch the teacher by username and check the password
-            teacher_user = Teacher.objects.filter(username=username).first()
-            if teacher_user and teacher_user.Password == Password:  # Replace with hashed password check if necessary
-                # Store the teacher's role and ID in the session
+            teacherd = Teacher.objects.filter(username=username).first()
+            if teacherd and teacherd.Password == Password:
+                
                 request.session['role'] = 'Teacher'
-                request.session['user_id'] = teacher_user.id
+                request.session['user_id'] = teacherd.id
                 messages.success(request, 'Login successful!')
-                return redirect('teacher')  # Redirect to the teacher's dashboard
+                return redirect('teacher')
             else:
                 messages.error(request, 'Invalid username or password')
     else:
-        form = TeacherLog()  # Render an empty login form for GET requests
+        form = TeacherLog()
         
     return render(request, 'teacher_log.html', {'form': form})
 
-# def teacher_login(request):
-#     form = TeacherLog()
-#     if request.method == 'POST':
-#         form = TeacherLog(request.POST)
-#         if form.is_valid():
-#             Username = form.cleaned_data['Username']
-#             Password = form.cleaned_data['Password']
-#             user = authenticate(request, email=Username, password=Password)
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('teacher')
-#             else:
-#                 form.add_error(None,'Invalid email or password')
-#     context = {'loginform': form}
-#     return render(request, 'teacher_log.html', context=context)
+
+
+
 
 # def student_register(request):
 #     form = StudentRegForm()
@@ -250,3 +232,43 @@ def student_login(request):
 #                 form.add_error(None, 'Invalid username or password')
 #     context = {'loginform': form}
 #     return render(request, 'login.html', context=context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def teacher_login(request):
+#     if request.method == 'POST':
+#         form = TeacherLog(request.POST)  # Use the LoginForm for authentication
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             Password = form.cleaned_data['Password']
+            
+#             # Fetch the teacher by username and check the password
+#             teacher_user = Teacher.objects.filter(username=username).first()
+#             if teacher_user and teacher_user.Password == Password:  # Replace with hashed password check if necessary
+#                 # Store the teacher's role and ID in the session
+#                 request.session['role'] = 'Teacher'
+#                 request.session['user_id'] = teacher_user.id
+#                 messages.success(request, 'Login successful!')
+#                 return redirect('teacher')  # Redirect to the teacher's dashboard
+#             else:
+#                 messages.error(request, 'Invalid username or password')
+#     else:
+#         form = TeacherLog()  # Render an empty login form for GET requests
+        
+#     return render(request, 'teacher_log.html', {'form': form})
