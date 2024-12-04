@@ -176,24 +176,30 @@
             
                              <div class="jsstwo"><a href="#">
                                 <div class="contain">
-                                <h1>JSS</h1>
-                                <h2>2</h2>
+                                <button id="showTextButton">
+                                  <h1>JSS</h1>
+                                  <h2>2</h2>
+                                </button>
                                 </div>
                                 </a>   
                                </div>
             
                                <div class="jssthree"><a href="#">
                                 <div class="contain">
-                                <h1>JSS</h1>
-                                <h2>3</h2>
+                                  <button id="showTextButton">
+                                    <h1>JSS</h1>
+                                    <h2>3</h2>
+                                  </button>
                                 </div>
                                 </a>   
                                </div>     
                                
                                <div class="ssone"><a href="#">
                                 <div class="contain">
-                                <h1>SS</h1>
-                                <h2>1</h2>
+                                  <button id="showTextButton">
+                                    <h1>SS</h1>
+                                    <h2>1</h2>
+                                  </button>
                                 </div>
                                 </a>   
                                </div>  
@@ -256,8 +262,9 @@
                               <label for="myCheckbox"> 
                                 <input type="checkbox" id="myCheckbox" name="myCheckbox"> Some</label>
                             </div>
+                            <button type="submit">Submit</button>
 
-                        </div>
+                          </div>
   
                     </div>
 
@@ -496,7 +503,17 @@
               </div>
           </section>
           <!--Blog Section Ends-->
+          <script>
+            document.getElementById("showTextButton").onclick = function() {
+              const hiddenText = document.getElementById("hiddenText");
+              hiddenText.style.display = "block";
+            };
 
+            document.getElementById("cardOne").onclick = function() {
+              const cardData = document.getElementById("cardData");
+              CardData.style.display = "block";
+            };
+           </script>
 
             
            </div>
