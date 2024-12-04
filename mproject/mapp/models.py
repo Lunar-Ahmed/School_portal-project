@@ -56,9 +56,25 @@ class Teacher(models.Model):
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=150) 
     Cv = models.FileField(upload_to='documents/', null=True)
+    is_disabled = models.BooleanField(default=False)
     
     def __str__(self):
         return f"{self.Firstname} {self.Lastname}"
+    
+    
+    from django.contrib.auth.backends import ModelBackend
+from django.contrib.auth import get_user_model
+
+class CustomBackend(ModelBackend):
+    def authenticate(self, request, username=None, password=None, **kwargs):
+        User = get_user_model()
+        try:
+            user = User.objects.get(username=username)
+            if user.check_password(password) and not user.is_disabled:
+                return user
+        except User.DoesNotExist:
+            return None
+
     
     
 # class Student(models.Model):

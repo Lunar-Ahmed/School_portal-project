@@ -247,6 +247,16 @@ def student_login(request):
 #     context = {'loginform': form}
 #     return render(request, 'login.html', context=context)
 
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse
+from .models import Teacher
+
+def toggle_teacher_status(request, teacher_id):
+    teacher = get_object_or_404(Teacher, id=teacher_id)
+    teacher.is_disabled = not teacher.is_disabled
+    teacher.save()
+    return redirect('index')  # Adjust this to your actual view name
+
 
 
 
