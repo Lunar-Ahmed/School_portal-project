@@ -93,10 +93,11 @@
                         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                       </div>
                       <table>
+                        {% for x in teacher_data %}
                           <thead>
                               <tr>
                                   <th>Id</th>
-                                  <th>Name</th>
+                                  <th>FirstName</th>
                                   <th>Phone</th>
                                   <th>Email</th>
                                   <th></th>
@@ -105,17 +106,10 @@
                           <tbody>
                               <!-- Add rows here -->
                               <tr>
-                                  <td>001</td>
-                                  <td>Dominic Stallone</td>
-                                  <td>05-876545</td>
-                                  <td>dom@gmail.com</td>
-                                  <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
-                              </tr>
-                              <tr>
-                                  <td>002</td>
-                                  <td>Torreto Sylvester</td>
-                                  <td>01-098765</td>
-                                  <td>retto@gmail.com</td>
+                                  <td>{{ id }}</td>
+                                  <td>{{ teacher_data.Firstname }}{{ teacher_data.Lastname }}</td>
+                                  <td></td>
+                                  <td>{{ teacher_data.Email }}</td>
                                   <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
                               </tr>
                               <!-- Add more rows as needed -->

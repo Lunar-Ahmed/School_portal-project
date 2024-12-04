@@ -55,8 +55,12 @@ def assignment(request):
     return HttpResponse(template.render())
 
 def acad(request):
+    teacher_data = Teacher.objects.all().values
     template = loader.get_template('acad_dashboard.html')
-    return HttpResponse(template.render())
+    context = {
+        'teacher_data': teacher_data
+    }
+    return HttpResponse(template.render(request, context))
 
 #================REGISTERATION================
 
