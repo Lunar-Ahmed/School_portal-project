@@ -38,7 +38,7 @@
                <!--logo-->
                <div class="logo">
                 <div class="logo" id="logo">
-                  <img src="{{ teachd.profile_picture.url }}" alt="profile photo" style="border-radius:50%; border:5px solid white;">
+                  <img src="{{ teacher.profile_picture.url }}" alt="profile photo" style="border-radius:50%; border:5px solid white;">
                     <a href="#home" class="active"><span style="color:mediumblue;">{{ teacher.username }}</span>inic69</a>
                   </div>
                </div>
@@ -78,10 +78,10 @@
                        <h1 id="wel">Welcome {{ teacher.username }}</h1>
                       <div class="tsaprofile"> 
                         {% comment %} <img src="{% static 'images/profile.png' %}"> {% endcomment %}
-                        <img id="img" src="{{ teacher.profile_picturel }}" alt="{{ teachd.Firstname }}">
+                        <img id="img" src="{{ teacher.profile_picture.url }}" alt="{{ teacher.Firstname }}">
                         <p><span style="color:mediumblue;">DOM</span>INIC TORRETO</P>
-                        <p>{{ teachd.email }}</P>
-                        <p>04-765498</P>
+                        <p>{{ teacher.Email }}</P>
+                        <p>{{ teacher.Phone }}</P>
                       </div>
                 </div>
               </section>
