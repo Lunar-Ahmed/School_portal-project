@@ -90,10 +90,9 @@
                 <div class="portfolio-filter padd-15">
                     <div class="table-container" style="width:75vw;">
                       <div class="search">
-                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                        <input type="text" id="myinput" onkeyup="myFunction()" placeholder="Search for names..">
                       </div>
-                      <table>
-                        {% for x in teacher_data %}
+                      <table id="data-table">
                           <thead>
                               <tr>
                                   <th>Id</th>
@@ -104,15 +103,15 @@
                               </tr>
                           </thead>
                           <tbody>
-                              <!-- Add rows here -->
+                            {% for x in teacher_data %}
                               <tr>
-                                  <td>{{ id }}</td>
-                                  <td>{{ teacher_data.Firstname }}{{ teacher_data.Lastname }}</td>
-                                  <td></td>
-                                  <td>{{ teacher_data.Email }}</td>
+                                  <td>{{ x.id }}</td>
+                                  <td>{{ x.Firstname }} {{x.Middlename }} {{ x.Lastname }}</td>
+                                  <td>{{ x.Mobile }}</td>
+                                  <td>{{ x.Email }}</td>
                                   <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
                               </tr>
-                              <!-- Add more rows as needed -->
+                              {% endfor %}
                           </tbody>
                       </table>
                       <button id="add" ><a href="vice-principal/teacher_register">Add</a></button>
@@ -491,7 +490,24 @@
           </section>
         <!--Blog Section Ends-->
 
-
+        <script>
+          document.querySelector('#search-bar').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const tableRows = document.querySelectorAll('#data-table tbody tr');
+        
+            tableRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+        
+                if (rowText.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+        
+        </script>
        
       </div>
       <!--Main content ends-->
@@ -513,6 +529,7 @@
     <div class="next-item" onclick="nextItem"><i class="fa fa-angle-right"></i></div>
   </div>
 </div>
+
 <!-- Lightbox ends-->
 
 <!--Live Switcher begins-->
