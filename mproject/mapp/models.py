@@ -60,9 +60,6 @@ class Teacher(models.Model):
     def __str__(self):
         return f"{self.Firstname} {self.Lastname}"
     
-class Tlogin(models.Model):
-    username = models.CharField(max_length=50)
-    Password = models.CharField(max_length=50)
     
 # class Student(models.Model):
 #     GENDER_CHOICES = [ 

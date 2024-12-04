@@ -1,5 +1,5 @@
 from django import forms
-from .models import Teacher, Tlogin#Student, Enroll
+from .models import Teacher #Student, Enroll
 from django.contrib.auth.forms import AuthenticationForm
 
 class TeacherReg(forms.ModelForm):
@@ -16,7 +16,7 @@ class TeacherReg(forms.ModelForm):
 
 class TeacherLog(forms.ModelForm):
     class Meta:
-        model = Tlogin
+        model = Teacher
         fields = ['username', 'Password']
 
 

@@ -39,7 +39,7 @@
                <div class="logo">
                 <div class="logo" id="logo">
                   <img src="{{ teachd.profile_picture.url }}" alt="profile photo" style="border-radius:50%; border:5px solid white;">
-                    <a href="#home" class="active"><span style="color:mediumblue;">Dom</span>inic69</a>
+                    <a href="#home" class="active"><span style="color:mediumblue;">{{ teacher.username }}</span>inic69</a>
                   </div>
                </div>
                <!--Nav Toggle btn-->
@@ -75,10 +75,10 @@
                <section class="home section active" id="home">
                 <div class="container">
                     <div class="intro">
-                       <h1 id="wel">Welcome {{ teacherd.username }}</h1>
+                       <h1 id="wel">Welcome {{ teacher.username }}</h1>
                       <div class="tsaprofile"> 
                         {% comment %} <img src="{% static 'images/profile.png' %}"> {% endcomment %}
-                        <img id="img" src="{{ teachd.profile_picture.url }}" alt="{{ teachd.Firstname }}">
+                        <img id="img" src="{{ teacher.profile_picturel }}" alt="{{ teachd.Firstname }}">
                         <p><span style="color:mediumblue;">DOM</span>INIC TORRETO</P>
                         <p>{{ teachd.email }}</P>
                         <p>04-765498</P>

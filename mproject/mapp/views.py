@@ -34,10 +34,6 @@ def admin(request):
 #     return HttpResponse(template.render(context, request))
 
 
-# def teacher(request, user_id):
-#     user = Teacher.objects.get(id=user_id)
-#     return render(request, 'teacherboard.html', {'user': user})
-
 
 
 
@@ -108,11 +104,11 @@ def teacher_login(request):
             Password = form.cleaned_data['Password']
             
             teacherd = Teacher.objects.filter(username=username).first()
+            
             if teacherd and teacherd.Password == Password:
-                
                 request.session['role'] = 'Teacher'
                 request.session['user_id'] = teacherd.id
-                messages.success(request, 'Login successful!')
+                messages.success(request, 'Login successful')
                 return redirect('teacher')
             else:
                 messages.error(request, 'Invalid username or password')
@@ -120,6 +116,20 @@ def teacher_login(request):
         form = TeacherLog()
         
     return render(request, 'teacher_log.html', {'form': form})
+
+
+
+def teacher(request):
+    
+    teacher_id = request.session.get('user_id')
+    if not teacher_id:
+        return redirect('teacher_log')    
+
+    teacher = Teacher.objects.get(id=teacher_id)
+    
+    
+    return render(request, 'teacherboard.html', {'teacher': teacher})
+
 
 
 
