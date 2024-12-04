@@ -20,6 +20,7 @@
 
         <link rel="stylesheet" href="{%static 'css/styleSwitcher.css' %}" type="text/css">
         <link rel="stylesheet" href="{%static 'testing.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/tab.css' %}" type="text/css">
 
 
     </head>
@@ -81,7 +82,7 @@
                         <img id="img" src="{{ teacher.profile_picture.url }}" alt="{{ teacher.Firstname }}">
                         <p><span style="color:mediumblue;">DOM</span>INIC TORRETO</P>
                         <p>{{ teacher.Email }}</P>
-                        <p>{{ teacher.Phone }}</P>
+                        <p>{{ teacher.Mobile }}</P>
                       </div>
                 </div>
               </section>
@@ -162,7 +163,87 @@
                 <div class="container">
                     <div class="row">
                         <div class="portfolio-filter padd-15">
-                          <div class="assign">
+                          <div class="cardss" style="width:100vw;">
+                            <div class="jssone"><a href="#">
+                              <div class="contain">
+                              <button id="showTextButton"> 
+                                <h1>JSS</h1>
+                                <h2>1</h2>
+                              </button>
+                              </div>
+                              </a>   
+                             </div>
+            
+                             <div class="jsstwo"><a href="#">
+                                <div class="contain">
+                                <h1>JSS</h1>
+                                <h2>2</h2>
+                                </div>
+                                </a>   
+                               </div>
+            
+                               <div class="jssthree"><a href="#">
+                                <div class="contain">
+                                <h1>JSS</h1>
+                                <h2>3</h2>
+                                </div>
+                                </a>   
+                               </div>     
+                               
+                               <div class="ssone"><a href="#">
+                                <div class="contain">
+                                <h1>SS</h1>
+                                <h2>1</h2>
+                                </div>
+                                </a>   
+                               </div>  
+            
+                               <div class="sstwo"><a href="#">
+                                <div class="contain">
+                                <h1>SS</h1>
+                                <h2>2</h2>
+                                </div>
+                                </a>   
+                               </div>  
+            
+                               <div class="ssthree"><a href="#">
+                                <div class="contain">
+                                <h1>SS</h1>
+                                <h2>3</h2>
+                                </div>
+                                </a>   
+                               </div>  
+                            </div>
+            
+                            {% comment %} <div class="search">
+                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                            </div> {% endcomment %}
+            
+                            <table id="myTable">
+                              <!-- <tr class="header">
+                                <th style="width:30%;"></th>
+                                <th style="width:25%;"></th>
+                                <th style="width:25%;"></th>
+                                <th style="width:20%;"></th>
+                              </tr> -->
+                              
+                              {% comment %} {% for row in data %}
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
+                                <td>{{ row[2] }}</a></td>
+                                <td style="font-size: medium;"><a  href="">View</a>   <a  href="">Modify</a></td>
+                              </tr>
+                              {% endfor %} {% endcomment %}
+                            </table>
+            
+                            {% comment %} <div id="hiddenText" style="display: none;">
+                              <form action="/upload" method="post" enctype="multipart/form-data">
+                                  <input type="file" name="file">
+                                  <br>
+                                  <button type="submit">Submit</button>
+                              </form>
+                          </div>             {% endcomment %}
+                          <div id="hiddenText" class="assign" style="margin-top: 10px; display:none;">
                             <label for="perfect-textarea"></label>
                             <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
 
