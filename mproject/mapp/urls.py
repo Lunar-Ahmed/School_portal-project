@@ -13,5 +13,5 @@ urlpatterns = [
     path('vice-principal', views.acad, name='acad'),
     path('vice-principal/teacher_register/', views.teacher_register, name='teacher_register'),
     path('teacher_login/', views.teacher_login, name='teacher_login'),
-    path('toggle-status/<int:teacher_id>/',views.toggle_teacher_status, name='toggle_teacher_status'),
+    path('teachers/toggle/<int:teacher_id>/', views.toggle_teacher_status, name='toggle_teacher_status'),
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

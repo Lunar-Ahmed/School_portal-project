@@ -266,7 +266,7 @@ def toggle_teacher_status(request, teacher_id):
         teacher.user.is_active = not teacher.is_disabled
         teacher.user.save()
 
-    return redirect('teacher_list')  # Redirect back to the teacher list page
+    return redirect('acad')  # Redirect back to the teacher list page
 
 
 
