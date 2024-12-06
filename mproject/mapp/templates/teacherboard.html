@@ -506,24 +506,18 @@
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          <!-- Add rows here -->
-                                          <tr>
-                                              <td>Dominic</td>
-                                              <td><input type=text></td>
-                                              <td>9</td>
-                                              <td>19</td>
-                                              <td>34</td>
-                                              <td><button>Edit</button></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Lunar</td>
-                                              <td>12</td>
-                                              <td>11</td>
-                                              <td>13</td>
-                                              <td>35</td>
-                                              <td><button>Edit</button></td>
-                                          </tr>
-                                          <!-- Add more rows as needed -->
+                                        {% for student in students %}
+                                        <tr id="student-{{ student.id }}">
+                                          <td>{{ student.student_name }}</td>
+                                          <td><input type="number" id="ca1-{{ student.id }}" value="{{ student.ca1 }}" onchange="updateTotal({{ student.id }})"></td>
+                                          <td><input type="number" id="ca2-{{ student.id }}" value="{{ student.ca2 }}" onchange="updateTotal({{ student.id }})"></td>
+                                          <td><input type="number" id="ca3-{{ student.id }}" value="{{ student.ca3 }}" onchange="updateTotal({{ student.id }})"></td>
+                                          <td><span id="total-{{ student.id }}">{{ student.total }}</span></td>
+                                          <td>
+                                            <button onclick="editScores({{ student.id }})">Edit</button>
+                                          </td>
+                                        </tr>
+                                        {% endfor %}
                                       </tbody>
                                   </table>
                               </div>
@@ -580,6 +574,7 @@
               </div>
           </section>
           <!--Blog Section Ends-->
+  
 
           
                       <!--Blog section begins-->
@@ -622,6 +617,73 @@
               </div>
           </section>
           <!--Blog Section Ends-->
+
+
+
+          <script>
+            // Function to dynamically calculate and update the total
+            function updateTotal(studentId) {
+                let ca1 = parseFloat(document.getElementById('ca1-' + studentId).value) || 0;
+                let ca2 = parseFloat(document.getElementById('ca2-' + studentId).value) || 0;
+                let ca3 = parseFloat(document.getElementById('ca3-' + studentId).value) || 0;
+            
+                let total = ca1 + ca2 + ca3;
+            
+                // Update total in the table
+                document.getElementById('total-' + studentId).textContent = total;
+            
+                // Optionally, you can send the updated data to the backend using AJAX to save it.
+                // For simplicity, we will just log the data here.
+                console.log('Updated total for student ' + studentId + ': ' + total);
+            }
+            
+            // Function to handle editing the scores and saving changes (AJAX or form submission)
+            function editScores(studentId) {
+                let ca1 = document.getElementById('ca1-' + studentId).value;
+                let ca2 = document.getElementById('ca2-' + studentId).value;
+                let ca3 = document.getElementById('ca3-' + studentId).value;
+            
+                // Send the updated data to the server (can use AJAX or submit via a form)
+                console.log('Saving scores for student ' + studentId);
+                console.log('CA1: ' + ca1 + ', CA2: ' + ca2 + ', CA3: ' + ca3);
+            
+                // Example of submitting a form with updated values:
+                // You can send an AJAX request here or trigger a form submission.
+                // For simplicity, this example just logs the changes.
+            }
+
+
+            function editScores(studentId) {
+              let ca1 = document.getElementById('ca1-' + studentId).value;
+              let ca2 = document.getElementById('ca2-' + studentId).value;
+              let ca3 = document.getElementById('ca3-' + studentId).value;
+          
+              // Send the updated data to the server using AJAX
+              fetch('/update-scores/', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRFToken': '{{ csrf_token }}',
+                  },
+                  body: JSON.stringify({
+                      'student_id': studentId,
+                      'ca1': ca1,
+                      'ca2': ca2,
+                      'ca3': ca3,
+                  }),
+              })
+              .then(response => response.json())
+              .then(data => {
+                  console.log('Scores updated:', data);
+                  updateTotal(studentId);  // Recalculate the total after saving
+              })
+              .catch(error => console.error('Error:', error));
+          }
+          
+            </script>
+
+
+
           <script>
             document.getElementById("showTextButton").onclick = function() {
               const hiddenText = document.getElementById("hiddenText");

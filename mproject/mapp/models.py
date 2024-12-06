@@ -86,6 +86,23 @@ class CustomBackend(ModelBackend):
         return is_active or is_active is None
 
 
+
+class StudentScore(models.Model):
+    student_name = models.CharField(max_length=100)
+    ca1 = models.FloatField(default=0)
+    ca2 = models.FloatField(default=0)
+    ca3 = models.FloatField(default=0)
+    total = models.FloatField(default=0)
+
+    def calculate_total(self):
+        self.total = self.ca1 + self.ca2 + self.ca3
+        self.save()
+
+    def __str__(self):
+        return self.student_name
+
+
+
     
     
 # class Student(models.Model):

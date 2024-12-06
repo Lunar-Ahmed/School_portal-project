@@ -14,4 +14,8 @@ urlpatterns = [
     path('vice-principal/teacher_register/', views.teacher_register, name='teacher_register'),
     path('teacher_login/', views.teacher_login, name='teacher_login'),
     path('teachers/toggle/<int:teacher_id>/', views.toggle_teacher_status, name='toggle_teacher_status'),
+    
+    
+    path('student-scores/', views.student_scores, name='student_scores'),
+    path('update-scores/', views.update_scores, name='update_scores'),
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

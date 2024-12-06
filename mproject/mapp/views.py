@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
@@ -61,6 +62,41 @@ def acad(request):
         'teacher_data': teacher_data,
     }
     return HttpResponse(template.render(context, request))
+
+
+
+
+
+from django.shortcuts import render
+from .models import StudentScore
+
+def student_scores(request):
+    students = StudentScore.objects.all()  # Get all students and their scores
+    return render(request, 'student_scores.html', {'students': students})
+
+
+# views.py
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import StudentScore
+
+@csrf_exempt
+def update_scores(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        student_id = data['student_id']
+        ca1 = float(data['ca1'])
+        ca2 = float(data['ca2'])
+        ca3 = float(data['ca3'])
+
+        student = StudentScore.objects.get(id=student_id)
+        student.ca1 = ca1
+        student.ca2 = ca2
+        student.ca3 = ca3
+        student.calculate_total()  # Recalculate total
+
+        return JsonResponse({'success': True, 'total': student.total})
+    return JsonResponse({'success': False})
 
 #================REGISTERATION================
 
