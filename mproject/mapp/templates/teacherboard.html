@@ -21,8 +21,13 @@
         <link rel="stylesheet" href="{%static 'css/styleSwitcher.css' %}" type="text/css">
         <link rel="stylesheet" href="{%static 'testing.css' %}" type="text/css">
         <link rel="stylesheet" href="{%static 'css/tab.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'tab.css' %}" type="text/css">
 
-
+        <style>
+          input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        </style>
     </head>
    <body>
      <div class="preloaded">
@@ -491,37 +496,41 @@
                                   </a>   
                                  </div>
                               </div>
-                
+                            </div>
 
-                              <div class="table-container" style="margin-top:20px;">
-                                  <table>
+                            <div class="container">
+                              <h2>Input Table</h2>
+                              <form method="post">
+                                  {% csrf_token %}
+                                  <table class="table">
                                       <thead>
                                           <tr>
-                                              <th>Student Name</th>
-                                              <th>Test1</th>
-                                              <th>Test2</th>
-                                              <th>Test3</th>
+                                              <th>Names</th>
+                                              <th>Input 1</th>
+                                              <th>Input 2</th>
+                                              <th>Input 3</th>
                                               <th>Total</th>
                                               <th>Actions</th>
                                           </tr>
                                       </thead>
                                       <tbody>
-                                        {% for student in students %}
-                                        <tr id="student-{{ student.id }}">
-                                          <td>{{ student.student_name }}</td>
-                                          <td><input type="number" id="ca1-{{ student.id }}" value="{{ student.ca1 }}" onchange="updateTotal({{ student.id }})"></td>
-                                          <td><input type="number" id="ca2-{{ student.id }}" value="{{ student.ca2 }}" onchange="updateTotal({{ student.id }})"></td>
-                                          <td><input type="number" id="ca3-{{ student.id }}" value="{{ student.ca3 }}" onchange="updateTotal({{ student.id }})"></td>
-                                          <td><span id="total-{{ student.id }}">{{ student.total }}</span></td>
-                                          <td>
-                                            <button onclick="editScores({{ student.id }})">Edit</button>
-                                          </td>
-                                        </tr>
-                                        {% endfor %}
+                                          {% comment %} {% for teacher in teachers %} {% endcomment %}
+                                          <tr>
+                                              <td>{{ teachers.firstname }}</td>
+                                              <td><input type="number" id="id_input1" name="input1" value="{{ form.input1.value }}" readonly class="gray-input"></td>
+                                              <td><input type="number" id="id_input2" name="input2" value="{{ form.input2.value }}" readonly class="gray-input"></td>
+                                              <td><input type="number" id="id_input3" name="input3" value="{{ form.input3.value }}" readonly class="gray-input"></td>
+                                              <td id="total">0</td>
+                                              <td><button type="button" id="editButton">Edit</button></td>
+                                          </tr>
+                                          {% comment %} {% endfor %} {% endcomment %}
                                       </tbody>
                                   </table>
-                              </div>
-                            </div>
+                                  <p id="error-message" class="error"></p>
+                                  <button type="submit">Submit</button>
+                              </form>
+                          </div>
+                      
 
 
         
@@ -760,6 +769,7 @@
 
 <!--Javascript Template-->
 <script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'script.js' %}"></script>
 
 <!-- styleSwitcher Javascript -->
 <script src="{% static 'js/styleSwitcher.js' %}"></script>

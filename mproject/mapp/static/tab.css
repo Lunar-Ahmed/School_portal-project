@@ -5,3 +5,66 @@ table, th{
     padding-left: 50px;
 }
 
+.container {
+    width: 70%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+h2 {
+    text-align: center;
+    color: #5a5a5a;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+.table, .table th, .table td {
+    border: 1px solid #ddd;
+}
+.table th, .table td {
+    padding: 12px;
+    text-align: center;
+}
+.table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+.error {
+    color: red;
+    text-align: center;
+}
+.gray-input {
+    background-color: #e9ecef;
+}
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+/* Remove spinner arrows from number inputs */
+/* For Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */

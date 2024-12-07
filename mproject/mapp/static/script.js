@@ -32,3 +32,57 @@ document.getElementById('id_profile_picture').addEventListener('change', functio
             }
         });
  
+        // ===========Table=============
+
+        function calculateTotal() {
+            var input1 = parseFloat(document.getElementById('id_input1').value) || 0;
+            var input2 = parseFloat(document.getElementById('id_input2').value) || 0;
+            var input3 = parseFloat(document.getElementById('id_input3').value) || 0;
+            var total = input1 + input2 + input3;
+            document.getElementById('total').innerText = total;
+            return total;
+        }
+
+        function validateInputs() {
+            var total = calculateTotal();
+            var errorElement = document.getElementById('error-message');
+            if (total > 40) {
+                errorElement.innerText = 'The total should not exceed 40.';
+                return false;
+            } else {
+                errorElement.innerText = '';
+                return true;
+            }
+        }
+
+        function toggleEdit() {
+            var inputs = document.querySelectorAll('input[type=number]');
+            var editButton = document.getElementById('editButton');
+            var isEditable = editButton.innerText === 'Edit';
+
+            inputs.forEach(function(input) {
+                input.readOnly = !isEditable;
+                if (isEditable) {
+                    input.addEventListener('input', validateInputs);
+                    input.classList.remove('gray-input');
+                } else {
+                    input.removeEventListener('input', validateInputs);
+                    input.classList.add('gray-input');
+                }
+            });
+
+            editButton.innerText = isEditable ? 'Done' : 'Edit';
+
+            if (!isEditable && validateInputs()) {
+                // This part can be used to save the form when 'Done' is clicked
+                document.querySelector('form').submit();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('id_input1').addEventListener('input', calculateTotal);
+            document.getElementById('id_input2').addEventListener('input', calculateTotal);
+            document.getElementById('id_input3').addEventListener('input', calculateTotal);
+            document.getElementById('editButton').addEventListener('click', toggleEdit);
+            calculateTotal(); // Initial calculation
+        });

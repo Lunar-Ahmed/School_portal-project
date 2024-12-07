@@ -35,12 +35,18 @@ def admin(request):
 #     return HttpResponse(template.render(context, request))
 
 
-
-
-
 def teacher(request):
+    teacher_data = Teacher.objects.all().values()
     template = loader.get_template('teacherboard.html')
-    return HttpResponse(template.render())
+    context = {
+        'teacher_data': teacher_data,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+# def teacher(request):
+#     template = loader.get_template('teacherboard.html')
+#     return HttpResponse(template.render())
 
 
 def student(request):
@@ -71,8 +77,8 @@ from django.shortcuts import render
 from .models import StudentScore
 
 def student_scores(request):
-    students = StudentScore.objects.all()  # Get all students and their scores
-    return render(request, 'student_scores.html', {'students': students})
+    students = Teacher.objects.all()  # Get all students and their scores
+    return render(request, 'testing.html', {'students': students})
 
 
 # views.py
@@ -112,16 +118,6 @@ def update_scores(request):
 #     return render(request, 'enroll_register.html', {'form': form})
 
 
-# def teacher_register(request):
-#     form = TeacherReg()
-#     if request.method == 'POST':
-#         form = TeacherReg(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('teacher')
-#     # else:
-#     #     form = UserRegistrationForm()
-#     return render(request, 'teacher_reg.html', {'form': form})
 
 def teacher_register(request):
     if request.method == 'POST':
@@ -286,6 +282,7 @@ def student_login(request):
 
 
 
+
 # views.py
 from django.shortcuts import redirect, get_object_or_404
 from .models import Teacher
@@ -305,6 +302,33 @@ def toggle_teacher_status(request, teacher_id):
     return redirect('acad')  # Redirect back to the teacher list page
 
 
+
+from django.shortcuts import render, redirect
+from .models import InputTable # Ensure Teacher model is imported
+from .forms import InputTableForm
+
+def table_view(request):
+    # Fetch all teacher names
+    teachers = Teacher.objects.all().values()
+    input_table = InputTable.objects.first()  # Get the first record
+    if not input_table:
+        input_table = InputTable.objects.create()
+
+    if request.method == 'POST':
+        form = InputTableForm(request.POST, instance=input_table)
+        if form.is_valid():
+            form.save()
+            return redirect('table_view')
+    else:
+        form = InputTableForm(instance=input_table)
+
+    context = {
+        'form': form,
+        'total': input_table.total(),
+        'teachers': teachers,
+    }
+
+    return render(request, 'mapp/table.html', context)
 
 
 
