@@ -101,7 +101,14 @@ class StudentScore(models.Model):
     def __str__(self):
         return self.student_name
 
+class InputTable(models.Model):
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    input1 = models.FloatField(default=0)
+    input2 = models.FloatField(default=0)
+    input3 = models.FloatField(default=0)
 
+    def total(self):
+        return self.input1 + self.input2 + self.input3
 
     
     

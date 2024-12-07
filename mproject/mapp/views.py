@@ -328,7 +328,7 @@ def table_view(request):
         'teachers': teachers,
     }
 
-    return render(request, 'mapp/table.html', context)
+    return render(request, 'teacherboard.html', context)
 
 
 

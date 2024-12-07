@@ -20,6 +20,14 @@ class TeacherLog(forms.ModelForm):
         fields = ['username', 'Password']
 
 
+from .models import InputTable
+
+class InputTableForm(forms.ModelForm):
+    class Meta:
+        model = InputTable
+        fields = ['input1', 'input2', 'input3']
+
+
         
 # class StudentRegForm(forms.ModelForm):
 #     class Meta:
