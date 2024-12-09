@@ -120,40 +120,40 @@ class InputTable(models.Model):
 
     
     
-# class Student(models.Model):
-#     GENDER_CHOICES = [ 
-#         ('M', 'Male'), 
-#         ('F', 'Female'),
-#         ('O', 'Other'), 
-#         ]
-#     DEPARTMENT_CHOICES = [ 
-#         ('S', 'Science'), 
-#         ('A', 'Art'),
-#         ('C', 'Commercial'), 
-#         ]
-#     CLASS_CHOICES = [ 
-#         ('J1', 'JsS1'), 
-#         ('J2', 'Jss2'),
-#         ('J3', 'Jss3'), 
-#         ('S1', 'SS1'), 
-#         ('S2', 'Ss2'),
-#         ('S3', 'Ss3'), 
-#         ]
-    # Profile_Picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
-    # Firstname = models.CharField(max_length=150, null=True)
-    # Middlename = models.CharField(max_length=150, null=True)
-    # Lastname = models.CharField(max_length=150, null=True)
-    # username = models.CharField(max_length=250)
-    # Mobile = models.IntegerField(null=True)
-    # Department = models.CharField(max_length=5, choices=DEPARTMENT_CHOICES)
-    # Parent_Mobile = models.IntegerField()
-    # Address = models.CharField(max_length=150, null=True)
-    # Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    # Class =  models.CharField(max_length=5, choices=CLASS_CHOICES)
-    # DOB= models.DateTimeField()
-    # Email = models.EmailField(max_length=100)
-    # Admission_Number = models.CharField(max_length=150)
-    # Password = models.CharField(max_length=150)  
+class Student(models.Model):
+    GENDER_CHOICES = [ 
+        ('M', 'Male'),
+        ('F', 'Female'),
+        ('O', 'Other'), 
+        ]
+    DEPARTMENT_CHOICES = [ 
+        ('S', 'Science'), 
+        ('A', 'Art'),
+        ('C', 'Commercial'), 
+        ]
+    CLASS_CHOICES = [ 
+        ('J1', 'JsS1'), 
+        ('J2', 'Jss2'),
+        ('J3', 'Jss3'), 
+        ('S1', 'SS1'), 
+        ('S2', 'Ss2'),
+        ('S3', 'Ss3'), 
+        ]
+    Profile_Picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    Firstname = models.CharField(max_length=150, null=True)
+    Middlename = models.CharField(max_length=150, null=True)
+    Lastname = models.CharField(max_length=150, null=True)
+    username = models.CharField(max_length=250)
+    Mobile = models.IntegerField(null=True)
+    Department = models.CharField(max_length=5, choices=DEPARTMENT_CHOICES)
+    Parent_Mobile = models.IntegerField()
+    Address = models.CharField(max_length=150, null=True)
+    Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    Class =  models.CharField(max_length=5, choices=CLASS_CHOICES)
+    DOB= models.DateTimeField()
+    Email = models.EmailField(max_length=100)
+    Admission_Number = models.CharField(max_length=150)
+    Password = models.CharField(max_length=150)
 
     
     

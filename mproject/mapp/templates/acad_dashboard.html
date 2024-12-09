@@ -103,7 +103,7 @@
                               </tr>
                           </thead>
                           <tbody>
-                            {% for x in users %}
+                            {% for x in teacher_data %}
                               <tr>
                                   <td>{{ x.id }}</td>
                                   <td>{{ x.Firstname }} {{x.Middlename }} {{ x.Lastname }}</td>
@@ -123,7 +123,7 @@
                               {% endfor %}
                           </tbody>
                       </table>
-                      <button id="add" ><a href="vice-principal/teacher_register">Add</a></button>
+                      <button id="add" ><a href="vice-principal/teacher_register">Add Teacher</a></button>
                   </div>
                 </div>
                     <!-- portfolio Item Ends -->
@@ -220,7 +220,7 @@
                                     <!-- Add more rows as needed -->
                                 </tbody>
                             </table>
-                            <button id="add"><a href="vice-principal/student_register">Add</a></button>
+                            <button id="add"><a href="vice-principal/student_register">Add Student</a></button>
                         </div>
                       <!--Service Item Ends-->
                     </div>

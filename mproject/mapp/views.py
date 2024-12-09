@@ -19,6 +19,35 @@ def admin(request):
     template = loader.get_template('base.html')
     return HttpResponse(template.render())
 
+# def teacher(request):
+#     teachd = Teacher.objects.all().values()
+#     template = loader.get_template('teacherboard.html')
+#     context = {
+#         'teachd': teachd,
+#     }
+#     return HttpResponse(template.render(context, request)
+# def teacher(request, Username):
+#     teachd = Teacher.objects.get(Username=Username)
+#     template = loader.get_template('teacherboard.html')
+#     context = {
+#         'teachd': teachd,
+#     }
+#     return HttpResponse(template.render(context, request))
+
+
+# def teacher(request):
+#     teacher_data = Teacher.objects.all()
+#     template = loader.get_template('teacherboard.html')
+#     context = {
+#         'teacher_data': teacher_data,
+#     }
+#     return HttpResponse(template.render(context, request))
+
+
+# def teacher(request):
+#     template = loader.get_template('teacherboard.html')
+#     return HttpResponse(template.render())
+
 
 def student(request):
     template = loader.get_template('studentboard.html')
@@ -103,74 +132,26 @@ def teacher_register(request):
 
 
 
-# def teacher_login(request):
-#     if request.method == 'POST':
-#         form = TeacherLog(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             Password = form.cleaned_data['Password']
-            
-#             teacherd = Teacher.objects.filter(username=username).first()
-            
-#             if teacherd and teacherd.Password == Password:
-#                 request.session['role'] = 'Teacher'
-#                 request.session['user_id'] = teacherd.id
-#                 messages.success(request, 'Login successful')
-#                 return redirect('teacher')
-#             else:
-#                 messages.error(request, 'Invalid username or password')
-#     else:
-#         form = TeacherLog()
-        
-#     return render(request, 'teacher_log.html', {'form': form})
-
-
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
-
-# View to handle the toggle of login status for a user
-def toggle_user_login(request, user_id):
-    user = Teacher.objects.get(id=user_id)
-    
-    # Toggle the login status
-    user.profile.is_login_disabled = not user.profile.is_login_disabled
-    user.profile.save()
-
-    # Redirect back to the admin page or login page
-    return redirect('admin_page')
-
-# Handle login logic (with disabled state check)
 def teacher_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        # Check if the user is disabled
-        try:
-            user = Teacher.objects.get(username=username)
-            if user.profile.is_login_disabled:
-                return HttpResponse("This user is not allowed to login at the moment.")
-
-            # Authenticate the user
-            user = authenticate(request, username=username, password=password)
-
-            if user is not None:
-                login(request, user)
-                return redirect('home')  # Redirect to home page after login
+        form = TeacherLog(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            Password = form.cleaned_data['Password']
+            
+            teacherd = Teacher.objects.filter(username=username).first()
+            
+            if teacherd and teacherd.Password == Password:
+                request.session['role'] = 'Teacher'
+                request.session['user_id'] = teacherd.id
+                messages.success(request, 'Login successful')
+                return redirect('teacher')
             else:
-                return HttpResponse("Invalid credentials")
-
-        except User.DoesNotExist:
-            return HttpResponse("User does not exist")
-
-    return render(request, 'teacher_log.html')
-
-
-
-
+                messages.error(request, 'Invalid username or password')
+    else:
+        form = TeacherLog()
+        
+    return render(request, 'teacher_log.html', {'form': form})
 
 
 
@@ -197,8 +178,52 @@ def student_scores(request):
 
 
 
+# def student_register(request):
+#     form = StudentRegForm()
+#     if request.method == 'POST':
+#         form = StudentRegForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('student_login')
+#     # else:
+#     #     form = UserRegistrationForm()
+#     return render(request, 'student_register.html', {'form': form})
 
 
+# def authority_login(request):
+#     form = AuthorityLogForm()
+#     if request.method == 'POST':
+#         form = AuthorityLogForm(request.POST)
+#         if form.is_valid():
+#             email = form.cleaned_data['email']
+#             department = form.cleaned_data['department']
+#             password = form.cleaned_data['password']
+#             user = authenticate(request, email=email, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 if department == 'A':
+#                     return redirect('admin')
+#                 elif department == 'T':
+#                     return redirect('teacher')
+#                 elif department == 'B':
+#                     return redirect('bursar')
+#             # else:
+#             #     form.add_error(None, 'Invalid email, department, or password')
+#     # context = {'loginform': form}
+#     return render(request, 'authority_login.html',{'form': form}) #context=context)
+
+
+# def admin_register(request):
+#     form = AdminRegForm()
+#     if request.method == 'POST':
+#         form = Reg(request.POST)
+#         if form.is_valid(): 
+#             form.save()
+#             return redirect('login')
+#     context = {'registerform': form}
+#     # else:
+#     #     form = RegistrationForm()
+#     return render(request, 'regform.html', context=context)# {'context': form})
 
 
 
@@ -210,6 +235,59 @@ def student_scores(request):
 def student_login(request):
     template = loader.get_template('student_login.html')
     return HttpResponse(template.render())
+
+# def admin_login(request):
+#     if request.method == 'POST':
+#         form = AdminLogin(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#         admin_log = admin.objects.filter(username=username, password=password).first()
+#         if admin_log:
+#             request.session['role'] = 'Admin'
+#             request.session['user_id'] = admin_log.id
+#             return redirect('admin')
+#         else:
+#             form = AdminLogin()
+#             return render(request, 'admin_log.html', {'form': form})
+# def admin_login(request):
+#     if request.method == 'POST':
+#         form = AdminLogin(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#             admin_log = Admin.objects.filter(username=username, password=password).first()
+#             if admin_log:
+#                 request.session['role'] = 'Admin'
+#                 request.session['user_id'] = admin_log.id
+#                 return redirect('admin')
+#         else:
+#             form.add_error(None, 'Invalid username or password') 
+#     else:
+#         form = AdminLogin()
+    
+#     return render(request, 'admin_log.html', {'form': form})
+
+
+
+# def authority_login(request):
+#     form = AuthorityLogForm()
+#     if request.method == 'POST':
+#         form = AuthorityLogForm(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#             user = authenticate(request, username=username, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect('home')  # Redirect to a success page
+#             else:
+#                 form.add_error(None, 'Invalid username or password')
+#     context = {'loginform': form}
+#     return render(request, 'login.html', context=context)
+
+
+
 
 
 # views.py
@@ -228,7 +306,7 @@ def toggle_teacher_status(request, teacher_id):
         teacher.user.is_active = not teacher.is_disabled
         teacher.user.save()
 
-    return redirect('acad', request)  # Redirect back to the teacher list page
+    return redirect('acad')  # Redirect back to the teacher list page
 
 
 

@@ -12,6 +12,16 @@ class TeacherReg(forms.ModelForm):
             'Subject_Teacher': forms.Select(attrs={'placeholder': 'Choose Subject'}),
             'Class_Teacher': forms.Select
         }
+class StudentReg(forms.ModelForm):
+    class Meta:
+        model = Teacher
+        fields = '__all__'
+        widgets = {
+            'DOB': forms.DateInput(attrs={'type': 'date'}),
+            'Gender': forms.Select,
+            'Subject_Teacher': forms.Select(attrs={'placeholder': 'Choose Subject'}),
+            'Class_Teacher': forms.Select
+        }
 
 
 class TeacherLog(forms.ModelForm):
