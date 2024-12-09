@@ -23,11 +23,135 @@
         <link rel="stylesheet" href="{%static 'css/tab.css' %}" type="text/css">
         <link rel="stylesheet" href="{%static 'tab.css' %}" type="text/css">
 
+
+
+
         <style>
+          {% comment %} .container {
+              width: 70%;
+              margin: 50px auto;
+              background-color: #fff;
+              padding: 20px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+              border-radius: 8px;
+          } {% endcomment %}
+          h2 {
+              text-align: center;
+              color: #5a5a5a;
+          }
+          .table {
+              width: 100%;
+              border-collapse: collapse;
+              margin: 20px 0;
+              font-size: 18px;
+              text-align: left;
+          }
+          .table, .table th, .table td {
+              border: 1px solid #ddd;
+          }
+          .table th, .table td {
+              padding: 12px;
+              text-align: center;
+          }
+          .table th {
+              background-color: #f2f2f2;
+              color: #333;
+          }
+          .table tr:nth-child(even) {
+              background-color: #f9f9f9;
+          }
+          .table tr:hover {
+              background-color: #f1f1f1;
+          }
+          .error {
+              color: red;
+              text-align: center;
+          }
+          .gray-input {
+              background-color: #e9ecef;
+          }
+          button {
+              padding: 10px 20px;
+              background-color: #007bff;
+              color: #fff;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+          }
+          button:hover {
+              background-color: #0056b3;
+          }
+          /* Remove spinner arrows from number inputs */
+          /* For Chrome, Safari, Edge, Opera */
+          input[type="number"]::-webkit-inner-spin-button,
+          input[type="number"]::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+          }
+  
+          /* For Firefox */
           input[type="number"] {
-            -moz-appearance: textfield;
-        }
-        </style>
+              -moz-appearance: textfield;
+          }
+      </style>
+      <script>
+          function calculateTotal() {
+              var input1 = parseFloat(document.getElementById('id_input1').value) || 0;
+              var input2 = parseFloat(document.getElementById('id_input2').value) || 0;
+              var input3 = parseFloat(document.getElementById('id_input3').value) || 0;
+              var total = input1 + input2 + input3;
+              document.getElementById('total').innerText = total;
+              return total;
+          }
+  
+          function validateInputs() {
+              var total = calculateTotal();
+              var errorElement = document.getElementById('error-message');
+              if (total > 40) {
+                  errorElement.innerText = 'The total should not exceed 40.';
+                  return false;
+              } else {
+                  errorElement.innerText = '';
+                  return true;
+              }
+          }
+  
+          function toggleEdit() {
+              var inputs = document.querySelectorAll('input[type=number]');
+              var editButton = document.getElementById('editButton');
+              var isEditable = editButton.innerText === 'Edit';
+  
+              inputs.forEach(function(input) {
+                  input.readOnly = !isEditable;
+                  if (isEditable) {
+                      input.addEventListener('input', validateInputs);
+                      input.classList.remove('gray-input');
+                  } else {
+                      input.removeEventListener('input', validateInputs);
+                      input.classList.add('gray-input');
+                  }
+              });
+  
+              editButton.innerText = isEditable ? 'Done' : 'Edit';
+  
+              if (!isEditable && validateInputs()) {
+                  // This part can be used to save the form when 'Done' is clicked
+                  document.querySelector('form').submit();
+              }
+          }
+  
+          document.addEventListener('DOMContentLoaded', function() {
+              document.getElementById('id_input1').addEventListener('input', calculateTotal);
+              document.getElementById('id_input2').addEventListener('input', calculateTotal);
+              document.getElementById('id_input3').addEventListener('input', calculateTotal);
+              document.getElementById('editButton').addEventListener('click', toggleEdit);
+              calculateTotal(); // Initial calculation
+          });
+      </script>
+
+
+
+
     </head>
    <body>
      <div class="preloaded">
@@ -514,22 +638,22 @@
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          {% comment %} {% for teacher in teachers %} {% endcomment %}
+                                        {% for student in students %}
                                           <tr>
-                                              <td>{{ teachers.firstname }}</td>
-                                              <td><input type="number" id="id_input1" name="input1" value="{{ form.input1.value }}" readonly class="gray-input"></td>
-                                              <td><input type="number" id="id_input2" name="input2" value="{{ form.input2.value }}" readonly class="gray-input"></td>
-                                              <td><input type="number" id="id_input3" name="input3" value="{{ form.input3.value }}" readonly class="gray-input"></td>
-                                              <td id="total">0</td>
-                                              <td><button type="button" id="editButton">Edit</button></td>
+                                            <td>{{ student.Firstname }} {{ student.Lastname }}</td>
+                                            <td>{{ student.ca1 }}</td>
+                                            <td>{{ student.ca2 }}</td>
+                                            <td>{{ student.ca3 }}</td>
+                                            <td>{{ student.total }}</td>
                                           </tr>
-                                          {% comment %} {% endfor %} {% endcomment %}
+                                        {% endfor %}
                                       </tbody>
                                   </table>
                                   <p id="error-message" class="error"></p>
                                   <button type="submit">Submit</button>
                               </form>
                           </div>
+
                       
 
 
@@ -629,7 +753,7 @@
 
 
 
-          <script>
+          {% comment %} <script>
             // Function to dynamically calculate and update the total
             function updateTotal(studentId) {
                 let ca1 = parseFloat(document.getElementById('ca1-' + studentId).value) || 0;
@@ -718,7 +842,7 @@
               const hiddenText = document.getElementById("hiddenText");
               hiddenText.style.display = "block";
             };
-           </script>
+           </script> {% endcomment %}
 
             
            </div>

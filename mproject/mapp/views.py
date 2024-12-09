@@ -35,13 +35,13 @@ def admin(request):
 #     return HttpResponse(template.render(context, request))
 
 
-def teacher(request):
-    teacher_data = Teacher.objects.all().values()
-    template = loader.get_template('teacherboard.html')
-    context = {
-        'teacher_data': teacher_data,
-    }
-    return HttpResponse(template.render(context, request))
+# def teacher(request):
+#     teacher_data = Teacher.objects.all()
+#     template = loader.get_template('teacherboard.html')
+#     context = {
+#         'teacher_data': teacher_data,
+#     }
+#     return HttpResponse(template.render(context, request))
 
 
 # def teacher(request):
@@ -156,15 +156,22 @@ def teacher_login(request):
 
 
 def teacher(request):
-    
+
     teacher_id = request.session.get('user_id')
     if not teacher_id:
         return redirect('teacher_log')    
 
     teacher = Teacher.objects.get(id=teacher_id)
-    
+
     
     return render(request, 'teacherboard.html', {'teacher': teacher})
+
+
+
+
+def student_scores(request):
+    students = Teacher.objects.all()  # Fetch all students from the database
+    return render(request, 'teacherboard.html', {'students': students})
 
 
 

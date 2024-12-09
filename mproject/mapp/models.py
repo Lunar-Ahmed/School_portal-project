@@ -60,6 +60,14 @@ class Teacher(models.Model):
     Cv = models.FileField(upload_to='documents/', null=True)
     is_disabled = models.BooleanField(default=False)
     
+    ca1 = models.IntegerField(default=0)
+    ca2 = models.IntegerField(default=0)
+    ca3 = models.IntegerField(default=0)
+    
+    @property
+    def total(self):
+        return self.ca1 + self.ca2 + self.ca3
+    
     def __str__(self):
         return f"{self.Firstname} {self.Lastname}"
     
@@ -131,21 +139,21 @@ class InputTable(models.Model):
 #         ('S2', 'Ss2'),
 #         ('S3', 'Ss3'), 
 #         ]
-#     Profile_Picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
-#     Firstname = models.CharField(max_length=150, null=True)
-#     Middlename = models.CharField(max_length=150, null=True)
-#     Lastname = models.CharField(max_length=150, null=True)
-#     username = models.CharField(max_length=250)
-#     Mobile = models.IntegerField(null=True)
-#     Department = models.CharField(max_length=5, choices=DEPARTMENT_CHOICES)
-#     Parent_Mobile = models.IntegerField()
-#     Address = models.CharField(max_length=150, null=True)
-#     Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-#     Class =  models.CharField(max_length=5, choices=CLASS_CHOICES)
-#     DOB= models.DateTimeField()
-#     Email = models.EmailField(max_length=100)
-#     Admission_Number = models.CharField(max_length=150)
-#     Password = models.CharField(max_length=150)  
+    # Profile_Picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    # Firstname = models.CharField(max_length=150, null=True)
+    # Middlename = models.CharField(max_length=150, null=True)
+    # Lastname = models.CharField(max_length=150, null=True)
+    # username = models.CharField(max_length=250)
+    # Mobile = models.IntegerField(null=True)
+    # Department = models.CharField(max_length=5, choices=DEPARTMENT_CHOICES)
+    # Parent_Mobile = models.IntegerField()
+    # Address = models.CharField(max_length=150, null=True)
+    # Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    # Class =  models.CharField(max_length=5, choices=CLASS_CHOICES)
+    # DOB= models.DateTimeField()
+    # Email = models.EmailField(max_length=100)
+    # Admission_Number = models.CharField(max_length=150)
+    # Password = models.CharField(max_length=150)  
 
     
     
