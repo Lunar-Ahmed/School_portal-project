@@ -70,7 +70,14 @@ class Teacher(models.Model):
     
     def __str__(self):
         return f"{self.Firstname} {self.Lastname}"
-    
+ 
+ 
+from django.contrib.auth.backends import ModelBackend
+
+class CustomBackend(ModelBackend):
+    def user_can_authenticate(self, user):
+        return user.is_active and super().user_can_authenticate(user)
+   
     
 # from django.contrib.auth.backends import ModelBackend
 # from django.contrib.auth import get_user_model

@@ -11,10 +11,13 @@ urlpatterns = [
     path('student/', views.student, name='student'),
     path('assignment/', views.assignment, name='assignment'),
     path('vice-principal', views.acad, name='acad'),
+    
     path('vice-principal/teacher_register/', views.teacher_register, name='teacher_register'),
+    path('vice-principal/student_register/', views.teacher_register, name='teacher_register'),
+    
     path('teacher_login/', views.teacher_login, name='teacher_login'),
     path('teachers/toggle/<int:teacher_id>/', views.toggle_teacher_status, name='toggle_teacher_status'),
-    
+    path('toggle-user-status/<int:user_id>/', views.toggle_user_status, name='toggle_user_status'),
     
     path('student-scores/', views.student_scores, name='student_scores'),
     path('update-scores/', views.update_scores, name='update_scores'),

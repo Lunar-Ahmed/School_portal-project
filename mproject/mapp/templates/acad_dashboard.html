@@ -99,7 +99,7 @@
                                   <th>FirstName</th>
                                   <th>Phone</th>
                                   <th>Email</th>
-                                  <th></th>
+                                  <th>Actions</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -110,13 +110,8 @@
                                   <td>{{ x.Mobile }}</td>
                                   <td>{{ x.Email }}</td>
                                   <td id="edd" style="font-size: medium;"> 
-                                    <!-- Display the status with a toggle link -->
-                                    <a href="{% url 'toggle_teacher_login' x.id %}">
-                                        {% if x.is_disabled %}
-                                            Enable Login
-                                        {% else %}
-                                            Disable Login
-                                        {% endif %}
+                                    {% comment %} <a href="{% url 'toggle_user_status' user.id %}"> {% endcomment %}
+                                      {% comment %} {{ 'Disable' if user.is_active else 'Enable' }} {% endcomment %}
                                     </a>
                                 </td>
                               </tr>

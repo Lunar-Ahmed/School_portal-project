@@ -1,5 +1,5 @@
 from django import forms
-from .models import Teacher #Student, Enroll
+from .models import Teacher, Student # Enroll
 from django.contrib.auth.forms import AuthenticationForm
 
 class TeacherReg(forms.ModelForm):
@@ -14,13 +14,11 @@ class TeacherReg(forms.ModelForm):
         }
 class StudentReg(forms.ModelForm):
     class Meta:
-        model = Teacher
+        model = Student
         fields = '__all__'
         widgets = {
             'DOB': forms.DateInput(attrs={'type': 'date'}),
             'Gender': forms.Select,
-            'Subject_Teacher': forms.Select(attrs={'placeholder': 'Choose Subject'}),
-            'Class_Teacher': forms.Select
         }
 
 

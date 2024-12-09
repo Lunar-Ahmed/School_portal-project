@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg, TeacherLog #StudentRegForm, EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg, TeacherLog, StudentReg #EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Teacher 
@@ -166,6 +166,17 @@ def teacher(request):
     
     return render(request, 'teacherboard.html', {'teacher': teacher})
 
+def student(request):
+
+    student_id = request.session.get('user_id')
+    if not student_id:
+        return redirect('teacher_log')    
+
+    teacher = Teacher.objects.get(id=student_id)
+
+    
+    return render(request, 'studentboard.html', {'teacher': teacher})
+
 
 
 
@@ -175,19 +186,33 @@ def student_scores(request):
 
 
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
+from django.contrib import messages
+
+def toggle_user_status(request, user_id):
+    user = get_object_or_404(Teacher, id=user_id)
+    user.is_active = not user.is_active
+    user.save()
+    status = 'enabled' if user.is_active else 'disabled'
+    messages.success(request, f'User {user.username} has been {status}.')
+    return redirect('acad')  # Replace with your desired redirect URL
 
 
 
-# def student_register(request):
-#     form = StudentRegForm()
-#     if request.method == 'POST':
-#         form = StudentRegForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('student_login')
-#     # else:
-#     #     form = UserRegistrationForm()
-#     return render(request, 'student_register.html', {'form': form})
+
+
+
+def student_register(request):
+    form = StudentReg()
+    if request.method == 'POST':
+        form = StudentReg(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('student_login')
+    # else:
+    #     form = UserRegistrationForm()
+    return render(request, 'student_register.html', {'form': form})
 
 
 # def authority_login(request):
