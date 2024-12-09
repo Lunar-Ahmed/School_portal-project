@@ -16,6 +16,8 @@ urlpatterns = [
     path('vice-principal/student_register/', views.student_register, name='student_register'),
     
     path('teacher_login/', views.teacher_login, name='teacher_login'),
+    # path('student_login/', views.student_login, name='student_login'),
+    
     path('teachers/toggle/<int:teacher_id>/', views.toggle_teacher_status, name='toggle_teacher_status'),
     path('toggle-user-status/<int:user_id>/', views.toggle_user_status, name='toggle_user_status'),
     

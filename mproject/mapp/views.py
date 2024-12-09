@@ -2,10 +2,10 @@ import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg, TeacherLog, StudentReg, StudentLog #EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg, TeacherLog, StudentReg # StudentLog #EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .models import Teacher 
+from .models import Teacher,Student
 
 # from .models import Admin
 
@@ -201,16 +201,37 @@ def toggle_user_status(request, user_id):
 
 
 
+# def student_register(request):
+#     form = StudentReg()
+#     if request.method == 'POST':
+#         form = StudentReg(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('student_login')
+#     # else:
+#     #     form = UserRegistrationForm()
+#     return render(request, 'student_register.html', {'form': form})
+# views.py
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .forms import StudentReg
+from .models import Student
+
 def student_register(request):
-    form = StudentReg()
     if request.method == 'POST':
-        form = StudentReg(request.POST)
+        form = StudentReg(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('student_login')
-    # else:
-    #     form = UserRegistrationForm()
+            student = form.save()  # Save the student object
+            # No need for manual creation of class models, the `save` method on the `Student` model will handle it.
+            return redirect('student')  # Redirect to a success page
+        else:
+            return HttpResponse("Form is not valid.")
+    else:
+        form = StudentReg()
+    
     return render(request, 'student_register.html', {'form': form})
+
+
 
 
 # def authority_login(request):
@@ -255,26 +276,26 @@ def student_register(request):
 #     template = loader.get_template('authority_login.html')
 #     return HttpResponse(template.render())
 
-def student_login(request):
-    if request.method == 'POST':
-        form = StudentLog(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            Password = form.cleaned_data['Password']
+# def student_login(request):
+#     if request.method == 'POST':
+#         form = StudentLog(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             Password = form.cleaned_data['Password']
             
-            teacherd = Teacher.objects.filter(username=username).first()
+#             teacherd = Student.objects.filter(username=username).first()
             
-            if teacherd and teacherd.Password == Password:
-                request.session['role'] = 'Teacher'
-                request.session['user_id'] = teacherd.id
-                messages.success(request, 'Login successful')
-                return redirect('teacher')
-            else:
-                messages.error(request, 'Invalid username or password')
-    else:
-        form = TeacherLog()
+#             if teacherd and teacherd.Password == Password:
+#                 request.session['role'] = 'Student'
+#                 request.session['user_id'] = teacherd.id
+#                 messages.success(request, 'Login successful')
+#                 return redirect('student')
+#             else:
+#                 messages.error(request, 'Invalid username or password')
+#     else:
+#         form = StudentLog()
         
-    return render(request, 'student_log.html', {'form': form})
+#     return render(request, 'student_login.html', {'form': form})
 # def admin_login(request):
 #     if request.method == 'POST':
 #         form = AdminLogin(request.POST)
