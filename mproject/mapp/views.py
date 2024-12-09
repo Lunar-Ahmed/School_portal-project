@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg, TeacherLog, StudentReg #EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg, TeacherLog, StudentReg, StudentLog #EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Teacher 
@@ -201,8 +201,6 @@ def toggle_user_status(request, user_id):
 
 
 
-
-
 def student_register(request):
     form = StudentReg()
     if request.method == 'POST':
@@ -258,9 +256,25 @@ def student_register(request):
 #     return HttpResponse(template.render())
 
 def student_login(request):
-    template = loader.get_template('student_login.html')
-    return HttpResponse(template.render())
-
+    if request.method == 'POST':
+        form = StudentLog(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            Password = form.cleaned_data['Password']
+            
+            teacherd = Teacher.objects.filter(username=username).first()
+            
+            if teacherd and teacherd.Password == Password:
+                request.session['role'] = 'Teacher'
+                request.session['user_id'] = teacherd.id
+                messages.success(request, 'Login successful')
+                return redirect('teacher')
+            else:
+                messages.error(request, 'Invalid username or password')
+    else:
+        form = TeacherLog()
+        
+    return render(request, 'student_log.html', {'form': form})
 # def admin_login(request):
 #     if request.method == 'POST':
 #         form = AdminLogin(request.POST)

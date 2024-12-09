@@ -26,6 +26,11 @@ class TeacherLog(forms.ModelForm):
     class Meta:
         model = Teacher
         fields = ['username', 'Password']
+        
+class StudentLog(forms.ModelForm):
+    class Meta:
+        model = Teacher
+        fields = ['username', 'Password']
 
 
 from .models import InputTable
