@@ -542,7 +542,9 @@
                                   <button type="submit">Submit</button>
                               </form>
                           </div>             {% endcomment %}
+                          
                           <div id="hiddenText" class="assign" style="margin-top: 10px; display:none;">
+                            <h2 style="color:blue;">SS1</h2>
                             <label for="perfect-textarea"></label>
                             <textarea id="perfect-textarea" name="message" rows="10" cols="30" placeholder="Enter your text here..."></textarea>
 
@@ -638,7 +640,7 @@
                                           </tr>
                                       </thead>
                                       <tbody>
-                                        {% for x in students %}
+                                        {% for student in students %}
                                           <tr>
                                             <td>{{ student.Firstname }} {{ student.Lastname }}</td>
                                             <td>{{ student.ca1 }}</td>
@@ -813,7 +815,7 @@
               .catch(error => console.error('Error:', error));
           }
           
-            </script>
+            </script> {% endcomment %}
 
 
 
@@ -842,7 +844,7 @@
               const hiddenText = document.getElementById("hiddenText");
               hiddenText.style.display = "block";
             };
-           </script> {% endcomment %}
+           </script>
 
             
            </div>

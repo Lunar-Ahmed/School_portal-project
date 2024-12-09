@@ -103,26 +103,74 @@ def teacher_register(request):
 
 
 
+# def teacher_login(request):
+#     if request.method == 'POST':
+#         form = TeacherLog(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             Password = form.cleaned_data['Password']
+            
+#             teacherd = Teacher.objects.filter(username=username).first()
+            
+#             if teacherd and teacherd.Password == Password:
+#                 request.session['role'] = 'Teacher'
+#                 request.session['user_id'] = teacherd.id
+#                 messages.success(request, 'Login successful')
+#                 return redirect('teacher')
+#             else:
+#                 messages.error(request, 'Invalid username or password')
+#     else:
+#         form = TeacherLog()
+        
+#     return render(request, 'teacher_log.html', {'form': form})
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
+
+# View to handle the toggle of login status for a user
+def toggle_user_login(request, user_id):
+    user = Teacher.objects.get(id=user_id)
+    
+    # Toggle the login status
+    user.profile.is_login_disabled = not user.profile.is_login_disabled
+    user.profile.save()
+
+    # Redirect back to the admin page or login page
+    return redirect('admin_page')
+
+# Handle login logic (with disabled state check)
 def teacher_login(request):
     if request.method == 'POST':
-        form = TeacherLog(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            Password = form.cleaned_data['Password']
-            
-            teacherd = Teacher.objects.filter(username=username).first()
-            
-            if teacherd and teacherd.Password == Password:
-                request.session['role'] = 'Teacher'
-                request.session['user_id'] = teacherd.id
-                messages.success(request, 'Login successful')
-                return redirect('teacher')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Check if the user is disabled
+        try:
+            user = Teacher.objects.get(username=username)
+            if user.profile.is_login_disabled:
+                return HttpResponse("This user is not allowed to login at the moment.")
+
+            # Authenticate the user
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('home')  # Redirect to home page after login
             else:
-                messages.error(request, 'Invalid username or password')
-    else:
-        form = TeacherLog()
-        
-    return render(request, 'teacher_log.html', {'form': form})
+                return HttpResponse("Invalid credentials")
+
+        except User.DoesNotExist:
+            return HttpResponse("User does not exist")
+
+    return render(request, 'teacher_log.html')
+
+
+
+
 
 
 

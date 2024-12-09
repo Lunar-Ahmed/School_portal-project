@@ -103,7 +103,7 @@
                               </tr>
                           </thead>
                           <tbody>
-                            {% for x in teacher_data %}
+                            {% for x in users %}
                               <tr>
                                   <td>{{ x.id }}</td>
                                   <td>{{ x.Firstname }} {{x.Middlename }} {{ x.Lastname }}</td>
@@ -111,11 +111,11 @@
                                   <td>{{ x.Email }}</td>
                                   <td id="edd" style="font-size: medium;"> 
                                     <!-- Display the status with a toggle link -->
-                                    <a href="{% url 'toggle_teacher_status' x.id %}">
+                                    <a href="{% url 'toggle_teacher_login' x.id %}">
                                         {% if x.is_disabled %}
-                                            Enable
+                                            Enable Login
                                         {% else %}
-                                            Disable
+                                            Disable Login
                                         {% endif %}
                                     </a>
                                 </td>
