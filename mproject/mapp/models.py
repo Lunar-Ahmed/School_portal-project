@@ -296,12 +296,12 @@ class Student(models.Model):
         ('C', 'Commercial'),
     ]
     CLASS_CHOICES = [
-        ('J1', 'JSS1'),
-        ('J2', 'JSS2'),
-        ('J3', 'JSS3'),
-        ('S1', 'SS1'),
-        ('S2', 'SS2'),
-        ('S3', 'SS3'),
+            ('jss1', 'JSS1'),
+            ('jss2', 'JSS2'),
+            ('jss3', 'JSS3'),
+            ('ss1', 'SS1'),
+            ('ss2', 'SS2'),
+            ('ss3', 'SS3'),
     ]
     
     profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
@@ -338,12 +338,12 @@ class Student(models.Model):
         
         # Create class-specific model instance after saving the student
         class_model = {
-            'J1': 'Jss1',
-            'J2': 'Jss2',
-            'J3': 'Jss3',
-            'S1': 'Ss1',
-            'S2': 'Ss2',
-            'S3': 'Ss3',
+            ('jss1', 'JSS1'),
+            ('jss2', 'JSS2'),
+            ('jss3', 'JSS3'),
+            ('ss1', 'SS1'),
+            ('ss2', 'SS2'),
+            ('ss3', 'SS3'),
         }.get(self.class_level)
         
         model_class = globals().get(class_model)
@@ -470,6 +470,9 @@ class Ss3(models.Model):
     email = models.EmailField(max_length=100)
     admission_number = models.CharField(max_length=150, blank=True)
     password = models.CharField(max_length=150)
+    
+    
+    
     
 # class Enroll(models.Model):
 #     firstname = models.CharField(max_length=50)

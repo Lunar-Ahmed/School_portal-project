@@ -32,16 +32,50 @@ def assignment(request):
     template = loader.get_template('attendance.html')
     return HttpResponse(template.render())
 
+
+
 def acad(request):
     teacher_data = Teacher.objects.all().values
-    ss2_students = Ss2.objects.all()
     template = loader.get_template('acad_dashboard.html')
     context = {
-        'teacher_data': teacher_data,
-        'ss2_students' : ss2_students,
-    
+        'teacher_data': teacher_data,    
     }
     return HttpResponse(template.render(context, request))
+
+
+from django.http import JsonResponse
+
+def get_students_by_class(request, class_level):
+    students = Student.objects.filter(class_level=class_level)
+    student_data = list(students.values('firstname', 'lastname', 'class_level'))
+    return JsonResponse(student_data, safe=False)
+
+
+
+# def get_students_by_class(request, class_level):
+#     students = Student.objects.filter(class_level=class_level)
+#     context = {
+#         'students': students,
+#         'class_level': class_level
+#     }
+#     return render(request, 'acad_dashboard.html', context)
+
+
+
+# def students_view(request):
+#     # Fetch students grouped by class_level
+#     class_levels = {
+#         'JSS1': Student.objects.filter(class_level='J1'),
+#         'JSS2': Student.objects.filter(class_level='J2'),
+#         'JSS3': Student.objects.filter(class_level='J3'),
+#         'SS1': Student.objects.filter(class_level='S1'),
+#         'SS2': Student.objects.filter(class_level='S2'),
+#         'SS3': Student.objects.filter(class_level='S3'),
+#     }
+#     return render(request, 'acad_dashboard.html', {'class_levels': class_levels})
+
+
+
 
 
 
@@ -373,6 +407,20 @@ def table_view(request):
 
 
 
+def class_cards(request):
+    # Get all students and class levels
+    class_levels = ['jss1', 'jss2', 'jss3', 'ss1', 'ss2', 'ss3']
+    students = Student.objects.all()
+    return render(request, 'adcad_dashboard.html', {
+        'class_levels': class_levels,
+        'students': students
+    })
+
+
+def class_students(request, class_level):
+    # Render students in the selected class_level
+    students = Student.objects.filter(class_level=class_level)
+    return render(request, 'acad_dashboard.html', {'students': students, 'class_level': class_level})
 
 
 
