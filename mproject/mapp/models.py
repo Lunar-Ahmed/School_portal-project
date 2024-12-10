@@ -61,13 +61,15 @@ class Teacher(models.Model):
     Cv = models.FileField(upload_to='documents/', null=True)
     is_disabled = models.BooleanField(default=False)
     
-    ca1 = models.IntegerField(default=0)
-    ca2 = models.IntegerField(default=0)
-    ca3 = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
     
-    @property
-    def total(self):
-        return self.ca1 + self.ca2 + self.ca3
+    # ca1 = models.IntegerField(default=0)
+    # ca2 = models.IntegerField(default=0)
+    # ca3 = models.IntegerField(default=0)
+    
+    # @property
+    # def total(self):
+    #     return self.ca1 + self.ca2 + self.ca3
     
     def __str__(self):
         return f"{self.Firstname} {self.Lastname}"
@@ -179,7 +181,20 @@ class Student(models.Model):
             self.Admission_Number = self.generate_admission_number()
         super().save(*args, **kwargs)
     
-    
+
+
+class Attendance(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    week = models.IntegerField()
+    day1 = models.BooleanField(default=False)
+    day2 = models.BooleanField(default=False)
+    day3 = models.BooleanField(default=False)
+    day4 = models.BooleanField(default=False)
+    day5 = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ('student', 'week')
+
     
 # class Admin(models.Model):
 #     fullname = models.CharField(max_length=150, null=True)

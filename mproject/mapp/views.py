@@ -57,23 +57,14 @@ from .models import Teacher
 
 def toggle_teacher_status(request, teacher_id):
     if request.method == "POST":
-        # Retrieve the teacher object or return a 404 if not found
         teacher = get_object_or_404(Teacher, id=teacher_id)
-        
-        # Toggle the active status
-        teacher.is_active = not teacher.is_active
-        teacher.save()
+        user = teacher.user
+        user.is_active = not user.is_active  # Toggle the is_active status
+        user.save()
+        status = "enabled" if user.is_active else "disabled"
+        messages.success(request, f"Teacher {teacher.firstname} has been {status}.")
+    return redirect('acad')  # Replace with your admin dashboard view name
 
-        # Determine the status message
-        status = "enabled" if teacher.is_active else "disabled"
-        messages.success(request, f"Teacher account has been {status}.")
-
-        # Redirect back to the admin dashboard or management page
-        return redirect('admin_dashboard')  # Update 'admin_dashboard' to your admin management page name
-
-    # Handle non-POST requests (optional, but useful for debugging)
-    messages.error(request, "Invalid request method.")
-    return redirect('admin_dashboard')
 
 
 
@@ -191,6 +182,22 @@ def student(request):
     
     return render(request, 'studentboard.html', {'teacher': teacher})
 
+
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Student, Attendance
+from .forms import AttendanceForm
+
+def attendance_view(request, student_id, week):
+    student = get_object_or_404(Student, id=student_id)
+    attendance, created = Attendance.objects.get_or_create(student=student, week=week)
+    if request.method == 'POST':
+        form = AttendanceForm(request.POST, instance=attendance)
+        if form.is_valid():
+            form.save()
+            return redirect('attendance_view', student_id=student_id, week=week)
+    else:
+        form = AttendanceForm(instance=attendance)
+    return render(request, 'teacher_dashboard.html', {'form': form, 'student': student, 'week': week})
 
 
 
@@ -345,22 +352,22 @@ def student_register(request):
 
 
 # views.py
-from django.shortcuts import redirect, get_object_or_404
-from .models import Teacher
+# from django.shortcuts import redirect, get_object_or_404
+# from .models import Teacher
 
-def toggle_teacher_status(request, teacher_id):
-    teacher = get_object_or_404(Teacher, id=teacher_id)
+# def toggle_teacher_status(request, teacher_id):
+#     teacher = get_object_or_404(Teacher, id=teacher_id)
 
-    # Toggle the status
-    teacher.is_disabled = not teacher.is_disabled
-    teacher.save()
+#     # Toggle the status
+#     teacher.is_disabled = not teacher.is_disabled
+#     teacher.save()
 
-    # You can also disable or enable the corresponding User model if necessary:
-    if teacher.user:
-        teacher.user.is_active = not teacher.is_disabled
-        teacher.user.save()
+#     # You can also disable or enable the corresponding User model if necessary:
+#     if teacher.user:
+#         teacher.user.is_active = not teacher.is_disabled
+#         teacher.user.save()
 
-    return redirect('acad')  # Redirect back to the teacher list page
+#     return redirect('acad')  # Redirect back to the teacher list page
 
 
 

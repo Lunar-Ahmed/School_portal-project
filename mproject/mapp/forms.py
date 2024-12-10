@@ -27,6 +27,14 @@ class TeacherLog(forms.ModelForm):
         model = Teacher
         fields = ['username', 'Password']
         
+from .models import Attendance
+
+class AttendanceForm(forms.ModelForm):
+    class Meta:
+        model = Attendance
+        fields = ['day1', 'day2', 'day3', 'day4', 'day5']
+
+        
 # class StudentLog(forms.ModelForm):
 #     class Meta:
 #         model = Student
