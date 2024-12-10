@@ -198,13 +198,15 @@
                                 </thead>
                                 <tbody>
                                     <!-- Add rows here -->
+                                     {% for student in ss2_students %}
                                     <tr>
-                                        <td>001</td>
-                                        <td>Dominic Stallone</td>
+                                        <td></td>
+                                        <td>{{ student.firstname }}</td>
                                         <td>05-876545</td>
                                         <td>dom@gmail.com</td>
                                         <td id="edd" style="font-size: medium;"><a  href="">Edit</a>   <a  href="">Disable</a> <a  href="">Delete</a></td>
-                                    </tr>
+                                      {{ endfor }}
+                                      </tr>
                                     <tr>
                                         <td>002</td>
                                         <td>Torreto Sylvester</td>

@@ -5,7 +5,7 @@ from django.template import loader
 from .forms import TeacherReg, TeacherLog, StudentReg # StudentLog #EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .models import Teacher,Student
+from .models import Teacher,Student, Ss2
 
 # from .models import Admin
 
@@ -18,35 +18,6 @@ def index(request):
 def admin(request):
     template = loader.get_template('base.html')
     return HttpResponse(template.render())
-
-# def teacher(request):
-#     teachd = Teacher.objects.all().values()
-#     template = loader.get_template('teacherboard.html')
-#     context = {
-#         'teachd': teachd,
-#     }
-#     return HttpResponse(template.render(context, request)
-# def teacher(request, Username):
-#     teachd = Teacher.objects.get(Username=Username)
-#     template = loader.get_template('teacherboard.html')
-#     context = {
-#         'teachd': teachd,
-#     }
-#     return HttpResponse(template.render(context, request))
-
-
-# def teacher(request):
-#     teacher_data = Teacher.objects.all()
-#     template = loader.get_template('teacherboard.html')
-#     context = {
-#         'teacher_data': teacher_data,
-#     }
-#     return HttpResponse(template.render(context, request))
-
-
-# def teacher(request):
-#     template = loader.get_template('teacherboard.html')
-#     return HttpResponse(template.render())
 
 
 def student(request):
@@ -63,9 +34,12 @@ def assignment(request):
 
 def acad(request):
     teacher_data = Teacher.objects.all().values
+    ss2_students = Ss2.objects.all()
     template = loader.get_template('acad_dashboard.html')
     context = {
         'teacher_data': teacher_data,
+        'ss2_students' : ss2_students,
+    
     }
     return HttpResponse(template.render(context, request))
 
