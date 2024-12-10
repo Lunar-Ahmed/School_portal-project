@@ -44,11 +44,37 @@ def acad(request):
 
 
 from django.http import JsonResponse
-
 def get_students_by_class(request, class_level):
     students = Student.objects.filter(class_level=class_level)
-    student_data = list(students.values('firstname', 'lastname', 'class_level'))
+    student_data = list(students.values('firstname', 'lastname', 'admission_number'))
     return JsonResponse(student_data, safe=False)
+
+
+
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
+from .models import Teacher
+
+def toggle_teacher_status(request, teacher_id):
+    if request.method == "POST":
+        # Retrieve the teacher object or return a 404 if not found
+        teacher = get_object_or_404(Teacher, id=teacher_id)
+        
+        # Toggle the active status
+        teacher.is_active = not teacher.is_active
+        teacher.save()
+
+        # Determine the status message
+        status = "enabled" if teacher.is_active else "disabled"
+        messages.success(request, f"Teacher account has been {status}.")
+
+        # Redirect back to the admin dashboard or management page
+        return redirect('admin_dashboard')  # Update 'admin_dashboard' to your admin management page name
+
+    # Handle non-POST requests (optional, but useful for debugging)
+    messages.error(request, "Invalid request method.")
+    return redirect('admin_dashboard')
+
 
 
 
@@ -59,26 +85,6 @@ def get_students_by_class(request, class_level):
 #         'class_level': class_level
 #     }
 #     return render(request, 'acad_dashboard.html', context)
-
-
-
-# def students_view(request):
-#     # Fetch students grouped by class_level
-#     class_levels = {
-#         'JSS1': Student.objects.filter(class_level='J1'),
-#         'JSS2': Student.objects.filter(class_level='J2'),
-#         'JSS3': Student.objects.filter(class_level='J3'),
-#         'SS1': Student.objects.filter(class_level='S1'),
-#         'SS2': Student.objects.filter(class_level='S2'),
-#         'SS3': Student.objects.filter(class_level='S3'),
-#     }
-#     return render(request, 'acad_dashboard.html', {'class_levels': class_levels})
-
-
-
-
-
-
 
 
 from django.shortcuts import render
@@ -132,7 +138,7 @@ def teacher_register(request):
         form = TeacherReg(request.POST, request.FILES)
         if form.is_valid():
             form.save()  # This will save the form data to the database
-            return redirect('teacher_login')  # Redirect to a success page
+            return redirect('acad')  # Redirect to a success page
     else:
         form = TeacherReg()
     
@@ -188,9 +194,7 @@ def student(request):
 
 
 
-def student_scores(request):
-    students = Teacher.objects.all()  # Fetch all students from the database
-    return render(request, 'teacherboard.html', {'students': students})
+
 
 
 
@@ -207,31 +211,13 @@ def toggle_user_status(request, user_id):
     return redirect('acad')  # Replace with your desired redirect URL
 
 
-
-
-# def student_register(request):
-#     form = StudentReg()
-#     if request.method == 'POST':
-#         form = StudentReg(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('student_login')
-#     # else:
-#     #     form = UserRegistrationForm()
-#     return render(request, 'student_register.html', {'form': form})
-# views.py
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .forms import StudentReg
-from .models import Student
-
 def student_register(request):
     if request.method == 'POST':
         form = StudentReg(request.POST, request.FILES)
         if form.is_valid():
             student = form.save()  # Save the student object
             # No need for manual creation of class models, the `save` method on the `Student` model will handle it.
-            return redirect('student')  # Redirect to a success page
+            return redirect('acad')  # Redirect to a success page
         else:
             return HttpResponse("Form is not valid.")
     else:
@@ -407,20 +393,20 @@ def table_view(request):
 
 
 
-def class_cards(request):
-    # Get all students and class levels
-    class_levels = ['jss1', 'jss2', 'jss3', 'ss1', 'ss2', 'ss3']
-    students = Student.objects.all()
-    return render(request, 'adcad_dashboard.html', {
-        'class_levels': class_levels,
-        'students': students
-    })
+# def class_cards(request):
+#     # Get all students and class levels
+#     class_levels = ['jss1', 'jss2', 'jss3', 'ss1', 'ss2', 'ss3']
+#     students = Student.objects.all()
+#     return render(request, 'adcad_dashboard.html', {
+#         'class_levels': class_levels,
+#         'students': students
+#     })
 
 
-def class_students(request, class_level):
-    # Render students in the selected class_level
-    students = Student.objects.filter(class_level=class_level)
-    return render(request, 'acad_dashboard.html', {'students': students, 'class_level': class_level})
+# def class_students(request, class_level):
+#     # Render students in the selected class_level
+#     students = Student.objects.filter(class_level=class_level)
+#     return render(request, 'acad_dashboard.html', {'students': students, 'class_level': class_level})
 
 
 
