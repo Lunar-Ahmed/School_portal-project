@@ -345,9 +345,11 @@ class Student(models.Model):
             'S2': 'Ss2',
             'S3': 'Ss3',
         }.get(self.class_level)
-
-        if class_model:
-            class_model.objects.create(
+        
+        model_class = globals().get(class_model)
+        
+        if model_class:
+            model_class.objects.create(
                 profile_picture=self.profile_picture,
                 firstname=self.firstname,
                 middlename=self.middlename,
@@ -365,6 +367,109 @@ class Student(models.Model):
                 password=self.password,
             )
 
+
+class Jss1(models.Model):
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    firstname = models.CharField(max_length=150, null=True)
+    middlename = models.CharField(max_length=150, null=True)
+    lastname = models.CharField(max_length=150, null=True)
+    username = models.CharField(max_length=250)
+    mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    department = models.CharField(max_length=5)
+    parent_mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    address = models.CharField(max_length=150, null=True)
+    gender = models.CharField(max_length=1,)
+    class_level = models.CharField(max_length=5, null=True, default='Jss1')
+    dob = models.DateTimeField()
+    email = models.EmailField(max_length=100)
+    admission_number = models.CharField(max_length=150, blank=True)
+    password = models.CharField(max_length=150)
+    
+    
+class Jss2(models.Model):
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    firstname = models.CharField(max_length=150, null=True)
+    middlename = models.CharField(max_length=150, null=True)
+    lastname = models.CharField(max_length=150, null=True)
+    username = models.CharField(max_length=250)
+    mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    department = models.CharField(max_length=5)
+    parent_mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    address = models.CharField(max_length=150, null=True)
+    gender = models.CharField(max_length=1,)
+    class_level = models.CharField(max_length=5, null=True, default='Jss2')
+    dob = models.DateTimeField()
+    email = models.EmailField(max_length=100)
+    admission_number = models.CharField(max_length=150, blank=True)
+    password = models.CharField(max_length=150)
+    
+class Jss3(models.Model):
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    firstname = models.CharField(max_length=150, null=True)
+    middlename = models.CharField(max_length=150, null=True)
+    lastname = models.CharField(max_length=150, null=True)
+    username = models.CharField(max_length=250)
+    mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    department = models.CharField(max_length=5)
+    parent_mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    address = models.CharField(max_length=150, null=True)
+    gender = models.CharField(max_length=1,)
+    class_level = models.CharField(max_length=5, null=True, default='Jss3')
+    dob = models.DateTimeField()
+    email = models.EmailField(max_length=100)
+    admission_number = models.CharField(max_length=150, blank=True)
+    password = models.CharField(max_length=150)
+    
+class Ss1(models.Model):
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    firstname = models.CharField(max_length=150, null=True)
+    middlename = models.CharField(max_length=150, null=True)
+    lastname = models.CharField(max_length=150, null=True)
+    username = models.CharField(max_length=250)
+    mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    department = models.CharField(max_length=5)
+    parent_mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    address = models.CharField(max_length=150, null=True)
+    gender = models.CharField(max_length=1,)
+    class_level = models.CharField(max_length=5, null=True, default='Ss1')
+    dob = models.DateTimeField()
+    email = models.EmailField(max_length=100)
+    admission_number = models.CharField(max_length=150, blank=True)
+    password = models.CharField(max_length=150)
+    
+class Ss2(models.Model):
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    firstname = models.CharField(max_length=150, null=True)
+    middlename = models.CharField(max_length=150, null=True)
+    lastname = models.CharField(max_length=150, null=True)
+    username = models.CharField(max_length=250)
+    mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    department = models.CharField(max_length=5)
+    parent_mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    address = models.CharField(max_length=150, null=True)
+    gender = models.CharField(max_length=1,)
+    class_level = models.CharField(max_length=5, null=True, default='Ss2')
+    dob = models.DateTimeField()
+    email = models.EmailField(max_length=100)
+    admission_number = models.CharField(max_length=150, blank=True)
+    password = models.CharField(max_length=150)
+    
+class Ss3(models.Model):
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    firstname = models.CharField(max_length=150, null=True)
+    middlename = models.CharField(max_length=150, null=True)
+    lastname = models.CharField(max_length=150, null=True)
+    username = models.CharField(max_length=250)
+    mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    department = models.CharField(max_length=5)
+    parent_mobile = models.CharField(max_length=15, null=True)  # Changed to CharField for phone numbers
+    address = models.CharField(max_length=150, null=True)
+    gender = models.CharField(max_length=1,)
+    class_level = models.CharField(max_length=5, null=True, default='Ss3')
+    dob = models.DateTimeField()
+    email = models.EmailField(max_length=100)
+    admission_number = models.CharField(max_length=150, blank=True)
+    password = models.CharField(max_length=150)
     
 # class Enroll(models.Model):
 #     firstname = models.CharField(max_length=50)

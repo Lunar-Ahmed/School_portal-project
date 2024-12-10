@@ -17,8 +17,8 @@ class StudentReg(forms.ModelForm):
         model = Student
         fields = '__all__'
         widgets = {
-            'DOB': forms.DateInput(attrs={'type': 'date'}),
-            'Gender': forms.Select,
+            'dob': forms.DateInput(attrs={'type': 'date'}),
+            'gender': forms.Select,
         }
 
 
