@@ -144,16 +144,11 @@
                                   <td>{{ x.Firstname }} {{x.Middlename }} {{ x.Lastname }}</td>
                                   <td>{{ x.Mobile }}</td>
                                   <td>{{ x.Email }}</td>
-                                  <td>{{ "Active" if teacher.user.is_active else "Inactive" }}</td>
                                   <td>
-                                    <form method="POST" action="{% url 'toggle_teacher_status' teacher.id %}">
+                                    <form action="{% url 'toggle_teacher_status' teacher.id %}" method="POST">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-primary">
-                                            {% if teacher.user.is_active %}
-                                                Disable
-                                            {% else %}
-                                                Enable
-                                            {% endif %}
+                                        <button type="submit">
+                                            {{ 'Disable' if teacher.is_active else 'Enable' }}
                                         </button>
                                     </form>
                                 </td>

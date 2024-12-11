@@ -49,7 +49,7 @@ class Teacher(models.Model):
     Middlename = models.CharField(max_length=150, null=True)
     Lastname = models.CharField(max_length=150, null=True)
     Mobile = models.CharField(null=True, max_length=50)
-    username = models.CharField(null=True, max_length=50)
+    username = models.CharField(null=True, max_length=50, unique=True)
     Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     Address = models.CharField(max_length=150, null=True)
     Emergency = models.CharField(null=True, max_length=50)
@@ -58,10 +58,13 @@ class Teacher(models.Model):
     DOB= models.DateTimeField()
     Email = models.EmailField(max_length=100)
     Password = models.CharField(max_length=150) 
-    Cv = models.FileField(upload_to='documents/', null=True)
-    is_disabled = models.BooleanField(default=False)
-    
+    Cv = models.FileField(upload_to='documents/', null=True)   
     is_active = models.BooleanField(default=True)
+    
+
+
+    # is_disabled = models.BooleanField(default=False)
+    
     
     # ca1 = models.IntegerField(default=0)
     # ca2 = models.IntegerField(default=0)
@@ -180,20 +183,41 @@ class Student(models.Model):
         if not self.Admission_Number:  # Only generate if not already set
             self.Admission_Number = self.generate_admission_number()
         super().save(*args, **kwargs)
-    
 
 
-class Attendance(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    week = models.IntegerField()
-    day1 = models.BooleanField(default=False)
-    day2 = models.BooleanField(default=False)
-    day3 = models.BooleanField(default=False)
-    day4 = models.BooleanField(default=False)
-    day5 = models.BooleanField(default=False)
 
-    class Meta:
-        unique_together = ('student', 'week')
+from django.contrib.auth import get_user_model
+from django.contrib.auth.backends import ModelBackend
+
+Teacher = get_user_model()
+
+class TeacherAuthBackend(ModelBackend):
+    def authenticate(self, request, username=None, password=None, **kwargs):
+        try:
+            user = Teacher.objects.get(username=username)
+            if user.check_password(password) and user.is_active:
+                return user
+        except Teacher.DoesNotExist:
+            return None
+
+    def get_user(self, user_id):
+        try:
+            return Teacher.objects.get(pk=user_id)
+        except Teacher.DoesNotExist:
+            return None
+
+
+# class Attendance(models.Model):
+#     student = models.ForeignKey(Student, on_delete=models.CASCADE)
+#     week = models.IntegerField()
+#     day1 = models.BooleanField(default=False)
+#     day2 = models.BooleanField(default=False)
+#     day3 = models.BooleanField(default=False)
+#     day4 = models.BooleanField(default=False)
+#     day5 = models.BooleanField(default=False)
+
+#     class Meta:
+#         unique_together = ('student', 'week')
 
     
 # class Admin(models.Model):

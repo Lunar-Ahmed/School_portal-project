@@ -51,23 +51,6 @@ def get_students_by_class(request, class_level):
 
 
 
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib import messages
-from .models import Teacher
-
-def toggle_teacher_status(request, teacher_id):
-    if request.method == "POST":
-        teacher = get_object_or_404(Teacher, id=teacher_id)
-        user = teacher.user
-        user.is_active = not user.is_active  # Toggle the is_active status
-        user.save()
-        status = "enabled" if user.is_active else "disabled"
-        messages.success(request, f"Teacher {teacher.firstname} has been {status}.")
-    return redirect('acad')  # Replace with your admin dashboard view name
-
-
-
-
 
 # def get_students_by_class(request, class_level):
 #     students = Student.objects.filter(class_level=class_level)
@@ -76,6 +59,21 @@ def toggle_teacher_status(request, teacher_id):
 #         'class_level': class_level
 #     }
 #     return render(request, 'acad_dashboard.html', context)
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
+from .models import Teacher
+
+def toggle_teacher_status(request, teacher_id):
+    teacher = get_object_or_404(Teacher, id=teacher_id)
+    if request.method == "POST":
+        teacher.is_active = not teacher.is_active
+        teacher.save()
+        status = "enabled" if teacher.is_active else "disabled"
+        messages.success(request, f"Teacher account has been {status}.")
+    return redirect('teacher_list')  # Replace with the appropriate redirect URL
+
+
+
 
 
 from django.shortcuts import render
@@ -108,6 +106,8 @@ def update_scores(request):
 
         return JsonResponse({'success': True, 'total': student.total})
     return JsonResponse({'success': False})
+
+
 
 #================REGISTERATION================
 
@@ -183,21 +183,21 @@ def student(request):
     return render(request, 'studentboard.html', {'teacher': teacher})
 
 
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Student, Attendance
-from .forms import AttendanceForm
+# from django.shortcuts import render, get_object_or_404, redirect
+# from .models import Student, Attendance
+# from .forms import AttendanceForm
 
-def attendance_view(request, student_id, week):
-    student = get_object_or_404(Student, id=student_id)
-    attendance, created = Attendance.objects.get_or_create(student=student, week=week)
-    if request.method == 'POST':
-        form = AttendanceForm(request.POST, instance=attendance)
-        if form.is_valid():
-            form.save()
-            return redirect('attendance_view', student_id=student_id, week=week)
-    else:
-        form = AttendanceForm(instance=attendance)
-    return render(request, 'teacher_dashboard.html', {'form': form, 'student': student, 'week': week})
+# def attendance_view(request, student_id, week):
+#     student = get_object_or_404(Student, id=student_id)
+#     attendance, created = Attendance.objects.get_or_create(student=student, week=week)
+#     if request.method == 'POST':
+#         form = AttendanceForm(request.POST, instance=attendance)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('teacher', student_id=student_id, week=week)
+#     else:
+#         form = AttendanceForm(instance=attendance)
+#     return render(request, 'teacher_dashboard.html', {'form': form, 'student': student, 'week': week})
 
 
 

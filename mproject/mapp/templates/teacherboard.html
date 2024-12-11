@@ -220,13 +220,45 @@
               <section class="about section" id="attendance">
                 <div class="container">
                     <div class="row">
-                      <h2>Attendance for {{ student.firstname }} {{ student.lastname }} - Week {{ week }}</h2> 
-                      <form method="post"> 
-                        {% csrf_token %} 
-                        {{ form.as_table }} 
-                        <button type="submit">Save</button>
-                       </form>
-                      <div class="portfolio-filter padd-15">
+                          <style>
+                              table {
+                                  width: 100%;
+                                  border-collapse: collapse;
+                                  margin: 20px 0;
+                                  font-size: 18px;
+                                  text-align: left;
+                              }
+                              table, th, td {
+                                  border: 1px solid black;
+                              }
+                              th, td {
+                                  padding: 10px;
+                                  text-align: left;
+                              }
+                          </style>
+
+                          <h2>Class Dashboard for {{ class_name }}</h2>
+                          <h3>Students</h3>
+                          <table>
+                              <thead>
+                                  <tr>
+                                      <th>First Name</th>
+                                      <th>Last Name</th>
+                                      <th>Class</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for student in students %}
+                                  <tr>
+                                      <td>{{ student.Firstname }}</td>
+                                      <td>{{ student.Lastname }}</td>
+                                      <td>{{ student.Class }}</td>
+                                  </tr>
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+
+                      
                         
                         {% comment %} <h1>Welcome, {{ firstname }} {{ surname }}</h1> {% endcomment %}
 

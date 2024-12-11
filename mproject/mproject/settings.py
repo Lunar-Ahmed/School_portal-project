@@ -124,6 +124,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+AUTHENTICATION_BACKENDS = ['mproject.authentication.TeacherAuthBackend']
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

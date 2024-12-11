@@ -25,14 +25,20 @@ class StudentReg(forms.ModelForm):
 class TeacherLog(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ['username', 'Password']
+        fields = ['username', 'password']
         
-from .models import Attendance
+        
+from django.contrib.auth.backends import BaseBackend
+from django.db import connections
+from django.contrib.auth.hashers import check_password
+from .models import Teacher  # Replace with your app name
 
-class AttendanceForm(forms.ModelForm):
-    class Meta:
-        model = Attendance
-        fields = ['day1', 'day2', 'day3', 'day4', 'day5']
+# from .models import Attendance
+
+# class AttendanceForm(forms.ModelForm):
+#     class Meta:
+#         model = Attendance
+#         fields = ['day1', 'day2', 'day3', 'day4', 'day5']
 
         
 # class StudentLog(forms.ModelForm):
