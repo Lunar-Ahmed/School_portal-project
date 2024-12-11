@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg, TeacherLog, StudentReg # StudentLog #EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg,  StudentReg,TeacherLog #StudentLog #EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Teacher,Student
@@ -136,27 +136,60 @@ def teacher_register(request):
     return render(request, 'teacher_reg.html', {'form': form})
 
 
-
+#================main Teacher Logging
+# def teacher_login(request):
+#     if request.method == 'POST':
+#         form = TeacherLog(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['Password']
+            
+#             teacherd = Teacher.objects.filter(username=username).first()
+            
+#             if teacherd and teacherd.Password == password:
+#                 request.session['role'] = 'Teacher'
+#                 request.session['user_id'] = teacherd.id
+#                 messages.success(request, 'Login successful')
+#                 return redirect('teacher')
+#             else:
+#                 messages.error(request, 'Invalid username or password')
+#     else:
+#         form = TeacherLog()
+        
+#     return render(request, 'teacher_log.html', {'form': form})
 def teacher_login(request):
     if request.method == 'POST':
         form = TeacherLog(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            Password = form.cleaned_data['password']
+            password = form.cleaned_data['Password']
             
+            # Get the teacher by username
             teacherd = Teacher.objects.filter(username=username).first()
             
-            if teacherd and teacherd.Password == Password:
-                request.session['role'] = 'Teacher'
-                request.session['teacher_id'] = teacherd.id
-                messages.success(request, 'Login successful')
-                return redirect('teacher')
+            if teacherd:
+                if not teacherd.is_active:
+                    messages.error(request, 'Your account is disabled. Please contact the admin.')
+                    return render(request, 'teacher_log.html', {'form': form})
+                
+                # Verify password (you may need to hash passwords if not already done)
+                if teacherd.Password == password:  # Replace with hashed check if passwords are hashed
+                    request.session['role'] = 'Teacher'
+                    request.session['user_id'] = teacherd.id
+                    messages.success(request, 'Login successful')
+                    return redirect('teacher')
+                else:
+                    messages.error(request, 'Invalid username or password')
             else:
                 messages.error(request, 'Invalid username or password')
     else:
         form = TeacherLog()
         
     return render(request, 'teacher_log.html', {'form': form})
+
+
+
+
 
 
 
@@ -402,11 +435,11 @@ def table_view(request):
 #             Password = form.cleaned_data['Password']
             
 #             # Fetch the teacher by username and check the password
-#             teacher_user = Teacher.objects.filter(username=username).first()
-#             if teacher_user and teacher_user.Password == Password:  # Replace with hashed password check if necessary
+#             teacherd = Teacher.objects.filter(username=username).first()
+#             if teacherd and teacherd.Password == Password:  # Replace with hashed password check if necessary
 #                 # Store the teacher's role and ID in the session
 #                 request.session['role'] = 'Teacher'
-#                 request.session['user_id'] = teacher_user.id
+#                 request.session['teacher_id'] = teacherd.id
 #                 messages.success(request, 'Login successful!')
 #                 return redirect('teacher')  # Redirect to the teacher's dashboard
 #             else:

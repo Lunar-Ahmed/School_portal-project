@@ -49,7 +49,7 @@ class Teacher(models.Model):
     Middlename = models.CharField(max_length=150, null=True)
     Lastname = models.CharField(max_length=150, null=True)
     Mobile = models.CharField(null=True, max_length=50)
-    username = models.CharField(null=True, max_length=50, unique=True)
+    username = models.CharField(null=True, max_length=50)
     Gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     Address = models.CharField(max_length=150, null=True)
     Emergency = models.CharField(null=True, max_length=50)

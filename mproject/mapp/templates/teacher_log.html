@@ -31,6 +31,24 @@
 
     <!-- Template Stylesheet -->
     <link href="/static/css/main.css" rel="stylesheet">
+
+    <style>
+        .alert-success {
+            color: green;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .alert-danger {
+            color: red;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,6 +64,15 @@
     <!-- Login Start -->
     <div class="login">
          <h1>Teacher's Login</h1>
+         {% if messages %}
+         <div class="messages">
+             {% for message in messages %}
+                 <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                     {{ message }}
+                 </div>
+             {% endfor %}
+         </div>
+     {% endif %}
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}

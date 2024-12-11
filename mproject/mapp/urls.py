@@ -21,10 +21,10 @@ urlpatterns = [
     path('teacher_login/', views.teacher_login, name='teacher_login'),
     # path('student_login/', views.student_login, name='student_login'),
     
-    #  path('teacher/<int:teacher_id>/toggle/', views.toggle_teacher_status, name='toggle_teacher_status'),
+    # path('teacher/<int:teacher_id>/toggle/', views.toggle_teacher_status, name='toggle_teacher_status'),
     
 
-    path('toggle-teacher-status/<int:user_id>/', views.toggle_teacher_status, name='toggle_teacher_status'),
+    path('toggle-teacher-status/<int:teacher_id>/', views.toggle_teacher_status, name='toggle_teacher_status'),
     
     
     path('student-scores/', views.student_scores, name='student_scores'),

@@ -25,7 +25,7 @@ class StudentReg(forms.ModelForm):
 class TeacherLog(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ['username', 'password']
+        fields = ['username', 'Password']
         
         
 from django.contrib.auth.backends import BaseBackend
