@@ -5,7 +5,7 @@ from django.template import loader
 from .forms import TeacherReg, TeacherLog, StudentReg # StudentLog #EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .models import Teacher,Student, Ss2
+from .models import Teacher,Student
 
 # from .models import Admin
 
@@ -64,13 +64,13 @@ from django.contrib import messages
 from .models import Teacher
 
 def toggle_teacher_status(request, teacher_id):
-    teacher = get_object_or_404(Teacher, id=teacher_id)
     if request.method == "POST":
-        teacher.is_active = not teacher.is_active
+        teacher = get_object_or_404(Teacher, id=teacher_id)
+        teacher.is_active = not teacher.is_active  # Toggle the status
         teacher.save()
         status = "enabled" if teacher.is_active else "disabled"
         messages.success(request, f"Teacher account has been {status}.")
-    return redirect('teacher_list')  # Replace with the appropriate redirect URL
+    return redirect('acad')  # Replace 'teacher_list' with the URL name of your teacher management page
 
 
 
@@ -142,13 +142,13 @@ def teacher_login(request):
         form = TeacherLog(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            Password = form.cleaned_data['Password']
+            Password = form.cleaned_data['password']
             
             teacherd = Teacher.objects.filter(username=username).first()
             
             if teacherd and teacherd.Password == Password:
                 request.session['role'] = 'Teacher'
-                request.session['user_id'] = teacherd.id
+                request.session['teacher_id'] = teacherd.id
                 messages.success(request, 'Login successful')
                 return redirect('teacher')
             else:
@@ -198,25 +198,6 @@ def student(request):
 #     else:
 #         form = AttendanceForm(instance=attendance)
 #     return render(request, 'teacher_dashboard.html', {'form': form, 'student': student, 'week': week})
-
-
-
-
-
-
-
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
-from django.contrib import messages
-
-def toggle_user_status(request, user_id):
-    user = get_object_or_404(Teacher, id=user_id)
-    user.is_active = not user.is_active
-    user.save()
-    status = 'enabled' if user.is_active else 'disabled'
-    messages.success(request, f'User {user.username} has been {status}.')
-    return redirect('acad')  # Replace with your desired redirect URL
-
 
 def student_register(request):
     if request.method == 'POST':
@@ -348,9 +329,6 @@ def student_register(request):
 #     return render(request, 'login.html', context=context)
 
 
-
-
-
 # views.py
 # from django.shortcuts import redirect, get_object_or_404
 # from .models import Teacher
@@ -414,17 +392,6 @@ def table_view(request):
 #     # Render students in the selected class_level
 #     students = Student.objects.filter(class_level=class_level)
 #     return render(request, 'acad_dashboard.html', {'students': students, 'class_level': class_level})
-
-
-
-
-
-
-
-
-
-
-
 
 
 # def teacher_login(request):

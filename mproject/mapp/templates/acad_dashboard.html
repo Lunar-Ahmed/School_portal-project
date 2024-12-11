@@ -128,34 +128,47 @@
                         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                       </div>
                       <table id="data-table">
-                          <thead>
-                              <tr>
-                                  <th>Id</th>
-                                  <th>FirstName</th>
-                                  <th>Phone</th>
-                                  <th>Email</th>
-                                  <th>Actions</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                            {% for x in teacher_data %}
-                              <tr>
-                                  <td>{{ x.id }}</td>
-                                  <td>{{ x.Firstname }} {{x.Middlename }} {{ x.Lastname }}</td>
-                                  <td>{{ x.Mobile }}</td>
-                                  <td>{{ x.Email }}</td>
-                                  <td>
-                                    <form action="{% url 'toggle_teacher_status' teacher.id %}" method="POST">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>First Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for teacher in teacher_data %}
+                            <tr>
+                                <td>{{ teacher.id }}</td>
+                                <td>{{ teacher.Firstname }} {{ teacher.Middlename }} {{ teacher.Lastname }}</td>
+                                <td>{{ teacher.Mobile }}</td>
+                                <td>{{ teacher.Email }}</td>
+                                <td>
+                                    {% if teacher.is_active %}
+                                        Enabled
+                                    {% else %}
+                                        Disabled
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <form method="post" action="{% url 'toggle_teacher_status' teacher.id %}">
                                         {% csrf_token %}
-                                        <button type="submit">
-                                            {{ 'Disable' if teacher.is_active else 'Enable' }}
+                                        <button type="submit" class="btn btn-sm {% if teacher.is_active %}btn-danger{% else %}btn-success{% endif %}">
+                                            {% if teacher.is_active %}
+                                                Disable
+                                            {% else %}
+                                                Enable
+                                            {% endif %}
                                         </button>
                                     </form>
                                 </td>
-                              </tr>
-                              {% endfor %}
-                          </tbody>
-                      </table>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    
                       <button id="add" ><a href="vice-principal/teacher_register">Add Teacher</a></button>
                   </div>
                 </div>

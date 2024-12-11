@@ -78,11 +78,7 @@ class Teacher(models.Model):
         return f"{self.Firstname} {self.Lastname}"
  
  
-from django.contrib.auth.backends import ModelBackend
 
-class CustomBackend(ModelBackend):
-    def user_can_authenticate(self, user):
-        return user.is_active and super().user_can_authenticate(user)
    
     
 # from django.contrib.auth.backends import ModelBackend
@@ -97,16 +93,6 @@ class CustomBackend(ModelBackend):
 #                 return user
 #         except User.DoesNotExist:
 #             return None
-        
-from django.contrib.auth.backends import ModelBackend
-from django.contrib.auth import get_user_model
-
-class CustomBackend(ModelBackend):
-    def user_can_authenticate(self, user):
-        is_active = getattr(user, 'is_active', None)
-        return is_active or is_active is None
-
-
 
 class StudentScore(models.Model):
     student_name = models.CharField(max_length=100)
@@ -183,28 +169,6 @@ class Student(models.Model):
         if not self.Admission_Number:  # Only generate if not already set
             self.Admission_Number = self.generate_admission_number()
         super().save(*args, **kwargs)
-
-
-
-from django.contrib.auth import get_user_model
-from django.contrib.auth.backends import ModelBackend
-
-Teacher = get_user_model()
-
-class TeacherAuthBackend(ModelBackend):
-    def authenticate(self, request, username=None, password=None, **kwargs):
-        try:
-            user = Teacher.objects.get(username=username)
-            if user.check_password(password) and user.is_active:
-                return user
-        except Teacher.DoesNotExist:
-            return None
-
-    def get_user(self, user_id):
-        try:
-            return Teacher.objects.get(pk=user_id)
-        except Teacher.DoesNotExist:
-            return None
 
 
 # class Attendance(models.Model):
