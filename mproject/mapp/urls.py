@@ -19,7 +19,7 @@ urlpatterns = [
     path('vice-principal/student_register/', views.student_register, name='student_register'),
     
     path('teacher_login/', views.teacher_login, name='teacher_login'),
-    # path('student_login/', views.student_login, name='student_login'),
+    # path('teacher/', views.attendance_view, name='attendance_view'),
     
     # path('teacher/<int:teacher_id>/toggle/', views.toggle_teacher_status, name='toggle_teacher_status'),
     

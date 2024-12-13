@@ -34,7 +34,7 @@
               padding: 20px;
               box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
               border-radius: 8px;
-          } {% endcomment %}
+          }  {% endcomment %}
           h2 {
               text-align: center;
               color: #5a5a5a;
@@ -93,6 +93,47 @@
           input[type="number"] {
               -moz-appearance: textfield;
           }
+
+      {% comment %} .contain { 
+        width: 100%; 
+        overflow-x: auto;
+       } 
+       table {
+         width: 100%; 
+         border-collapse: collapse;
+         margin: 20px 0; 
+         font-size: 18px; 
+         text-align: left; 
+        } 
+        table, th, td {
+           border: 1px solid black; 
+          } 
+          th, td { 
+            padding: 10px; 
+            text-align: center; 
+          } 
+          th { 
+            background-color: #f4f4f4; 
+          ''''}  {% endcomment %}
+
+        {% comment %} table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 50px 0;
+            font-size: 15px;  /* Reduced font size */
+            text-align: left;
+            
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 5px;  /* Reduced padding */
+            text-align: left;
+            width: 20%;
+        } {% endcomment %}
+
+
       </style>
       <script>
           function calculateTotal() {
@@ -219,45 +260,44 @@
                
               <section class="about section" id="attendance">
                 <div class="container">
-                    <div class="row">
-                          <style>
-                              table {
-                                  width: 100%;
-                                  border-collapse: collapse;
-                                  margin: 20px 0;
-                                  font-size: 18px;
-                                  text-align: left;
-                              }
-                              table, th, td {
-                                  border: 1px solid black;
-                              }
-                              th, td {
-                                  padding: 10px;
-                                  text-align: left;
-                              }
-                          </style>
-
-                          <h2>Class Dashboard for {{ class_name }}</h2>
-                          <h3>Students</h3>
-                          <table>
-                              <thead>
-                                  <tr>
-                                      <th>First Name</th>
-                                      <th>Last Name</th>
-                                      <th>Class</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  {% for student in students %}
-                                  <tr>
-                                      <td>{{ student.Firstname }}</td>
-                                      <td>{{ student.Lastname }}</td>
-                                      <td>{{ student.Class }}</td>
-                                  </tr>
-                                  {% endfor %}
-                              </tbody>
-                          </table>
-
+                  <div class="row">
+                    {% comment %} <div class="portfolio-filter padd-15"> {% endcomment %}
+                      <h1>Welcome to your class attendance {{ teacher.username }} | </h1>
+                      <br>
+                      <br>
+                      <h2>Class: {{ teacher.Class_Teacher }}</h2>
+                      <h1 style="display:flex; position: static; text-align:center; justify-content:center; align-item:center; color:blue;"> Attendance</h1>
+                      <div class="contain"  style="overflow-x: auto;">
+                        <form method="POST" id="form" style="margin-right: 100%;">
+                            {% csrf_token %}
+                            <table border="1" >
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        {% for week in weeks %}
+                                            <th>Week {{ week }}</th>
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for student in students %}
+                                        <tr>
+                                            <td>{{ student.firstname }} {{ student.lastname }}</td>
+                                            {% for week in weeks %}
+                                                <td>
+                                                    {% for day in days %}
+                                                        <input type="checkbox" name="attendance_{{ student.id }}_week{{ week }}_day{{ day }}">
+                                                    {% endfor %}
+                                                </td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </form>
+                        <button type="submit" style="margin-top:20px">Save Attendance</button>
+                      </div>                      
+                      
                       
                         
                         {% comment %} <h1>Welcome, {{ firstname }} {{ surname }}</h1> {% endcomment %}
@@ -291,8 +331,8 @@
                         {% else %}
                             <p>No attendance records available or you are not assigned as a class teacher.</p>
                         {% endif %}
-                      </div>
-                    </div> {% endcomment %}
+                      </div>{% endcomment %}
+                    </div> 
                     <!-- portfolio Item Ends -->
                   </div>   
                 </div>
@@ -302,7 +342,40 @@
             <section class="about section" id="about">
               <div class="container">
                     <div class="row">
-                      <h1>This is notifications Page</h1>                            
+                      <div class="container">
+                        <div class="row">
+                          <div class="portfolio-filter padd-15">
+                            <div class="contain">
+                              <h1>Attendance</h1>
+                              <form method="POST">
+                                  {% csrf_token %}
+                                  <table border="1" >
+                                      <thead>
+                                          <tr>
+                                              <th>Student Name</th>
+                                              {% for week in weeks %}
+                                                  <th>Week {{ week }}</th>
+                                              {% endfor %}
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {% for student in students %}
+                                              <tr>
+                                                  <td>{{ student.firstname }} {{ student.lastname }}</td>
+                                                  {% for week in weeks %}
+                                                      <td>
+                                                          {% for day in days %}
+                                                              <input type="checkbox" name="attendance_{{ student.id }}_week{{ week }}_day{{ day }}">
+                                                          {% endfor %}
+                                                      </td>
+                                                  {% endfor %}
+                                              </tr>
+                                          {% endfor %}
+                                      </tbody>
+                                  </table>
+                                  <button type="submit">Save Attendance</button>
+                              </form>
+                            </div>                                                 
                       <!--Service Item Ends-->
                     </div>
               </div>

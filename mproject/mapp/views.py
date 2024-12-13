@@ -135,28 +135,6 @@ def teacher_register(request):
     
     return render(request, 'teacher_reg.html', {'form': form})
 
-
-#================main Teacher Logging
-# def teacher_login(request):
-#     if request.method == 'POST':
-#         form = TeacherLog(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['Password']
-            
-#             teacherd = Teacher.objects.filter(username=username).first()
-            
-#             if teacherd and teacherd.Password == password:
-#                 request.session['role'] = 'Teacher'
-#                 request.session['user_id'] = teacherd.id
-#                 messages.success(request, 'Login successful')
-#                 return redirect('teacher')
-#             else:
-#                 messages.error(request, 'Invalid username or password')
-#     else:
-#         form = TeacherLog()
-        
-#     return render(request, 'teacher_log.html', {'form': form})
 def teacher_login(request):
     if request.method == 'POST':
         form = TeacherLog(request.POST)
@@ -189,20 +167,56 @@ def teacher_login(request):
 
 
 
+    students = Student.objects.all()
+
+
+    # Define the range of weeks and days
+    weeks = list(range(1, 14))  # Weeks 1 to 13
+    days = list(range(1, 6))    # Days 1 to 5
+
+    if request.method == 'POST':
+        # Handle form submission (if applicable)
+        pass
+
+    # Pass the data to the template
+    return render(request, 'teacherboard.html', {
+        'students': students,
+        'weeks': weeks,
+        'days': days,
+    })
+
+
 
 
 
 
 def teacher(request):
+    # students = Student.objects.all()
+    
+        # Get the logged-in teacher
+    teacher_id = request.session.get('user_id')  # Assuming `user_id` is stored in the session during login
+    teacher = get_object_or_404(Teacher, id=teacher_id)
+
+    # Get students of the teacher's assigned class
+    students = Student.objects.filter(class_level=teacher.Class_Teacher)
+
+    # Define the range of weeks and days
+    weeks = list(range(1, 14))  # Weeks 1 to 13
+    days = list(range(1, 6))    # Days 1 to 5
+
+    if request.method == 'POST':
+        # Handle form submission (if applicable)
+        pass
+
+    # Pass the data to the template
 
     teacher_id = request.session.get('user_id')
     if not teacher_id:
         return redirect('teacher_log')    
 
     teacher = Teacher.objects.get(id=teacher_id)
-
     
-    return render(request, 'teacherboard.html', {'teacher': teacher})
+    return render(request, 'teacherboard.html', {'teacher': teacher, 'students':students, 'weeks': weeks, 'days': days})
 
 def student(request):
 
@@ -245,6 +259,29 @@ def student_register(request):
         form = StudentReg()
     
     return render(request, 'student_register.html', {'form': form})
+
+
+
+
+def attendance_view(request):
+    # Fetch all students
+    students = Student.objects.all()
+
+
+    # Define the range of weeks and days
+    weeks = list(range(1, 14))  # Weeks 1 to 13
+    days = list(range(1, 6))    # Days 1 to 5
+
+    if request.method == 'POST':
+        # Handle form submission (if applicable)
+        pass
+
+    # Pass the data to the template
+    return render(request, 'teacherboard.html', {
+        'students': students,
+        'weeks': weeks,
+        'days': days,
+    })
 
 
 

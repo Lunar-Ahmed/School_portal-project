@@ -205,3 +205,62 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    <style>
+        .contain {
+            width: 100%;
+            margin: auto;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;  /* Reduced font size */
+            text-align: left;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 5px;  /* Reduced padding */
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <h1>Attendance</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div style="overflow-x: auto;">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            {% for week in weeks %}
+                                <th>Week {{ week }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>

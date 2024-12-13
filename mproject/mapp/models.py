@@ -475,8 +475,6 @@ class Ss3(models.Model):
     password = models.CharField(max_length=150)
     
     
-    
-    
 # class Enroll(models.Model):
 #     firstname = models.CharField(max_length=50)
 #     lastname = models.CharField(max_length=50)
