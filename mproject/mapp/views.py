@@ -258,12 +258,37 @@ def update_student(request, student_id):
         student.firstname = request.POST['firstname']
         student.middlename = request.POST['middlename']
         student.lastname = request.POST['lastname']
-        student.email = request.POST['email']
+        student.username= request.POST['username']
         student.mobile = request.POST['mobile']
         student.address = request.POST['address']
         student.save()
         return redirect('acad')
 
+#=======Teacher update profile===========
+def update_teacher(request, teacher_id):
+    teacher = get_object_or_404(Teacher, teacher_id=teacher_id)
+    
+    if request.method == 'POST':
+        # Update profile picture
+        if 'profile_picture' in request.FILES:
+            teacher.profile_picture = request.FILES['profile_picture']
+
+        # Update username and email
+        teacher.username = request.POST.get('username', teacher.username)
+        teacher.email = request.POST.get('email', teacher.email)
+
+        # Update password if provided
+        new_password = request.POST.get('password')
+        if new_password:
+            from django.contrib.auth.hashers import make_password
+            teacher.password = make_password(new_password)
+
+        # Save updated data
+        teacher.save()
+        messages.success(request, "Profile updated successfully!")
+        return redirect('teacher_dashboard')
+
+    return render(request, 'teacherboard.html', {'teacher': teacher})
 
 # from django.shortcuts import render, get_object_or_404, redirect
 # from .models import Student, Attendance

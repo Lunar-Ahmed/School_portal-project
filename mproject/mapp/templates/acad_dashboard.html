@@ -326,6 +326,7 @@
                               </div>
                           </div>
                         </div>
+
                       </div>
                       <!--Service Item Ends-->
                     </div>
@@ -630,7 +631,7 @@
                     table += '<thead><tr><th>S/No</th><th>First Name</th><th>Last Name</th><th>AdmissionNumber</th></tr></thead>';
                     table += '<tbody>';
                     data.forEach(student => {
-                        table += `<tr onclick="showStudentDetails({{ student.id }})"><td>${student.id}</td><td>${student.firstname}</td><td>${student.lastname}</td><td>${student.admission_number}</td></tr>`;
+                        table += `<tr onclick="showStudentDetails(${student.id})"><td>${student.id}</td><td>${student.firstname}</td><td>${student.lastname}</td><td>${student.admission_number}</td></tr>`;
                     });
                     table += '</tbody></table>';
                     document.getElementById('studentTable').innerHTML = table;

@@ -7,23 +7,23 @@
 
 <form method="POST" action="{% url 'update_student' student.id %}">
     {% csrf_token %}
-    <label for="Firstname">Email:</label>
-    <input type="text" id="Firstname" name="Firstname" value="{{ student.firstname }}"><br>
+    <label for="firstname">Email:</label>
+    <input type="text" id="firstname" name="firstname" value="{{ student.firstname }}"><br>
     
-    <label for="Middlename">Mobile:</label>
-    <input type="text" id="Middlename" name="Middlename" value="{{ student.middlename}}"><br>
+    <label for="middlename">Mobile:</label>
+    <input type="text" id="middlename" name="middlename" value="{{ student.middlename}}"><br>
     
-    <label for="Lastname">Mobile:</label>
-    <input type="text" id="Lastname" name="Lastname" value="{{ student.lastname}}"><br>
+    <label for="lastname">Mobile:</label>
+    <input type="text" id="lastname" name="lastname" value="{{ student.lastname}}"><br>
 
-    <label for="Email">Email:</label>
-    <input type="Email" id="email" name="Email" value="{{ student.email }}"><br>
+    <label for="username">Email:</label>
+    <input type="text" id="username" name="username" value="{{ student.username }}"><br>
     
-    <label for="Mobile">Mobile:</label>
-    <input type="text" id="Mobile" name="Mobile" value="{{ student.mobile }}"><br>
+    <label for="mobile">Mobile:</label>
+    <input type="text" id="mobile" name="mobile" value="{{ student.mobile }}"><br>
     
-    <label for="Address">Address:</label>
-    <textarea id="Address" name="Address">{{ student.address }}</textarea><br>
+    <label for="address">Address:</label>
+    <textarea id="address" name="address">{{ student.address }}</textarea><br>
     
     <button type="submit">Update</button>
 </form>

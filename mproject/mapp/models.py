@@ -341,12 +341,12 @@ class Student(models.Model):
         
         # Create class-specific model instance after saving the student
         class_model = {
-            ('jss1', 'JSS1'),
-            ('jss2', 'JSS2'),
-            ('jss3', 'JSS3'),
-            ('ss1', 'SS1'),
-            ('ss2', 'SS2'),
-            ('ss3', 'SS3'),
+            'jss1': 'JSS1',  # Use actual model class names as values if applicable
+            'jss2': 'JSS2',
+            'jss3': 'JSS3',
+            'ss1': 'SS1',
+            'ss2': 'SS2',
+            'ss3': 'SS3',
         }.get(self.class_level)
         
         model_class = globals().get(class_model)

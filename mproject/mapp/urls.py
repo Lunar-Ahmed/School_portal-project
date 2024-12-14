@@ -14,8 +14,11 @@ urlpatterns = [
     
     path('vice-principal/teacher-details/<int:teacher_id>/', views.teacher_details, name='teacher_details'),
     path('vice-principal/update-teacher/<int:teacher_id>/', views.update_teacher, name='update_teacher'),  # Add this line
-    path('vice-principal/studnt-details/<int:student_id>/', views.student_details, name='student_details'),
-    path('vice-principal/student-teacher/<int:student_id>/', views.update_student, name='student_teacher'),  # Add this line
+    
+    path('vice-principal/student-details/<int:student_id>/', views.student_details, name='student_details'),
+    path('vice-principal/update-student/<int:student_id>/', views.update_student, name='update_student'),  # Add this line
+    
+    path('update-teacher/<int:teacher_id>/', views.update_teacher, name='update_teacher'),
 
     # path('attendance/<int:student_id>/<int:week>/', views.attendance_view, name='attendance_view'),
     path('students/class/<str:class_level>/', views.get_students_by_class, name='get_students_by_class'),
