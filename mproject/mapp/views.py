@@ -46,7 +46,7 @@ def acad(request):
 from django.http import JsonResponse
 def get_students_by_class(request, class_level):
     students = Student.objects.filter(class_level=class_level)
-    student_data = list(students.values('firstname', 'lastname', 'admission_number'))
+    student_data = list(students.values('id', 'firstname', 'lastname', 'admission_number'))
     return JsonResponse(student_data, safe=False)
 
 
@@ -220,7 +220,7 @@ def teacher(request):
 
 
 def teacher_details(request, teacher_id):
-    teacher = get_object_or_404(Teacher, id=teacher_id)
+    teacher= get_object_or_404(Teacher, id=teacher_id)
     return render(request, 'teacher_details_partial.html', {'teacher': teacher})
 
 def update_teacher(request, teacher_id):
@@ -246,6 +246,23 @@ def student(request):
 
     
     return render(request, 'studentboard.html', {'teacher': teacher})
+
+
+def student_details(request, student_id):
+    student= get_object_or_404(Student, id=student_id)
+    return render(request, 'student_details_partial.html', {'student': student})
+
+def update_student(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+    if request.method == 'POST':
+        student.firstname = request.POST['firstname']
+        student.middlename = request.POST['middlename']
+        student.lastname = request.POST['lastname']
+        student.email = request.POST['email']
+        student.mobile = request.POST['mobile']
+        student.address = request.POST['address']
+        student.save()
+        return redirect('acad')
 
 
 # from django.shortcuts import render, get_object_or_404, redirect

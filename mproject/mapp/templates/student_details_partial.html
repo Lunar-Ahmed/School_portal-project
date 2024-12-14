@@ -1,0 +1,29 @@
+<h2>{{ student.firstname }} {{ student.lastname }}</h2>
+<p><strong>Email:</strong> {{ student.email }}</p>
+<p><strong>Assigned Class:</strong> {{ teacher.class_level }}</p>
+<p><strong>Mobile:</strong> {{ student.mobile }}</p>
+<p><strong>Gender:</strong> {{ student.gender}}</p>
+<p><strong>Address:</strong> {{ student.address }}</p>
+
+<form method="POST" action="{% url 'update_student' student.id %}">
+    {% csrf_token %}
+    <label for="Firstname">Email:</label>
+    <input type="text" id="Firstname" name="Firstname" value="{{ student.firstname }}"><br>
+    
+    <label for="Middlename">Mobile:</label>
+    <input type="text" id="Middlename" name="Middlename" value="{{ student.middlename}}"><br>
+    
+    <label for="Lastname">Mobile:</label>
+    <input type="text" id="Lastname" name="Lastname" value="{{ student.lastname}}"><br>
+
+    <label for="Email">Email:</label>
+    <input type="Email" id="email" name="Email" value="{{ student.email }}"><br>
+    
+    <label for="Mobile">Mobile:</label>
+    <input type="text" id="Mobile" name="Mobile" value="{{ student.mobile }}"><br>
+    
+    <label for="Address">Address:</label>
+    <textarea id="Address" name="Address">{{ student.address }}</textarea><br>
+    
+    <button type="submit">Update</button>
+</form>
