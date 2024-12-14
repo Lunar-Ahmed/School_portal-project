@@ -218,6 +218,24 @@ def teacher(request):
     
     return render(request, 'teacherboard.html', {'teacher': teacher, 'students':students, 'weeks': weeks, 'days': days})
 
+
+def teacher_details(request, teacher_id):
+    teacher = get_object_or_404(Teacher, id=teacher_id)
+    return render(request, 'teacher_details_partial.html', {'teacher': teacher})
+
+def update_teacher(request, teacher_id):
+    teacher = get_object_or_404(Teacher, id=teacher_id)
+    if request.method == 'POST':
+        teacher.Firstname = request.POST['Firstname']
+        teacher.Middlename = request.POST['Middlename']
+        teacher.Lastname = request.POST['Lastname']
+        teacher.Email = request.POST['Email']
+        teacher.Mobile = request.POST['Mobile']
+        teacher.Address = request.POST['Address']
+        teacher.save()
+        return redirect('acad')
+
+
 def student(request):
 
     student_id = request.session.get('user_id')

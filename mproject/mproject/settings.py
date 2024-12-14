@@ -124,7 +124,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-AUTHENTICATION_BACKENDS = ['mproject.authentication.TeacherAuthBackend']
+# AUTHENTICATION_BACKENDS = ['mproject.authentication.TeacherAuthBackend']
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -162,7 +162,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # settings.py
-AUTHENTICATION_BACKENDS = ['mproject.mapp.backends.CustomBackend']
+# AUTHENTICATION_BACKENDS = ['mproject.mapp.backends.CustomBackend']
 
 
 from django.contrib.messages import constants as messages

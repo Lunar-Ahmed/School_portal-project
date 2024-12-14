@@ -54,6 +54,34 @@
             padding: 10px;
             text-align: left;
         }
+
+
+        .modal {
+          position: fixed;
+          z-index: 1000;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.4);
+      }
+  
+      .modal-content {
+          background-color: white;
+          margin: 15% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 50%;
+      }
+  
+      .close {
+          color: red;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+      }
         </style>
 
     </head>
@@ -129,7 +157,7 @@
                       </div>
                       <table id="data-table">
                         <thead>
-                            <tr>
+                            <tr >
                                 <th>Id</th>
                                 <th>First Name</th>
                                 <th>Phone</th>
@@ -140,7 +168,7 @@
                         </thead>
                         <tbody>
                             {% for teacher in teacher_data %}
-                            <tr>
+                            <tr onclick="showTeacherDetails({{ teacher.id }})">
                                 <td>{{ teacher.id }}</td>
                                 <td>{{ teacher.Firstname }} {{ teacher.Middlename }} {{ teacher.Lastname }}</td>
                                 <td>{{ teacher.Mobile }}</td>
@@ -171,6 +199,16 @@
                     
                       <button id="add" ><a href="vice-principal/teacher_register">Add Teacher</a></button>
                   </div>
+
+                  <div id="teacherModal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <div id="modalBody">
+                            <!-- Teacher details will be loaded here -->
+                        </div>
+                    </div>
+                  </div>
+
                 </div>
                     <!-- portfolio Item Ends -->
               </div>                    
@@ -592,6 +630,19 @@
                     document.getElementById('studentTable').innerHTML = '<p>Error loading student data.</p>';
                 });
         }
+
+        function showTeacherDetails(teacherId) {
+          fetch(`/admin/teacher-details/${teacherId}/`)  // Fetch teacher details
+              .then(response => response.text())
+              .then(data => {
+                  document.getElementById('modalBody').innerHTML = data;
+                  document.getElementById('teacherModal').style.display = 'block';
+              });
+      }
+  
+      function closeModal() {
+          document.getElementById('teacherModal').style.display = 'none';
+      }
         </script>
        
       </div>
