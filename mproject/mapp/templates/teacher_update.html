@@ -1,0 +1,107 @@
+    <!-- Profile Update Form (Initially Hidden) -->
+    <div id="profileForm" class="profile-form">
+        <form method="POST" enctype="multipart/form-data" action="{% url 'teacher_update' teacher.teacher_id %}">
+            {% csrf_token %}
+            <h3>Update Your Profile</h3>
+
+            <!-- Profile Picture -->
+            <label for="profile_picture">Profile Picture:</label>
+            <input type="file" name="profile_picture" id="profile_picture">
+            
+            <!-- Username -->
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="{{ teacher.username }}" required>
+            
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ teacher.email }}" required>
+            
+            <!-- Password -->
+            <label for="password">New Password:</label>
+            <input type="password" name="password" id="password" placeholder="Enter a new password">
+            
+            <!-- Submit Button -->
+            <button type="submit">Save Changes</button>
+        </form>
+        <button type="button" onclick="closeProfileForm()">Close</button>
+    </div>
+</div>
+
+<!-- CSS Styles -->
+<style>
+    .teacher-dashboard {
+        position: relative;
+    }
+
+    /* Profile photo */
+    .profile-container img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-container img:hover {
+        transform: scale(1.1); /* Slight zoom effect when hovering over the profile photo */
+    }
+
+    /* Profile update form (Initially hidden) */
+    .profile-form {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: none; /* Hidden by default */
+    }
+
+    .profile-form input {
+        width: 100%;
+        padding: 8px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .profile-form button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .profile-form button:hover {
+        background-color: #45a049;
+    }
+
+    /* Close button */
+    .profile-form button[type="button"] {
+        background-color: #f44336;
+        margin-top: 10px;
+    }
+
+    .profile-form button[type="button"]:hover {
+        background-color: #e53935;
+    }
+</style>
+
+<!-- JavaScript -->
+<script>
+    // Function to open the profile update form when the profile photo is clicked
+    function openProfileForm() {
+        document.getElementById('profileForm').style.display = 'block';
+    }
+
+    // Function to close the profile update form
+    function closeProfileForm() {
+        document.getElementById('profileForm').style.display = 'none';
+    }
+</script>

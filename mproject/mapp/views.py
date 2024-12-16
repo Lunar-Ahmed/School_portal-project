@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TeacherReg,  StudentReg,TeacherLog #StudentLog #EnrollForm #AuthorityLogForm 
+from .forms import TeacherReg,  StudentReg,TeacherLog, StudentLog #EnrollForm #AuthorityLogForm 
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Teacher,Student
@@ -189,13 +189,27 @@ def teacher_login(request):
 
 
 
-
+#===============main Teacher board==================
 def teacher(request):
     # students = Student.objects.all()
     
         # Get the logged-in teacher
     teacher_id = request.session.get('user_id')  # Assuming `user_id` is stored in the session during login
     teacher = get_object_or_404(Teacher, id=teacher_id)
+    
+    if request.method == 'POST':
+        teacher.username = request.POST.get('username')
+        teacher.email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        if password:
+            teacher.set_password(password)  # Update password if provided
+        
+        if 'profile_picture' in request.FILES:
+            teacher.profile_picture = request.FILES['profile_picture']
+        
+        teacher.save()
+        return redirect('teacher')
 
     # Get students of the teacher's assigned class
     students = Student.objects.filter(class_level=teacher.Class_Teacher)
@@ -217,6 +231,7 @@ def teacher(request):
     teacher = Teacher.objects.get(id=teacher_id)
     
     return render(request, 'teacherboard.html', {'teacher': teacher, 'students':students, 'weeks': weeks, 'days': days})
+
 
 
 def teacher_details(request, teacher_id):
@@ -265,30 +280,24 @@ def update_student(request, student_id):
         return redirect('acad')
 
 #=======Teacher update profile===========
-def update_teacher(request, teacher_id):
-    teacher = get_object_or_404(Teacher, teacher_id=teacher_id)
-    
-    if request.method == 'POST':
-        # Update profile picture
-        if 'profile_picture' in request.FILES:
-            teacher.profile_picture = request.FILES['profile_picture']
+# def teacher_update(request, teacher_id):
+#     teacher = get_object_or_404(Teacher, id=teacher_id)
 
-        # Update username and email
-        teacher.username = request.POST.get('username', teacher.username)
-        teacher.email = request.POST.get('email', teacher.email)
+#     if request.method == 'POST':
+#         teacher.username = request.POST.get('username')
+#         teacher.email = request.POST.get('email')
+#         password = request.POST.get('password')
 
-        # Update password if provided
-        new_password = request.POST.get('password')
-        if new_password:
-            from django.contrib.auth.hashers import make_password
-            teacher.password = make_password(new_password)
+#         if password:
+#             teacher.set_password(password)  # Update password if provided
+        
+#         if 'profile_picture' in request.FILES:
+#             teacher.profile_picture = request.FILES['profile_picture']
+        
+#         teacher.save()
+#         return redirect('teacher')  # Redirect to the teacher's dashboard or profile page
 
-        # Save updated data
-        teacher.save()
-        messages.success(request, "Profile updated successfully!")
-        return redirect('teacher_dashboard')
-
-    return render(request, 'teacherboard.html', {'teacher': teacher})
+#     return render(request, 'teacherboard.html', {'teacher': teacher})
 
 # from django.shortcuts import render, get_object_or_404, redirect
 # from .models import Student, Attendance
@@ -346,6 +355,11 @@ def attendance_view(request):
 
 
 
+# 
+
+
+
+
 # def authority_login(request):
 #     form = AuthorityLogForm()
 #     if request.method == 'POST':
@@ -384,9 +398,6 @@ def attendance_view(request):
 
 
 #===============LOGINS========================
-# def authority_login(request):
-#     template = loader.get_template('authority_login.html')
-#     return HttpResponse(template.render())
 
 # def student_login(request):
 #     if request.method == 'POST':
@@ -442,21 +453,21 @@ def attendance_view(request):
 
 
 
-# def authority_login(request):
-#     form = AuthorityLogForm()
-#     if request.method == 'POST':
-#         form = AuthorityLogForm(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-#             user = authenticate(request, username=username, password=password)
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('home')  # Redirect to a success page
-#             else:
-#                 form.add_error(None, 'Invalid username or password')
-#     context = {'loginform': form}
-#     return render(request, 'login.html', context=context)
+def student_login(request):
+    form = StudentLog()
+    if request.method == 'POST':
+        form = StudentLog(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('student')  # Redirect to a success page
+            else:
+                form.add_error(None, 'Invalid username or password')
+    context = {'form': form}
+    return render(request, 'student_login.html', context=context)
 
 
 # views.py

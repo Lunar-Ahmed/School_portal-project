@@ -12,6 +12,11 @@ class TeacherReg(forms.ModelForm):
             'Subject_Teacher': forms.Select(attrs={'placeholder': 'Choose Subject'}),
             'Class_Teacher': forms.Select
         }
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.fields['Class_Teacher'].required = False
+        
+        
 class StudentReg(forms.ModelForm):
     class Meta:
         model = Student
@@ -26,6 +31,11 @@ class TeacherLog(forms.ModelForm):
     class Meta:
         model = Teacher
         fields = ['username', 'Password']
+        
+class StudentLog(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['username', 'password']
         
         
 from django.contrib.auth.backends import BaseBackend
