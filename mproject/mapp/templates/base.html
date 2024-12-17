@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<html>
     <head> 
         <title>Personal Profile Page</title>
         <meta charset="utf-8">
@@ -18,7 +17,7 @@
         <link rel="stylesheet" class="alternate-style" title="yellow" href="{% static 'css/skins/yellow.css' %}" type="text/css" disabled>
         <link rel="stylesheet" class="alternate-style" title="green" href="{% static 'css/skins/green.css' %}" type="text/css" disabled>
 
-        <link rel="stylesheet" href="{%static 'css/styleSwitcher.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/styleSwitcher.css' %}" type="text/css">
 
 
     </head>
@@ -47,6 +46,7 @@
                <ul class="nav">
                 {% comment %} <li><a href="#home" class="active"><i class="fa fa-home"></i>profile</a></li> {% endcomment %}
                 <li><a href="#attendance" class="active"><i class="fa fa-home"></i>School Reports</a></li>
+                <li><a href="#subjects" class="active"><i class="fa fa-home"></i>School Subjects</a></li>
                 <li><a href="#about"><i class="fa fa-user"></i>Teachers Records</a></li>
                 <li><a href="#services"><i class="fa fa-list"></i>Lesson Note</a></li>
                 <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Broadsheet</a></li>
@@ -85,151 +85,467 @@
                 <div class="container">
                     <div class="row">
                         <div class="portfolio-filter padd-15">
-                          <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Student Name</th>
-                                        <th>Wk 1</th>
-                                        <th>Wk 2</th>
-                                        <th>Wk 3</th>
-                                        <th>Wk 4</th>
-                                        <th>Wk 5</th>
-                                        <th>Wk 6</th>
-                                        <th>Wk 7</th>
-                                        <th>Wk 8</th>
-                                        <th>Wk 9</th>
-                                        <th>Wk 10</th>
-                                        <th>Wk 11</th>
-                                        <th>Wk 12</th>
-                                        <th>Wk 13</th>
-                                        <th>Wk 14</th>
-    
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="td">
-                                        <td>001</td>
-                                        <td>Student 1</td>
-                                        <td id="td">
-                                              <label><input type="checkbox" name="student1_week1_mon"></label>
-                                              <label><input type="checkbox" name="student1_week1_tue"></label>
-                                              <label><input type="checkbox" name="student1_week1_wed"></label>
-                                              <label><input type="checkbox" name="student1_week1_thu"></label>
-                                              <label><input type="checkbox" name="student1_week1_fri"></label>
-                                          
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                        <td id="td">
-                                            <label><input type="checkbox" name="student1_week2_mon"></label>
-                                            <label><input type="checkbox" name="student1_week2_tue"></label>
-                                            <label><input type="checkbox" name="student1_week2_wed"></label>
-                                            <label><input type="checkbox" name="student1_week2_thu"></label>
-                                            <label><input type="checkbox" name="student1_week2_fri"></label>
-                                        </td>
-                                    </tr>  
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-  
-                    </div>
+                            <h2>Principal Dashboard</h2>
 
-                    <!-- portfolio Item Ends -->
+                            <!-- Department Cards -->
+                            <div class="row">
+                                {% for department in departments %}
+                                <div class="col-md-4">
+                                    <div class="card department-card" data-department="{{ department.name }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ department.get_name_display }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Subjects Section -->
+                            <div id="subjects-section" style="display: none;">
+                                <h3 id="subjects-title"></h3>
+                                <ul id="subject-list" class="list-group"></ul>
+                                <button id="add-subject-btn" class="btn btn-primary mt-3" onclick="showAddSubjectForm()">Add Subject</button>
+                            </div>
+
+                            <!-- Add Subject Modal -->
+                            <div id="add-subject-modal" style="display: none;">
+                                <div class="modal-overlay">
+                                    <div class="modal-content">
+                                        <h4>Add New Subject</h4>
+                                        <input type="text" id="subject-name-input" placeholder="Enter Subject Name" class="form-control mb-3">
+                                        <button id="save-subject-btn" class="btn btn-success">Save</button>
+                                        <button onclick="closeModal()" class="btn btn-secondary">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Subject List -->
+                            <div id="subject-list-section">
+                                <h3>Subjects</h3>
+                                <ul id="subject-items"></ul>
+                                <button class="btn btn-primary" onclick="showAddSubjectForm()">Add Subject</button>
+                            </div>
+
+                            <!-- Add/Update Subject Form -->
+                            <div id="subject-form" style="display: none;">
+                                <span class="close-form" onclick="closeForm()">×</span>
+                                <h4 id="form-title">Add Subject</h4>
+                                <form id="subject-form-body">
+                                    <label for="subject-name">Subject Name:</label>
+                                    <input type="text" id="subject-name" required>
+                                    <button type="submit">Save</button>
+                                </form>
+                            </div>
+
+                        </div> <!-- portfolio-filter -->
+                    </div> <!-- row -->
+                </div> <!-- container -->
+            </section>
+
+            <!-- JavaScript -->
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const departmentCards = document.querySelectorAll('.department-card');
+                    let selectedDepartment = null;
+
+                    // Handle card click
+                    departmentCards.forEach(card => {
+                        card.addEventListener('click', function () {
+                            departmentCards.forEach(c => c.classList.remove('active'));
+                            card.classList.add('active');
+                            selectedDepartment = card.getAttribute('data-department');
+                            fetchSubjects(selectedDepartment);
+                        });
+                    });
+
+                    // Fetch subjects for a department
+                    function fetchSubjects(department) {
+                        fetch(`/fetch-subjects/?department=${department}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const subjectItems = document.getElementById('subject-items');
+                                subjectItems.innerHTML = '';
+                                data.subjects.forEach(subject => {
+                                    subjectItems.innerHTML += `
+                                        <li>
+                                            ${subject.name}
+                                            <button onclick="deleteSubject(${subject.id})" class="btn btn-danger btn-sm">Delete</button>
+                                        </li>`;
+                                });
+                            });
+                    }
+
+                    // Show Add Subject Form
+                    window.showAddSubjectForm = function () {
+                        document.getElementById('subject-form').style.display = 'block';
+                        document.getElementById('form-title').innerText = 'Add Subject';
+                        document.getElementById('subject-form-body').onsubmit = addSubject;
+                    };
+
+                    // Close Form
+                    window.closeForm = function () {
+                        document.getElementById('subject-form').style.display = 'none';
+                    };
+
+                    // Add Subject
+                    function addSubject(event) {
+                        event.preventDefault();
+                        const subjectName = document.getElementById('subject-name').value;
+                        fetch('/add-subject/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': '{{ csrf_token }}'
+                            },
+                            body: JSON.stringify({ department: selectedDepartment, subject_name: subjectName })
+                        })
+                        .then(response => response.json())
+                        .then(() => {
+                            fetchSubjects(selectedDepartment);
+                            closeForm();
+                        });
+                    }
+
+                    // Delete Subject
+                    window.deleteSubject = function (subjectId) {
+                        fetch('/delete-subject/', {
+                            method: 'POST',
+                            headers: { 
+                                'Content-Type': 'application/json', 
+                                'X-CSRFToken': '{{ csrf_token }}' 
+                            },
+                            body: JSON.stringify({ subject_id: subjectId })
+                        })
+                        .then(() => fetchSubjects(selectedDepartment));
+                    };
+                });
+            </script>  
+
+
+
+
+
+            <section class="about section" id="subjects">
+              <div class="container">
+                  <div class="row">
+                      <div class="portfolio-filter padd-15">
+                        <div class="row">
+                        <style>
+                            /* General page styling */
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: #f9f9f9;
+                                margin: 0;
+                                padding: 0;
+                            }
+
+                            h2, h3 {
+                                text-align: center;
+                                margin-bottom: 20px;
+                                color: #333;
+                            }
+
+                            /* Card container */
+                            .row {
+                                display: flex;
+                                justify-content: center;
+                                gap: 20px;
+                                margin-top: 30px;
+                            }
+
+                            /* Styling for department cards */
+                            .department-card {
+                                width: 250px;
+                                height: 150px;
+                                border: none;
+                                border-radius: 10px;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                                cursor: pointer;
+                            }
+
+                            .department-card:hover {
+                                transform: scale(1.05);
+                                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+                            }
+
+                            .department-card .card-body {
+                                text-align: center;
+                                background: linear-gradient(to right, #6a11cb, #2575fc);
+                                {% comment %} background: linear-gradient(to right, #6a11cb, #2575fc); {% endcomment %}
+                                color: #fff;
+                                border-radius: 10px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                height: 100%;
+                            }
+
+                            /* Subject list styling */
+                            #subject-list {
+                                margin: 30px auto;
+                                width: 80%;
+                                max-width: 600px;
+                                background: #fff;
+                                padding: 20px;
+                                border-radius: 10px;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            }
+
+                            #subject-list ul {
+                                list-style: none;
+                                padding: 0;
+                                margin: 0;
+                            }
+
+                            #subject-list li {
+                                padding: 10px;
+                                border-bottom: 1px solid #ddd;
+                                color: #333;
+                                font-size: 16px;
+                                transition: background-color 0.2s ease;
+                                cursor: pointer;
+                            }
+
+                            #subject-list li:last-child {
+                                border-bottom: none;
+                            }
+
+                            #subject-list li:hover {
+                                background-color: #f0f0f0;
+                            }
+
+                            /* Add/update subject form styling */
+                            #subject-form {
+                                display: none;
+                                background-color: white;
+                                padding: 20px;
+                                border-radius: 10px;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                max-width: 500px;
+                                margin: 20px auto;
+                            }
+
+                            #subject-form label {
+                                display: block;
+                                margin: 10px 0 5px;
+                            }
+
+                            #subject-form input {
+                                width: 100%;
+                                padding: 10px;
+                                margin-bottom: 20px;
+                                border: 1px solid #ddd;
+                                border-radius: 5px;
+                            }
+
+                            #subject-form button {
+                                padding: 10px 20px;
+                                background-color: #2575fc;
+                                color: white;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+
+                            #subject-form button:hover {
+                                background-color: #6a11cb;
+                            }
+
+                            .close-form {
+                                cursor: pointer;
+                                color: red;
+                                font-size: 20px;
+                                text-align: right;
+                            }
+                        </style>
+
+                        {% comment %} <h2>Select a Department</h2> {% endcomment %}
+
+                        <!-- Cards for Departments -->
+                        <div class="row">
+                            <!-- Science Card -->
+                            <div class="col-md-4">
+                                <div class="card department-card" data-department="S">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Science</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Art Card -->
+                            <div class="col-md-4">
+                                <div class="card department-card" data-department="A">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Art</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Commercial Card -->
+                            <div class="col-md-4">
+                                <div class="card department-card" data-department="C">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Commercial</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subject List Section -->
+                        {% comment %} <h3 class="mt-5">Subjects</h3> {% endcomment %}
+                        <div id="subject-list">
+                            {% comment %} <p>Select a department to view subjects.</p> {% endcomment %}
+                        </div>
+
+                        <!-- Subject Form Section -->
+                        <div id="subject-form">
+                            <span class="close-form" onclick="closeForm()">×</span>
+                            <h4 id="form-title">Add Subject</h4>
+                            <form id="subject-form-body">
+                                <label for="subject-name">Subject Name:</label>
+                                <input type="text" id="subject-name" name="subject_name" required>
+                                <button type="submit">Save Subject</button>
+                            </form>
+                        </div>
+
+                        <!-- JavaScript for AJAX and Form Handling -->
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const departmentCards = document.querySelectorAll('.department-card');
+                            departmentCards.forEach(card => {
+                                card.addEventListener('click', function () {
+                                    const department = card.dataset.department;
+                                    fetchSubjects(department);
+                                });
+                            });
+
+                            // Function to fetch subjects
+                            function fetchSubjects(department) {
+                                fetch(`/fetch-subjects/?department=${department}`)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const subjectListDiv = document.getElementById('subject-list');
+                                        if (data.subjects.length > 0) {
+                                            let subjectHTML = '<ul>';
+                                            data.subjects.forEach(subject => {
+                                                subjectHTML += `
+                                                    <li onclick="editSubject(${subject.id})">${subject.name}</li>
+                                                `;
+                                            });
+                                            subjectHTML += '</ul>';
+                                            subjectListDiv.innerHTML = subjectHTML;
+                                        } else {
+                                            subjectListDiv.innerHTML = '<p>No subjects available for this department.</p>';
+                                        }
+                                        subjectListDiv.innerHTML += `
+                                            <button onclick="showAddSubjectForm()">Add Subject</button>
+                                        `;
+                                    })
+                                    .catch(error => {
+                                        console.error('Error fetching subjects:', error);
+                                        document.getElementById('subject-list').innerHTML = '<p>Failed to load subjects.</p>';
+                                    });
+                            }
+
+                            // Show form to add subject
+                            window.showAddSubjectForm = function () {
+                                document.getElementById('subject-form').style.display = 'block';
+                                document.getElementById('form-title').textContent = 'Add Subject';
+                                document.getElementById('subject-name').value = ''; // Clear the input field
+                                document.getElementById('subject-form-body').onsubmit = function (e) {
+                                    e.preventDefault();
+                                    addSubject();
+                                };
+                            };
+
+                            // Close the form
+                            window.closeForm = function () {
+                                document.getElementById('subject-form').style.display = 'none';
+                            };
+
+                            // Add subject
+                            function addSubject() {
+                                const subjectName = document.getElementById('subject-name').value;
+                                const department = document.querySelector('.department-card.active').dataset.department;
+
+                                fetch('/add-subject/', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRFToken': '{{ csrf_token }}',
+                                    },
+                                    body: JSON.stringify({ subject_name: subjectName, department: department })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        alert('Subject added successfully!');
+                                        fetchSubjects(department);  // Refresh subject list
+                                        closeForm();
+                                    } else {
+                                        alert('Failed to add subject!');
+                                    }
+                                })
+                                .catch(error => console.error('Error adding subject:', error));
+                            }
+
+                            // Edit subject
+                            window.editSubject = function (subjectId) {
+                                // You would fetch the subject and prefill the form for updating
+                                fetch(`/get-subject/${subjectId}/`)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        document.getElementById('subject-name').value = data.name;
+                                        document.getElementById('form-title').textContent = 'Update Subject';
+                                        document.getElementById('subject-form-body').onsubmit = function (e) {
+                                            e.preventDefault();
+                                            updateSubject(subjectId);
+                                        };
+                                        document.getElementById('subject-form').style.display = 'block';
+                                    })
+                                    .catch(error => console.error('Error editing subject:', error));
+                            };
+
+                            // Update subject
+                            function updateSubject(subjectId) {
+                                const subjectName = document.getElementById('subject-name').value;
+                                fetch(`/update-subject/${subjectId}/`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRFToken': '{{ csrf_token }}',
+                                    },
+                                    body: JSON.stringify({ subject_name: subjectName })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        alert('Subject updated successfully!');
+                                        fetchSubjects(document.querySelector('.department-card.active').dataset.department);
+                                        closeForm();
+                                    } else {
+                                        alert('Failed to update subject!');
+                                    }
+                                })
+                                .catch(error => console.error('Error updating subject:', error));
+                            }
+                        });
+                        </script>
+
                   </div>
-                    
+
                   </div>
-            </section>  
+
+                  <!-- portfolio Item Ends -->
+                </div>
+                  
+                </div>
+          </section> 
 
 
             <section class="about section" id="about">
               <div class="container">
                     <div class="row">
-                      <h1>This is notifications Page</h1>                            
+                      <h1>Teachers Record loading......</h1>                            
                       <!--Service Item Ends-->
                     </div>
               </div>
@@ -245,7 +561,7 @@
                 <div class="container">
                       <div class="row">
 
-                        <h1>THIS IS MEMO PAGE</H1>
+                        <h1>Lesson Notes loading......</H1>
                               
                         <!--Service Item Ends-->
                       </div>
@@ -511,6 +827,81 @@
               </div>
           </section>
           <!--Blog Section Ends-->
+
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const departmentCards = document.querySelectorAll('.department-card');
+                let selectedDepartment = null;
+            
+                // Handle card click
+                departmentCards.forEach(card => {
+                    card.addEventListener('click', function () {
+                        departmentCards.forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                        selectedDepartment = card.getAttribute('data-department');
+                        fetchSubjects(selectedDepartment);
+                    });
+                });
+            
+                // Fetch subjects for a department
+                function fetchSubjects(department) {
+                    fetch(`/fetch-subjects/?department=${department}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const subjectItems = document.getElementById('subject-items');
+                            subjectItems.innerHTML = '';
+                            data.subjects.forEach(subject => {
+                                subjectItems.innerHTML += `
+                                    <li>
+                                        ${subject.name}
+                                        <button onclick="deleteSubject(${subject.id})" class="btn btn-danger btn-sm">Delete</button>
+                                    </li>`;
+                            });
+                        });
+                }
+            
+                // Show Add Subject Form
+                window.showAddSubjectForm = function () {
+                    document.getElementById('subject-form').style.display = 'block';
+                    document.getElementById('form-title').innerText = 'Add Subject';
+                    document.getElementById('subject-form-body').onsubmit = addSubject;
+                };
+            
+                // Close Form
+                window.closeForm = function () {
+                    document.getElementById('subject-form').style.display = 'none';
+                };
+            
+                // Add Subject
+                function addSubject(event) {
+                    event.preventDefault();
+                    const subjectName = document.getElementById('subject-name').value;
+                    fetch('/add-subject/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: JSON.stringify({ department: selectedDepartment, subject_name: subjectName })
+                    })
+                    .then(response => response.json())
+                    .then(() => {
+                        fetchSubjects(selectedDepartment);
+                        closeForm();
+                    });
+                }
+            
+                // Delete Subject
+                window.deleteSubject = function (subjectId) {
+                    fetch('/delete-subject/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': '{{ csrf_token }}' },
+                        body: JSON.stringify({ subject_id: subjectId })
+                    })
+                    .then(() => fetchSubjects(selectedDepartment));
+                };
+            });
+            </script>
 
 
             

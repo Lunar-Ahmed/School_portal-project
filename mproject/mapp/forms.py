@@ -65,7 +65,13 @@ class InputTableForm(forms.ModelForm):
         fields = ['input1', 'input2', 'input3']
         
         
+from .models import Subject
 
+class SubjectForm(forms.ModelForm):
+    class Meta:
+        model = Subject
+        fields = ['name']
+        labels = {'name': 'Subject Name'}
 
         
 # class StudentRegForm(forms.ModelForm):

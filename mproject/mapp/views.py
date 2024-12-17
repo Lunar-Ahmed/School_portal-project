@@ -16,8 +16,8 @@ def index(request):
     return HttpResponse(template.render())
 
 def admin(request):
-    template = loader.get_template('base.html')
-    return HttpResponse(template.render())
+    # departments = Department.objects.all()
+    return render(request, 'base.html')
 
 
 def student(request):
@@ -110,20 +110,6 @@ def update_scores(request):
 
 
 #================REGISTERATION================
-
-# def enroll_form(request):
-#     form = EnrollForm()
-#     if request.method == 'POST':
-#         form = EnrollForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('')
-#     # else:
-#     #     form = UserRegistrationForm()
-#     return render(request, 'enroll_register.html', {'form': form})
-
-
-
 def teacher_register(request):
     if request.method == 'POST':
         form = TeacherReg(request.POST, request.FILES)
@@ -188,22 +174,67 @@ def teacher_login(request):
 
 
 
+from django.shortcuts import render, redirect
+from .models import InputTable # Ensure Teacher model is imported
+from .forms import InputTableForm
+
+def table_view(request):
+    # Fetch all teacher names
+    teachers = Teacher.objects.all().values()
+    input_table = InputTable.objects.first()  # Get the first record
+    if not input_table:
+        input_table = InputTable.objects.create()
+
+    if request.method == 'POST':
+        form = InputTableForm(request.POST, instance=input_table)
+        if form.is_valid():
+            form.save()
+            return redirect('table_view')
+    else:
+        form = InputTableForm(instance=input_table)
+
+    context = {
+        'form': form,
+        'total': input_table.total(),
+        'teachers': teachers,
+    }
+
+    return render(request, 'teacherboard.html', context)
+
+
 
 #===============main Teacher board==================
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Teacher, Student, Subject
+
 def teacher(request):
-    # students = Student.objects.all()
-    
-        # Get the logged-in teacher
-    teacher_id = request.session.get('user_id')  # Assuming `user_id` is stored in the session during login
+    teacher_id = request.session.get('user_id')
+    if not teacher_id:
+        return redirect('teacher_log')
+
+    # Retrieve teacher's information
     teacher = get_object_or_404(Teacher, id=teacher_id)
     
+    # Get the subject that the teacher is teaching
+    selected_subject = teacher.Subject_Teacher
+
+    # Find the subject instance from the database
+    subject_instance = Subject.objects.filter(name=selected_subject).first()
+
+    if subject_instance:
+        # Fetch students who are enrolled in this subject
+        students = Student.objects.filter(subjects=subject_instance)
+    else:
+        students = []
+
+    # Handle the teacher's form for updating their profile
     if request.method == 'POST':
         teacher.username = request.POST.get('username')
         teacher.email = request.POST.get('email')
+        
         password = request.POST.get('password')
-
         if password:
-            teacher.set_password(password)  # Update password if provided
+            teacher.set_password(password)
         
         if 'profile_picture' in request.FILES:
             teacher.profile_picture = request.FILES['profile_picture']
@@ -211,26 +242,100 @@ def teacher(request):
         teacher.save()
         return redirect('teacher')
 
-    # Get students of the teacher's assigned class
-    students = Student.objects.filter(class_level=teacher.Class_Teacher)
+    # Weeks and days for the teacher's schedule or other context
+    weeks = list(range(1, 14))
+    days = list(range(1, 6))
 
-    # Define the range of weeks and days
-    weeks = list(range(1, 14))  # Weeks 1 to 13
-    days = list(range(1, 6))    # Days 1 to 5
+    return render(request, 'teacherboard.html', {
+        'teacher': teacher,
+        'students': students,
+        'weeks': weeks,
+        'days': days,
+        'selected_subject': selected_subject,
+    })
 
-    if request.method == 'POST':
-        # Handle form submission (if applicable)
-        pass
 
-    # Pass the data to the template
+# def teacher(request):
+#     # students = Student.objects.all()
 
-    teacher_id = request.session.get('user_id')
-    if not teacher_id:
-        return redirect('teacher_log')    
+#     # Get the teacher's selected subject
+#     selected_subject = teacher.Subject_Teacher
 
-    teacher = Teacher.objects.get(id=teacher_id)
+#     # Fetch the corresponding Subject instance
+#     subject_instance = Subject.objects.filter(name__icontains=selected_subject).first()
+
+#     # Ensure subject_instance exists to avoid errors
+#     if subject_instance:
+#         # Filter students based on subjects offered
+#         students = Student.objects.filter(subjects=subject_instance)
+#     else:
+#         students = []
     
-    return render(request, 'teacherboard.html', {'teacher': teacher, 'students':students, 'weeks': weeks, 'days': days})
+#         # Get the logged-in teacher
+#     teacher_id = request.session.get('user_id')  # Assuming `user_id` is stored in the session during login
+#     teacher = get_object_or_404(Teacher, id=teacher_id)
+    
+#     if request.method == 'POST':
+#         teacher.username = request.POST.get('username')
+#         teacher.email = request.POST.get('email')
+#         password = request.POST.get('password')
+
+#         if password:
+#             teacher.set_password(password)  # Update password if provided
+        
+#         if 'profile_picture' in request.FILES:
+#             teacher.profile_picture = request.FILES['profile_picture']
+        
+#         teacher.save()
+#         return redirect('teacher')
+
+#     # Get students of the teacher's assigned class
+#     students = Student.objects.filter(class_level=teacher.Class_Teacher)
+
+#     # Define the range of weeks and days
+#     weeks = list(range(1, 14))  # Weeks 1 to 13
+#     days = list(range(1, 6))    # Days 1 to 5
+
+#     if request.method == 'POST':
+#         # Handle form submission (if applicable)
+#         pass
+
+#     # Pass the data to the template
+
+#     teacher_id = request.session.get('user_id')
+#     if not teacher_id:
+#         return redirect('teacher_log')    
+
+#     teacher = Teacher.objects.get(id=teacher_id)
+    
+#     return render(request, 'teacherboard.html', {'teacher': teacher, 'students':students, 'weeks': weeks, 'days': days, 'students': students, 'selected_subject': selected_subject,})
+
+from django.shortcuts import render
+from .models import Teacher, Student, Subject
+
+# def teacher(request):
+#     # Fetch the logged-in teacher
+#     teacher = Teacher.objects.get(username=request.user.username)
+
+#     # Get the teacher's selected subject
+#     selected_subject = teacher.Subject_Teacher
+
+#     # Fetch the corresponding Subject instance
+#     subject_instance = Subject.objects.filter(name__icontains=selected_subject).first()
+
+#     # Ensure subject_instance exists to avoid errors
+#     if subject_instance:
+#         # Filter students based on subjects offered
+#         students = Student.objects.filter(subjects=subject_instance)
+#     else:
+#         students = []
+
+#     context = {
+#         'teacher': teacher,
+#         'students': students,
+#         'selected_subject': selected_subject,
+#     }
+#     return render(request, 'teacherboard.html', context)
 
 
 
@@ -278,42 +383,24 @@ def update_student(request, student_id):
         student.address = request.POST['address']
         student.save()
         return redirect('acad')
+    
+    
+def student_login(request):
+    form = StudentLog()
+    if request.method == 'POST':
+        form = StudentLog(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('student')  # Redirect to a success page
+            else:
+                form.add_error(None, 'Invalid username or password')
+    context = {'form': form}
+    return render(request, 'student_login.html', context=context)
 
-#=======Teacher update profile===========
-# def teacher_update(request, teacher_id):
-#     teacher = get_object_or_404(Teacher, id=teacher_id)
-
-#     if request.method == 'POST':
-#         teacher.username = request.POST.get('username')
-#         teacher.email = request.POST.get('email')
-#         password = request.POST.get('password')
-
-#         if password:
-#             teacher.set_password(password)  # Update password if provided
-        
-#         if 'profile_picture' in request.FILES:
-#             teacher.profile_picture = request.FILES['profile_picture']
-        
-#         teacher.save()
-#         return redirect('teacher')  # Redirect to the teacher's dashboard or profile page
-
-#     return render(request, 'teacherboard.html', {'teacher': teacher})
-
-# from django.shortcuts import render, get_object_or_404, redirect
-# from .models import Student, Attendance
-# from .forms import AttendanceForm
-
-# def attendance_view(request, student_id, week):
-#     student = get_object_or_404(Student, id=student_id)
-#     attendance, created = Attendance.objects.get_or_create(student=student, week=week)
-#     if request.method == 'POST':
-#         form = AttendanceForm(request.POST, instance=attendance)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('teacher', student_id=student_id, week=week)
-#     else:
-#         form = AttendanceForm(instance=attendance)
-#     return render(request, 'teacher_dashboard.html', {'form': form, 'student': student, 'week': week})
 
 def student_register(request):
     if request.method == 'POST':
@@ -351,6 +438,84 @@ def attendance_view(request):
         'weeks': weeks,
         'days': days,
     })
+
+
+# from .models import Subject
+# from .forms import SubjectForm
+# # views.py
+# from django.shortcuts import render
+# from django.http import JsonResponse
+# from django.views.decorators.csrf import csrf_exempt
+# from .models import Department, Subject
+# import json
+# # Fetch subjects based on department
+# def fetch_department_subjects(request):
+#     if request.method == "GET":
+#         department_name = request.GET.get('department')
+#         department = Department.objects.get(name=department_name)
+#         subjects = department.subjects.all()
+#         subject_list = [{"id": subject.id, "name": subject.name} for subject in subjects]
+#         return JsonResponse({"subjects": subject_list})
+
+# # Add a new subject
+# @csrf_exempt
+# def add_subject(request):
+#     if request.method == "POST":
+#         data = json.loads(request.body)
+#         department_name = data.get("department")
+#         subject_name = data.get("subject_name")
+#         department = Department.objects.get(name=department_name)
+#         Subject.objects.create(name=subject_name, department=department)
+#         return JsonResponse({"success": True, "message": "Subject added successfully"})
+
+# # Delete a subject
+# @csrf_exempt
+# def delete_subject(request):
+#     if request.method == "POST":
+#         data = json.loads(request.body)
+#         subject_id = data.get("subject_id")
+#         Subject.objects.get(id=subject_id).delete()
+#         return JsonResponse({"success": True, "message": "Subject deleted successfully"})
+
+
+
+
+
+#=======Teacher update profile===========
+# def teacher_update(request, teacher_id):
+#     teacher = get_object_or_404(Teacher, id=teacher_id)
+
+#     if request.method == 'POST':
+#         teacher.username = request.POST.get('username')
+#         teacher.email = request.POST.get('email')
+#         password = request.POST.get('password')
+
+#         if password:
+#             teacher.set_password(password)  # Update password if provided
+        
+#         if 'profile_picture' in request.FILES:
+#             teacher.profile_picture = request.FILES['profile_picture']
+        
+#         teacher.save()
+#         return redirect('teacher')  # Redirect to the teacher's dashboard or profile page
+
+#     return render(request, 'teacherboard.html', {'teacher': teacher})
+
+# from django.shortcuts import render, get_object_or_404, redirect
+# from .models import Student, Attendance
+# from .forms import AttendanceForm
+
+# def attendance_view(request, student_id, week):
+#     student = get_object_or_404(Student, id=student_id)
+#     attendance, created = Attendance.objects.get_or_create(student=student, week=week)
+#     if request.method == 'POST':
+#         form = AttendanceForm(request.POST, instance=attendance)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('teacher', student_id=student_id, week=week)
+#     else:
+#         form = AttendanceForm(instance=attendance)
+#     return render(request, 'teacher_dashboard.html', {'form': form, 'student': student, 'week': week})
 
 
 
@@ -453,21 +618,7 @@ def attendance_view(request):
 
 
 
-def student_login(request):
-    form = StudentLog()
-    if request.method == 'POST':
-        form = StudentLog(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('student')  # Redirect to a success page
-            else:
-                form.add_error(None, 'Invalid username or password')
-    context = {'form': form}
-    return render(request, 'student_login.html', context=context)
+
 
 
 # views.py
@@ -490,32 +641,7 @@ def student_login(request):
 
 
 
-from django.shortcuts import render, redirect
-from .models import InputTable # Ensure Teacher model is imported
-from .forms import InputTableForm
 
-def table_view(request):
-    # Fetch all teacher names
-    teachers = Teacher.objects.all().values()
-    input_table = InputTable.objects.first()  # Get the first record
-    if not input_table:
-        input_table = InputTable.objects.create()
-
-    if request.method == 'POST':
-        form = InputTableForm(request.POST, instance=input_table)
-        if form.is_valid():
-            form.save()
-            return redirect('table_view')
-    else:
-        form = InputTableForm(instance=input_table)
-
-    context = {
-        'form': form,
-        'total': input_table.total(),
-        'teachers': teachers,
-    }
-
-    return render(request, 'teacherboard.html', context)
 
 
 
@@ -556,3 +682,17 @@ def table_view(request):
 #         form = TeacherLog()  # Render an empty login form for GET requests
         
 #     return render(request, 'teacher_log.html', {'form': form})
+
+
+
+
+# def enroll_form(request):
+#     form = EnrollForm()
+#     if request.method == 'POST':
+#         form = EnrollForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('')
+#     # else:
+#     #     form = UserRegistrationForm()
+#     return render(request, 'enroll_register.html', {'form': form})
